@@ -32,56 +32,61 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
-@Mod(ExampleMod.MODID)
-public class ExampleMod {
+@Mod(SkyblockResources.MODID)
+public class SkyblockResources {
     // Define mod id in a common place for everything to reference
-    public static final String MODID = "examplemod";
+    public static final String MODID = "skyblockresources";
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
     // Create a Deferred Register to hold Blocks which will all be registered under
-    // the "examplemod" namespace
+    // the "skyblockresources" namespace
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID);
     // Create a Deferred Register to hold Items which will all be registered under
-    // the "examplemod" namespace
+    // the "skyblockresources" namespace
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
     // Create a Deferred Register to hold CreativeModeTabs which will all be
-    // registered under the "examplemod" namespace
+    // registered under the "skyblockresources" namespace
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister
             .create(Registries.CREATIVE_MODE_TAB, MODID);
 
-    // Creates a new Block with the id "examplemod:example_block", combining the
+    // Creates a new Block with the id "skyblockresources:mythril_ore", combining
+    // the
     // namespace and path
-    public static final DeferredBlock<Block> EXAMPLE_BLOCK = BLOCKS.registerSimpleBlock("example_block",
+    public static final DeferredBlock<Block> MYTHRIL_ORE = BLOCKS.registerSimpleBlock("mythril_ore",
             p -> p.mapColor(MapColor.STONE));
-    // Creates a new BlockItem with the id "examplemod:example_block", combining the
+    // Creates a new BlockItem with the id "skyblockresources:mythril_ore",
+    // combining the
     // namespace and path
-    public static final DeferredItem<BlockItem> EXAMPLE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("example_block",
-            EXAMPLE_BLOCK);
+    public static final DeferredItem<BlockItem> MYTHRIL_ORE_ITEM = ITEMS.registerSimpleBlockItem("mythril_ore",
+            MYTHRIL_ORE);
 
-    // Creates a new food item with the id "examplemod:example_id", nutrition 1 and
+    // Creates a new food item with the id "skyblockresources:enchanted_lapis",
+    // nutrition 1 and
     // saturation 2
-    public static final DeferredItem<Item> EXAMPLE_ITEM = ITEMS.registerSimpleItem("example_item",
+    public static final DeferredItem<Item> ENCHANTED_LAPIS = ITEMS.registerSimpleItem("enchanted_lapis",
             p -> p.food(new FoodProperties.Builder()
                     .alwaysEdible().nutrition(1).saturationModifier(2f).build()));
 
-    // Creates a creative tab with the id "examplemod:example_tab" for the example
+    // Creates a creative tab with the id "skyblockresources:skyblock_tab" for the
+    // example
     // item, that is placed after the combat tab
-    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS
-            .register("example_tab", () -> CreativeModeTab.builder()
-                    .title(Component.translatable("itemGroup.examplemod")) // The language key for the title of your
-                                                                           // CreativeModeTab
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> SKYBLOCK_TAB = CREATIVE_MODE_TABS
+            .register("skyblock_tab", () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup.skyblockresources")) // The language key for the title of
+                                                                                  // your
+                    // CreativeModeTab
                     .withTabsBefore(CreativeModeTabs.COMBAT)
-                    .icon(() -> EXAMPLE_ITEM.get().getDefaultInstance())
+                    .icon(() -> ENCHANTED_LAPIS.get().getDefaultInstance())
                     .displayItems((parameters, output) -> {
-                        output.accept(EXAMPLE_ITEM.get());// Add the example item to the tab. For your own tabs, this
-                                                          // method is preferred over the event
+                        output.accept(ENCHANTED_LAPIS.get());// Add the example item to the tab. For your own tabs, this
+                                                             // method is preferred over the event
                     }).build());
 
     // The constructor for the mod class is the first code that is run when your mod
     // is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and
     // pass them in automatically.
-    public ExampleMod(IEventBus modEventBus, ModContainer modContainer) {
+    public SkyblockResources(IEventBus modEventBus, ModContainer modContainer) {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
@@ -123,7 +128,7 @@ public class ExampleMod {
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
-            event.accept(EXAMPLE_BLOCK_ITEM);
+            event.accept(MYTHRIL_ORE_ITEM);
         }
     }
 
