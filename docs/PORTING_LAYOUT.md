@@ -63,7 +63,9 @@ Each version's `build.gradle` pins its own KubeJS, JEI, Jade, SMWTI and test-mod
 ## Steps
 
 1. (Done) Move the current project to `versions/mc26.1.2/neoforge` and split `common/` out of its `src/main/resources`. No behavior change: the built jar is byte-identical entry for entry, and the self-test passes. Run Gradle from `versions/mc26.1.2/neoforge`.
-2. Add the data transform to `processResources` and prove it by building the 26.1.2 jar from `common/` and diffing it against today's jar.
+2. (Done) `tools/common-data.gradle` builds each version's data from `common/` (task `prepareCommonData`, wired into `processResources`). A version project sets `ext.dataTarget = [mc: ..., format: 'v26'|'v21'|'v20', loader: ...]` and applies it. For 26.1.2 the jar is byte-identical to the pre-transform jar. For v21 and v20 it was checked on the output files: folder names, load conditions, `c:stones` to `forge:stone`, vanilla crafting recipes (ingredient and result shapes), and the dropped `items/` definitions.
+
+   Not transformed, so each port's recipe codecs must accept both shapes: our own recipe types write ingredients as strings (`"#tag"`, `"ns:item"`) and the output as `{"id", "count"}`. Older versions' Ingredient and ItemStack codecs want `{"item"}`/`{"tag"}` and `{"item", "count"}`, so the port reads both.
 3. Create `versions/mc26.1.2/common/java` and leave only loader glue in `neoforge/`.
 4. Add `mc26.1.2/forge`.
 5. Start `mc1.21.1/neoforge` from a copy of 26.1.2, then 1.20.1.

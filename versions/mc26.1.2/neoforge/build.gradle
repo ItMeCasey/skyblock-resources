@@ -8,8 +8,9 @@ base.archivesName = 'skyblock_resources'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
-// Data and assets are shared by every version and loader; see docs/PORTING_LAYOUT.md.
-sourceSets.main.resources.srcDir '../../../common'
+// Data and assets come from the shared common/ folder; see docs/PORTING_LAYOUT.md.
+ext.dataTarget = [mc: '26.1.2', format: 'v26', loader: 'neoforge']
+apply from: '../../../tools/common-data.gradle'
 
 neoForge {
     version = '26.1.2.125'
