@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:netherite_upgrade_smithing_template",
+    "minecraft:netherite_block",
+    "minecraft:paper"
+  ],
+  "result": {
+    "id": "skyblock_resources:netherite_upgrade",
+    "count": 1
+  }
+}

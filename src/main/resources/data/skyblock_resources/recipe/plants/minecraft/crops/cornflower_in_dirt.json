@@ -1,0 +1,20 @@
+{
+  "type": "skyblock_resources:crop_drops",
+  "seed": "minecraft:cornflower",
+  "soil": "#skyblock_resources:base_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "minecraft:cornflower",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "minecraft:cornflower",
+      "min": 1
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

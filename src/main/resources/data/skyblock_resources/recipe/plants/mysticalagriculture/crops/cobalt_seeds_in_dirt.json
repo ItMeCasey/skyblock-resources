@@ -1,0 +1,35 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "mysticalagriculture:cobalt_seeds",
+  "soil": "#skyblock_resources:crop_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "mysticalagriculture:cobalt_seeds",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "mysticalagriculture:cobalt_seeds",
+      "min": 1
+    },
+    {
+      "id": "mysticalagriculture:cobalt_essence",
+      "min": 1
+    },
+    {
+      "id": "mysticalagriculture:fertilized_essence",
+      "min": 1,
+      "chance": 0.087
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

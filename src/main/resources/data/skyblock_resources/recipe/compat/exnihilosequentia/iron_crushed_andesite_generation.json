@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "exnihilosequentia"
+    }
+  ],
+  "type": "skyblock_resources:resource_generator",
+  "generator": "skyblock_resources:iron_generator",
+  "resource": "exnihilosequentia:crushed_andesite",
+  "output": {
+    "id": "exnihilosequentia:crushed_andesite",
+    "count": 8
+  },
+  "duration": 150,
+  "category": [
+    "misc"
+  ]
+}

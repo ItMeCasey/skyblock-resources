@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "skyblock_resources:block/netherite_tree_generator"
+    }
+  }
+}

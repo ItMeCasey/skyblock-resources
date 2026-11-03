@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ecologics"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "ecologics:walnut_sapling",
+  "soil": "#skyblock_resources:improved_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "ecologics:walnut_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "ecologics:walnut_log",
+      "min": 1
+    },
+    {
+      "id": "ecologics:walnut",
+      "min": 1,
+      "max": 6,
+      "chance": 0.804
+    },
+    {
+      "id": "ecologics:walnut_sapling",
+      "min": 1,
+      "max": 6,
+      "chance": 0.626
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

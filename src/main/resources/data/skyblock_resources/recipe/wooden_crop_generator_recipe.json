@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ada",
+    "bcb"
+  ],
+  "key": {
+    "a": "#minecraft:wooden_slabs",
+    "b": "#minecraft:planks",
+    "c": "minecraft:hopper",
+    "d": "minecraft:wheat_seeds"
+  },
+  "result": {
+    "id": "skyblock_resources:wooden_crop_generator",
+    "count": 1
+  }
+}

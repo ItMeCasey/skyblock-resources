@@ -1,0 +1,21 @@
+{
+  "type": "skyblock_resources:crop_drops",
+  "seed": "minecraft:seagrass",
+  "soil": "minecraft:water_bucket",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "minecraft:seagrass",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "minecraft:seagrass",
+      "min": 1,
+      "max": 3
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

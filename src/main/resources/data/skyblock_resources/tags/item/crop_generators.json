@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "skyblock_resources:wooden_crop_generator",
+    "skyblock_resources:stone_crop_generator",
+    "skyblock_resources:iron_crop_generator",
+    "skyblock_resources:diamond_crop_generator",
+    "skyblock_resources:netherite_crop_generator"
+  ]
+}

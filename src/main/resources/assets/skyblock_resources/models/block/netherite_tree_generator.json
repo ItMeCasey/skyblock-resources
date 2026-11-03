@@ -1,0 +1,11 @@
+{
+  "parent": "skyblock_resources:custom/tree_netherite_generator",
+  "textures": {
+    "all": "minecraft:block/netherite_block",
+    "particle": "minecraft:block/netherite_block",
+    "2": "minecraft:block/netherite_block",
+    "3": "minecraft:block/netherite_block",
+    "4": "minecraft:block/podzol_side",
+    "missing": "minecraft:block/netherite_block"
+  }
+}

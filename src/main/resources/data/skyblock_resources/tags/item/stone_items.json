@@ -1,0 +1,27 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:diorite",
+    "minecraft:andesite",
+    "minecraft:granite",
+    "minecraft:dripstone_block",
+    {
+      "id": "biomesoplenty:orange_sand",
+      "required": false
+    },
+    "minecraft:clay",
+    "minecraft:moss_block",
+    {
+      "id": "biomesoplenty:brimstone",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:white_sand",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:black_sand",
+      "required": false
+    }
+  ]
+}

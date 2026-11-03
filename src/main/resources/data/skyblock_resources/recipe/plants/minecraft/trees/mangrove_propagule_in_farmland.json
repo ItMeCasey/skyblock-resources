@@ -1,0 +1,26 @@
+{
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "minecraft:mangrove_propagule",
+  "soil": "minecraft:farmland",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "minecraft:mangrove_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "minecraft:mangrove_log",
+      "min": 1
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 5,
+      "chance": 0.323
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

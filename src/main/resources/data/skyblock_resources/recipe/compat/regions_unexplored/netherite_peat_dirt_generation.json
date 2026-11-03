@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "regions_unexplored"
+    }
+  ],
+  "type": "skyblock_resources:resource_generator",
+  "generator": "skyblock_resources:netherite_generator",
+  "resource": "regions_unexplored:peat_dirt",
+  "output": {
+    "id": "regions_unexplored:peat_dirt",
+    "count": 64
+  },
+  "duration": 40,
+  "category": [
+    "misc"
+  ]
+}

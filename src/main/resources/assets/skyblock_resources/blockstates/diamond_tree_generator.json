@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "skyblock_resources:block/diamond_tree_generator"
+    }
+  }
+}

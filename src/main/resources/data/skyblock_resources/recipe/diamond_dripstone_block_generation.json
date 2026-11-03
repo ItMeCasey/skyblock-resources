@@ -1,0 +1,13 @@
+{
+  "type": "skyblock_resources:resource_generator",
+  "generator": "skyblock_resources:diamond_generator",
+  "resource": "minecraft:dripstone_block",
+  "output": {
+    "id": "minecraft:dripstone_block",
+    "count": 16
+  },
+  "duration": 100,
+  "category": [
+    "misc"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "twilightforest:canopy_sapling",
+      "required": false
+    },
+    {
+      "id": "twilightforest:darkwood_sapling",
+      "required": false
+    },
+    {
+      "id": "twilightforest:hollow_oak_sapling",
+      "required": false
+    },
+    {
+      "id": "twilightforest:mangrove_sapling",
+      "required": false
+    },
+    {
+      "id": "twilightforest:mining_sapling",
+      "required": false
+    },
+    {
+      "id": "twilightforest:rainbow_oak_sapling",
+      "required": false
+    },
+    {
+      "id": "twilightforest:sorting_sapling",
+      "required": false
+    },
+    {
+      "id": "twilightforest:time_sapling",
+      "required": false
+    },
+    {
+      "id": "twilightforest:transformation_sapling",
+      "required": false
+    },
+    {
+      "id": "twilightforest:twilight_oak_sapling",
+      "required": false
+    }
+  ]
+}

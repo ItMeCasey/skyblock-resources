@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "vampirism:cursed_spruce_sapling",
+      "required": false
+    },
+    {
+      "id": "vampirism:dark_spruce_sapling",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "aether:skyroot_sapling",
+      "required": false
+    },
+    {
+      "id": "aether:golden_oak_sapling",
+      "required": false
+    }
+  ]
+}

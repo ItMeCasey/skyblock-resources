@@ -1,0 +1,13 @@
+{
+  "type": "skyblock_resources:resource_generator",
+  "generator": "skyblock_resources:iron_generator",
+  "resource": "minecraft:andesite",
+  "output": {
+    "id": "minecraft:andesite",
+    "count": 8
+  },
+  "duration": 150,
+  "category": [
+    "misc"
+  ]
+}

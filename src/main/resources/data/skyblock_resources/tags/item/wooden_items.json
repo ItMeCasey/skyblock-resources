@@ -1,0 +1,30 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:dirt",
+    {
+      "id": "regions_unexplored:silt_dirt",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:ash",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:peat_dirt",
+      "required": false
+    },
+    "minecraft:cobblestone",
+    "minecraft:gravel",
+    "minecraft:sand",
+    {
+      "id": "regions_unexplored:volcanic_ash",
+      "required": false
+    },
+    "minecraft:red_sand",
+    {
+      "id": "exdeorum:dust",
+      "required": false
+    }
+  ]
+}

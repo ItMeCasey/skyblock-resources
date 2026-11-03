@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:calcite",
+    "minecraft:deepslate",
+    "minecraft:tuff",
+    "minecraft:mossy_cobblestone",
+    {
+      "id": "ae2:sky_stone_block",
+      "required": false
+    }
+  ]
+}

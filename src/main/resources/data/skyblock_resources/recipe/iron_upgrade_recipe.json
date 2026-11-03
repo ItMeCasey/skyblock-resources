@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "bpb"
+  ],
+  "key": {
+    "a": "minecraft:iron_ingot",
+    "b": "minecraft:iron_block",
+    "p": "minecraft:paper"
+  },
+  "result": {
+    "id": "skyblock_resources:iron_upgrade",
+    "count": 1
+  }
+}

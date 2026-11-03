@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "biomesoplenty"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "biomesoplenty:pink_hibiscus",
+  "soil": "#skyblock_resources:crop_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "biomesoplenty:pink_hibiscus",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "biomesoplenty:pink_hibiscus",
+      "min": 1
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

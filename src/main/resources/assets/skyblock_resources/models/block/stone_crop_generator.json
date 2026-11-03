@@ -1,0 +1,10 @@
+{
+  "parent": "skyblock_resources:custom/wooden_pot",
+  "textures": {
+    "all": "minecraft:block/cobblestone",
+    "particle": "minecraft:block/cobblestone",
+    "0": "minecraft:block/cobblestone",
+    "1": "minecraft:block/cobblestone",
+    "2": "minecraft:block/cobblestone"
+  }
+}

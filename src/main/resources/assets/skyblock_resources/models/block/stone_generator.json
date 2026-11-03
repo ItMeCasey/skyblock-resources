@@ -1,0 +1,9 @@
+{
+  "parent": "skyblock_resources:custom/stone_generator2",
+  "textures": {
+    "all": "minecraft:block/cobblestone",
+    "particle": "minecraft:block/cobblestone",
+    "0": "minecraft:block/stone",
+    "1": "minecraft:block/glass"
+  }
+}

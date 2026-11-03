@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "biomesoplenty"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "biomesoplenty:burning_blossom",
+  "soil": "#skyblock_resources:crop_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "biomesoplenty:burning_blossom",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "biomesoplenty:burning_blossom",
+      "min": 1
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

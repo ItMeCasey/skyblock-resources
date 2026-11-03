@@ -1,0 +1,10 @@
+{
+  "type": "skyblock_resources:soil_type",
+  "soil": "mysticalagriculture:awakened_supremium_farmland",
+  "speed_bonus": 0.0,
+  "growth_multiplier": 1.0,
+  "bonus_seed_chance": 0.1,
+  "category": [
+    "misc"
+  ]
+}

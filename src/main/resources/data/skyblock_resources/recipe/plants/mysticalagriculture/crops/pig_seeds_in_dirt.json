@@ -1,0 +1,35 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "mysticalagriculture:pig_seeds",
+  "soil": "#skyblock_resources:crop_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "mysticalagriculture:pig_seeds",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "mysticalagriculture:pig_seeds",
+      "min": 1
+    },
+    {
+      "id": "mysticalagriculture:pig_essence",
+      "min": 1
+    },
+    {
+      "id": "mysticalagriculture:fertilized_essence",
+      "min": 1,
+      "chance": 0.103
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

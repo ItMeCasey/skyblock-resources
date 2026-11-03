@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "skyblock_resources:wooden_tree_generator",
+    "skyblock_resources:stone_tree_generator",
+    "skyblock_resources:iron_tree_generator",
+    "skyblock_resources:diamond_tree_generator",
+    "skyblock_resources:netherite_tree_generator"
+  ]
+}

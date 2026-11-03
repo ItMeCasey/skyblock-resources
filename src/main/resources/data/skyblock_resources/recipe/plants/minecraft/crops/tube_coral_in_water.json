@@ -1,0 +1,21 @@
+{
+  "type": "skyblock_resources:crop_drops",
+  "seed": "minecraft:tube_coral",
+  "soil": "minecraft:water_bucket",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "minecraft:tube_coral",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "minecraft:tube_coral",
+      "min": 1,
+      "max": 2
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

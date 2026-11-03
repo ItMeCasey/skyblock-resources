@@ -1,0 +1,9 @@
+{
+  "type": "skyblock_resources:soil_type",
+  "soil": "minecraft:farmland",
+  "speed_bonus": 0.1,
+  "growth_multiplier": 1,
+  "category": [
+    "misc"
+  ]
+}

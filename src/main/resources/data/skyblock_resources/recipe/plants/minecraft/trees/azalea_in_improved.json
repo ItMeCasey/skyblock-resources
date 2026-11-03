@@ -1,0 +1,38 @@
+{
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "minecraft:azalea",
+  "soil": "#skyblock_resources:improved_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "minecraft:oak_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "minecraft:oak_log",
+      "min": 1
+    },
+    {
+      "id": "minecraft:azalea",
+      "min": 1,
+      "max": 4,
+      "chance": 0.542
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 4,
+      "chance": 0.328
+    },
+    {
+      "id": "minecraft:flowering_azalea",
+      "min": 1,
+      "max": 3,
+      "chance": 0.197
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

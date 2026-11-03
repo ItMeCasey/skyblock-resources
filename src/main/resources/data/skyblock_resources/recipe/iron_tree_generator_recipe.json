@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "bcb"
+  ],
+  "key": {
+    "a": "minecraft:iron_ingot",
+    "b": "minecraft:iron_block",
+    "c": "skyblock_resources:stone_tree_generator"
+  },
+  "result": {
+    "id": "skyblock_resources:iron_tree_generator",
+    "count": 1
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "skyblock_resources:crop_drops",
+  "seed": "minecraft:cactus",
+  "soil": "#skyblock_resources:sand_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "minecraft:cactus",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "minecraft:cactus",
+      "min": 1
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

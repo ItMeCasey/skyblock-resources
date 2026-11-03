@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "skyblock_resources:block/stone_crop_generator"
+    }
+  }
+}

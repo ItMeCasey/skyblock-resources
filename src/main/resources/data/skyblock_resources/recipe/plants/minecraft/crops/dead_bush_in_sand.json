@@ -1,0 +1,22 @@
+{
+  "type": "skyblock_resources:crop_drops",
+  "seed": "minecraft:dead_bush",
+  "soil": "#skyblock_resources:sand_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "minecraft:stick",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 2,
+      "chance": 0.687
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "silentgear:netherwood_sapling",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "type": "skyblock_resources:resource_generator",
+  "generator": "skyblock_resources:netherite_generator",
+  "resource": "minecraft:clay",
+  "output": {
+    "id": "minecraft:clay",
+    "count": 64
+  },
+  "duration": 40,
+  "category": [
+    "misc"
+  ]
+}

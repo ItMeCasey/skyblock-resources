@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "croptopia"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "croptopia:celery_seed",
+  "soil": "#skyblock_resources:crop_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "croptopia:celery",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "croptopia:celery",
+      "min": 1,
+      "max": 4
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

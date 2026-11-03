@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:seagrass",
+    "minecraft:kelp",
+    "minecraft:brain_coral",
+    "minecraft:bubble_coral",
+    "minecraft:lily_pad",
+    "minecraft:horn_coral",
+    "minecraft:sea_pickle",
+    "minecraft:tube_coral",
+    "minecraft:fire_coral"
+  ]
+}

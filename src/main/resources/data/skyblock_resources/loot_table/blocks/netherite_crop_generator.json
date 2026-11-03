@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "skyblock_resources:blocks/netherite_crop_generator",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "skyblock_resources:netherite_crop_generator"
+        }
+      ]
+    }
+  ]
+}

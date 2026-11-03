@@ -1,0 +1,30 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "mysticalagriculture:inferium_seeds",
+  "soil": "#skyblock_resources:crop_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "mysticalagriculture:inferium_essence",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "mysticalagriculture:inferium_essence",
+      "min": 1
+    },
+    {
+      "id": "mysticalagriculture:inferium_seeds",
+      "min": 1
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

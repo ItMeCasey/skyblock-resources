@@ -1,0 +1,13 @@
+{
+  "type": "skyblock_resources:resource_generator",
+  "generator": "skyblock_resources:iron_generator",
+  "resource": "minecraft:moss_block",
+  "output": {
+    "id": "minecraft:moss_block",
+    "count": 8
+  },
+  "duration": 150,
+  "category": [
+    "misc"
+  ]
+}

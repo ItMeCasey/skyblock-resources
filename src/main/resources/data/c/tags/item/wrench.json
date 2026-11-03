@@ -1,0 +1,29 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "ae2:certus_quartz_wrench",
+      "required": false
+    },
+    {
+      "id": "refinedstorage:wrench",
+      "required": false
+    },
+    {
+      "id": "enderio:yeta_wrench",
+      "required": false
+    },
+    {
+      "id": "pipez:wrench",
+      "required": false
+    },
+    {
+      "id": "ae2:nether_quartz_wrench",
+      "required": false
+    },
+    {
+      "id": "#neoforge:wrench",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "biomesoplenty"
+    }
+  ],
+  "type": "skyblock_resources:resource_generator",
+  "generator": "skyblock_resources:stone_generator",
+  "resource": "biomesoplenty:black_sand",
+  "output": {
+    "id": "biomesoplenty:black_sand",
+    "count": 4
+  },
+  "duration": 200,
+  "category": [
+    "misc"
+  ]
+}

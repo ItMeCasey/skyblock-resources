@@ -1,0 +1,20 @@
+{
+  "type": "skyblock_resources:crop_drops",
+  "seed": "minecraft:cocoa_beans",
+  "soil": "#skyblock_resources:crop_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "minecraft:cocoa_beans",
+    "count": 3
+  },
+  "drops": [
+    {
+      "id": "minecraft:cocoa_beans",
+      "min": 3
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}
