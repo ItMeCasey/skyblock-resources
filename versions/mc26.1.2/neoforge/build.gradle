@@ -8,6 +8,9 @@ base.archivesName = 'skyblock_resources'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
+// Data and assets are shared by every version and loader; see docs/PORTING_LAYOUT.md.
+sourceSets.main.resources.srcDir '../../../common'
+
 neoForge {
     version = '26.1.2.125'
 
