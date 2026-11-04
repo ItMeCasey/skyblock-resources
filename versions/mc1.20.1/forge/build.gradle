@@ -1,0 +1,133 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'eclipse'
+    id 'net.minecraftforge.gradle' version '[6.0.54,6.2)'
+}
+
+version = '2026.11.1'
+base.archivesName = 'skyblock_resources-forge-1.20.1'
+
+// Mojang ships Java 17 to end users in 1.18+, so the mod targets Java 17.
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+// Data and assets come from the shared common/ folder; see docs/PORTING_LAYOUT.md.
+ext.dataTarget = [mc: '1.20.1', format: 'v20', loader: 'forge']
+apply from: '../../../tools/common-data.gradle'
+
+// Forge 1.20.1 is built with ForgeGradle 6, which also remaps the Forge mods used for testing (and their mixin refmaps)
+// to the dev environment's names. Copied from the NeoForge 1.20.1 project, which uses the same setup.
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+
+    runs {
+        configureEach {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            // Test mods' mixins carry SRG reference maps; remap them to the dev environment's names.
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+            mods {
+                skyblock_resources {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        client {
+        }
+
+        server {
+            args '--nogui'
+        }
+
+        // Forge's game test server: no eula.txt is needed, unlike the dedicated server. It runs the headless self-test
+        // (-Dskyblock.selftest=true), which prints SELFTEST PASSED or SELFTEST FAILED and stops the server.
+        gameTestServer {
+            workingDirectory project.file('run-gametest')
+            property 'skyblock.selftest', 'true'
+            property 'forge.enabledGameTestNamespaces', 'skyblock_resources'
+            args '--port', '8905'
+        }
+    }
+}
+
+tasks.register('runGameTest') {
+    group = 'forgegradle runs'
+    description = 'Runs the headless self-test on the game test server.'
+    dependsOn 'runGameTestServer'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    maven { url 'https://maven.minecraftforge.net' }
+    mavenCentral()
+    maven {
+        url 'https://cursemaven.com'
+    }
+    maven {
+        name = "Progwml6's maven"
+        url = 'https://dvs1.progwml6.com/files/maven/'
+    }
+    maven {
+        name = "Jared's maven"
+        url = 'https://maven.blamejared.com/'
+    }
+    maven {
+        name = 'ModMaven'
+        url = 'https://modmaven.dev'
+    }
+    // Not exclusiveContent: ForgeGradle's deobf repository must also be allowed to serve this group.
+    maven {
+        name = 'Modrinth'
+        url = 'https://api.modrinth.com/maven'
+        content {
+            includeGroup 'maven.modrinth'
+        }
+    }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
+
+    // SMWTI is not published yet, so use the jar from its own project build.
+    implementation fg.deobf(files("${System.getProperty('user.home')}/Desktop/SMWTI/versions/mc1.20.1/forge/build/libs/smwti-forge-1.20.1-2026.11.1.jar"))
+    compileOnly fg.deobf('maven.modrinth:jade:xJQHCmWJ')
+
+    compileOnly fg.deobf('maven.modrinth:kubejs:hVR2xUSr')
+    compileOnly fg.deobf('maven.modrinth:rhino:uNALdylI')
+    compileOnly fg.deobf('maven.modrinth:architectury-api:1MKTLiiG')
+
+    runtimeOnly fg.deobf('maven.modrinth:kubejs:hVR2xUSr')
+    runtimeOnly fg.deobf('maven.modrinth:rhino:uNALdylI')
+    runtimeOnly fg.deobf('maven.modrinth:architectury-api:1MKTLiiG')
+
+    // Test mods for the dev environment and the headless self-test (Forge 1.20.1 builds).
+    runtimeOnly fg.deobf('curse.maven:croptopia-415438:8066550')
+    runtimeOnly fg.deobf('maven.modrinth:epherolib:vZWRmjl2')
+    runtimeOnly fg.deobf('maven.modrinth:cucumber:xnLznSfT')
+    runtimeOnly fg.deobf('maven.modrinth:mystical-agriculture:EEilTecF')
+    runtimeOnly fg.deobf('maven.modrinth:mystical-agradditions:48qKWNA7')
+    runtimeOnly fg.deobf('maven.modrinth:terralith:WeYhEb5d')
+    runtimeOnly fg.deobf('maven.modrinth:occultism:hs5pHmiU')
+    runtimeOnly fg.deobf('maven.modrinth:modonomicon:J0YtwRxM')
+    runtimeOnly fg.deobf('maven.modrinth:curios:IPQlZkz1')
+    runtimeOnly fg.deobf('maven.modrinth:geckolib:aC5KMoNg')
+    runtimeOnly fg.deobf('maven.modrinth:smartbrainlib:YkeJNm33')
+    runtimeOnly fg.deobf('maven.modrinth:evilcraft:1kckRDGI')
+    runtimeOnly fg.deobf('maven.modrinth:cyclops-core:IUMQKt4M')
+    runtimeOnly fg.deobf('maven.modrinth:integrated-dynamics:Bx2Meo4e')
+    runtimeOnly fg.deobf('maven.modrinth:common-capabilities:xyk3SeaC')
+    runtimeOnly fg.deobf('maven.modrinth:biomes-o-plenty:jxUqRzSD')
+    runtimeOnly fg.deobf('maven.modrinth:glitchcore:pYPZ5MNI')
+    runtimeOnly fg.deobf('maven.modrinth:terrablender:IfcgopfA')
+    runtimeOnly fg.deobf('maven.modrinth:natures-spirit:ri5j4RHM')
+    runtimeOnly fg.deobf('maven.modrinth:forbidden-arcanus:1GswR5qC')
+    runtimeOnly fg.deobf('maven.modrinth:valhelsia-core:eP3L8E7C')
+
+    compileOnly fg.deobf('maven.modrinth:jei:6E4ps2ER')
+    runtimeOnly fg.deobf('maven.modrinth:jei:6E4ps2ER')
+}
