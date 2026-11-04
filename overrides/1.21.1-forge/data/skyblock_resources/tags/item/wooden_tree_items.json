@@ -21,7 +21,7 @@
             "required": false
         },
         {
-            "id": "#skyblock_resources:biomeswebegone_saplings",
+            "id": "#skyblock_resources:biomeswevegone_saplings",
             "required": false
         },
         "minecraft:mangrove_propagule",
