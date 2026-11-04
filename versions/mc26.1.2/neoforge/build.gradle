@@ -4,7 +4,7 @@ plugins {
 }
 
 version = '2026.11.1'
-base.archivesName = 'skyblock_resources'
+base.archivesName = 'skyblock_resources-neoforge-26.1.2'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
