@@ -16,10 +16,10 @@ Everything you need to fill in the two project forms. Files are in `branding/ico
 | Game versions | Set on each uploaded file | Set on each uploaded file |
 | Environment | Client and server | Client and server |
 | License | GPL-3.0 | GPL-3.0 |
-| Source | https://github.com/ItMeCasey/_repo_ | same |
-| Issues | https://github.com/ItMeCasey/_repo_/issues | same |
+| Source | https://github.com/ItMeCasey/skyblock-resources | same |
+| Issues | https://github.com/ItMeCasey/skyblock-resources/issues | same |
 
-Replace `_repo_` with the GitHub repository name, which is not set in the project yet.
+Replace `skyblock-resources` with the GitHub repository name, which is not set in the project yet.
 
 ### One-line description
 
@@ -55,13 +55,13 @@ The descriptions below load images from the GitHub repository, so they only show
 ## Description (Modrinth, Markdown)
 
 ```markdown
-![Skyblock Resources](https://raw.githubusercontent.com/ItMeCasey/_repo_/main/branding/banners/banner.png)
+![Skyblock Resources](https://raw.githubusercontent.com/ItMeCasey/skyblock-resources/main/branding/banners/banner.png)
 
 **Generators, trees and crops that turn one block of dirt into a resource engine, from stone up to netherite.**
 
 Skyblock Resources adds resource generators, tree generators and crop generators to skyblock packs. Each machine runs on its own tier, and you upgrade it in place when you are ready for more.
 
-![Features](https://raw.githubusercontent.com/ItMeCasey/_repo_/main/branding/banners/h_features.png)
+![Features](https://raw.githubusercontent.com/ItMeCasey/skyblock-resources/main/branding/banners/h_features.png)
 
 - **Resource generators:** stone, iron, diamond and netherite. Each tier makes more, faster.
 - **Tree generators:** plant a sapling and the tree grows into a resource tree, with the drops set by the tier.
@@ -69,28 +69,28 @@ Skyblock Resources adds resource generators, tree generators and crop generators
 - **Upgrade cards:** sneak and click a generator, tree or crop with the matching card to move it up one tier. It keeps its stored data.
 - **Recipes in KubeJS:** tree and crop drops are plain data, so a pack can add or change plants with a script.
 
-![For players](https://raw.githubusercontent.com/ItMeCasey/_repo_/main/branding/banners/h_players.png)
+![For players](https://raw.githubusercontent.com/ItMeCasey/skyblock-resources/main/branding/banners/h_players.png)
 
 - Install it on the client and the server. It works in singleplayer and on multiplayer servers.
 - Place a generator, feed it the matching block or sapling, and collect what it makes.
 - Upgrade cards work on any generator of the tier below. Sneak and click to upgrade in place.
 
-![Install](https://raw.githubusercontent.com/ItMeCasey/_repo_/main/branding/banners/h_install.png)
+![Install](https://raw.githubusercontent.com/ItMeCasey/skyblock-resources/main/branding/banners/h_install.png)
 
 Minecraft 1.20.1, 1.21.1 and 26.1.2, on NeoForge and Forge. Download the file for your loader and version from the Files tab.
 
-![FAQ](https://raw.githubusercontent.com/ItMeCasey/_repo_/main/branding/banners/h_faq.png)
+![FAQ](https://raw.githubusercontent.com/ItMeCasey/skyblock-resources/main/branding/banners/h_faq.png)
 
 **Does it need to be on the server?** Install it on both. The client needs it to show the machines and the server needs it to run them.
 
 **Can I change the drops?** Yes. Tree and crop drops are recipes, so a pack can add or change plants with KubeJS.
 
-**License:** GPL-3.0. Source and issues on [GitHub](https://github.com/ItMeCasey/_repo_).
+**License:** GPL-3.0. Source and issues on [GitHub](https://github.com/ItMeCasey/skyblock-resources).
 ```
 
 ## Checklist
 
-1. Fill in the `_repo_` placeholder and the project IDs, after the GitHub repository name is set.
+1. Fill in the `skyblock-resources` placeholder and the project IDs, after the GitHub repository name is set.
 2. Push `branding/` to GitHub (and make the repository public) so the description images load.
 3. Create the Modrinth project: name, slug, summary, icon, categories, environment, license, links, description. Upload `features.png` as the featured gallery image.
 4. Create the CurseForge project the same way, with `icon_512.png` as the logo. CurseForge reviews new projects before they go live, so it needs a first file uploaded.
