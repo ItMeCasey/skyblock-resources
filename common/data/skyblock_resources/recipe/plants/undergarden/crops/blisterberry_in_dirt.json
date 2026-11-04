@@ -1,0 +1,33 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "undergarden"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "undergarden:blisterberry",
+  "soil": "#skyblock_resources:crop_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "undergarden:blisterberry",
+    "count": 2
+  },
+  "drops": [
+    {
+      "id": "undergarden:blisterberry",
+      "min": 2,
+      "max": 3
+    },
+    {
+      "id": "undergarden:rotten_blisterberry",
+      "min": 1,
+      "max": 2,
+      "chance": 0.67
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

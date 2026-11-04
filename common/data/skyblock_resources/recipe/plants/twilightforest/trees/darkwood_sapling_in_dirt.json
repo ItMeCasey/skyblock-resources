@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "twilightforest"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "twilightforest:darkwood_sapling",
+  "soil": "#skyblock_resources:base_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "twilightforest:dark_wood",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "twilightforest:dark_wood",
+      "min": 1
+    },
+    {
+      "id": "twilightforest:darkwood_sapling",
+      "min": 1,
+      "max": 5,
+      "chance": 0.428
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 6,
+      "chance": 0.358
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

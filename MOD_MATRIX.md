@@ -61,5 +61,7 @@ Data pulled from the Modrinth API on 2026-11-03. Y means a release exists for th
 | Pam's HarvestCraft 2 - Crops | crops | - | - | - | - | Y | - |  |
 | Wilder Wild | saplings, plants, mud/soil | - | - | - | - | - | - |  |
 | Croptopia | crops, fruit/nut trees (CurseForge) | CF | CF | CF | CF | CF | CF | plants |
-| Twilight Forest | saplings, plants, stone/soil variants (CurseForge) | CF | CF | CF | CF | CF | CF |  |
-| Allthemodium | saplings/ores (CurseForge) | CF | CF | CF | CF | CF | CF |  |
+| Twilight Forest | saplings, plants, stone/soil variants (CurseForge) | CF | CF | CF | CF | CF | CF | compat (1.20.1, NeoForge 1.21.1, NeoForge 26.1.2) |
+| Allthemodium | saplings/ores (CurseForge) | CF | CF | CF | CF | CF | CF | plants + compat (1.20.1, NeoForge 1.21.1, NeoForge 26.1.2) |
+
+Recipes per version and loader: 26.1.2 in `common/`, others in `overrides/` (see `docs/RECIPES_*.md`). Rows with an empty last column were scanned or skipped as described there: most have only a few builds, worldgen-only or food-only content, or no loadable build; check the docs before treating them as todo.

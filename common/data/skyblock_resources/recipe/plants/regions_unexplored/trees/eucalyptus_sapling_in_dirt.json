@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "regions_unexplored"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "regions_unexplored:eucalyptus_sapling",
+  "soil": "#skyblock_resources:base_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "regions_unexplored:eucalyptus_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "regions_unexplored:eucalyptus_log",
+      "min": 1
+    },
+    {
+      "id": "regions_unexplored:eucalyptus_sapling",
+      "min": 1,
+      "max": 5,
+      "chance": 0.656
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 5,
+      "chance": 0.292
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

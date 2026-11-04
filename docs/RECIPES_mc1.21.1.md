@@ -91,3 +91,41 @@ Resource blocks: soils (dirt-like, all five tiers): RU peat, silt and ashen dirt
 - Scratch copy, all 52 jars plus these recipes: `./gradlew runSelfcheck` (game test server) printed `SELFTEST drop recipes: 1515 tree, 703 crop, 0 + 0 without drops: ok`, `resource recipes: 416`, `SELFTEST PASSED`, no `skyblock_resources` recipe parse error, no tag or model error from the mod.
 - Real project `versions/mc1.21.1/neoforge`: `./gradlew runGameTest` printed `SELFTEST drop recipes: 258 tree, 312 crop, 0 + 0 without drops: ok`, `resource recipes: 152`, `SELFTEST PASSED`, no recipe parse error for `skyblock_resources` (the run folder has no `eula.txt` and the run did not need one).
 - Checker: 0 errors over the 1875 files (air, zero amounts, first drop, conditions, duplicate keys, identical-to-common).
+
+## Gap fill (2026-11-04): Twilight Forest, Allthemodium, saplings that did not grow
+
+Files added to `overrides/1.21.1-neoforge/data/skyblock_resources/recipe/`: 83 recipe files and 1 `.delete` marker. Same rules as above; scratch copy at `%LOCALAPPDATA%\Temp\skyres-scan-gaps\nf121` (repo project untouched, no `eula.txt` touched; the scan server is the `gameTestServer` type).
+
+### Where the two mods come from
+
+- Twilight Forest: Modrinth has no official project (the slug `twilightforest` returns 404; the hits are an unofficial Fabric port and add-ons). CurseForge's public file list (`https://www.curseforge.com/api/v1/mods/227639/files`, no key needed) shows the NeoForge 1.21.1 builds. Loaded: 4.8.3345 (file 7797302, project 227639). It is NeoForge-only on 1.21.1 (no Forge file).
+- Allthemodium: the Modrinth project `allthemodium` is the real mod but holds one file, 3.0.1 (`allthemodium-3.0.1_mc_1.21.1.jar`, only `neoforge.mods.toml`, labeled for 1.20.1 to 26.2 although the jar is the 1.21.1 build). The newest NeoForge 1.21.1 build is on CurseForge (project 364466): 3.2.1 (file 9143638), which was loaded.
+
+### Written
+
+| Mod | Tree files (saplings x3) | Crop files | Resource files (blocks) |
+|---|---|---|---|
+| Twilight Forest | 30 (10: twilight oak, canopy, mangrove, darkwood, hollow oak, time, transformation, mining, sorting, rainbow oak) | 4 (huge lily pad and huge water lily on water, mushgloom and thorn rose on dirt) | 8 (deadrock and trollsteinn, stone tier and up) |
+| Allthemodium | 9 (3: ancient, demonic, soul) | 3 (ancient, demonic and soul herb) | 14 (ancient dirt and ancient grass, all five tiers; ancient stone, stone tier and up) |
+
+Judgment calls: time, transformation, mining and sorting saplings drop only their wood and sticks (the leaves drop nothing), like the 1.20.1 files. Twilight Forest `fallen_leaves`, `moss_patch`, `mayapple`, `clover_patch`, `fiddlehead`, `torchberry_plant` and `root_strand` have empty or stick-only drops and were left out; `uberous_soil` drops plain dirt, so no recipe. Allthemodium `ancient_grass` is the only grass block that drops itself in this build (its `ancient_podzol` drops dirt), so it is treated as a soil with all five tiers; `ancient_soulberries` (cave vine) and `ancient_fern` (no drops) are out. The Allthemodium saplings grow on Nether-type ground; trees always get the three standard soils as above.
+
+### Saplings that did not grow before
+
+Retried with a changed scanner (still `SaplingBlock.advanceTree` and bonemeal): placement patterns single, 2x2, plus (5 saplings), 3x3 and 4x4, a thick 29 by 29 by 24 soil block (some features need depth), a water pond next to the sapling, and, when the sapling's own grow logic still failed, placing the sapling's own `TreeGrower` configured feature directly. Counted as grown only when logs or leaves exist afterward.
+
+| Sapling | Result |
+|---|---|
+| BWG `cypress_sapling` | Grows (2x2 on a thick soil). 3 files. |
+| BWG `spirit_sapling` | Grows (single). 3 files. |
+| BloomingNature `baobab_sapling` | Grows only as a 4x4 patch of saplings (its `MegaSaplingBlock` looks for a 4x4). 3 files. |
+| Bountiful Fares `coconut` (item of `palm_sapling`) | `advanceTree` never succeeded; the grower's own feature `bountifulfares:palm` places a real palm (log, crown, fronds). Drops: fronds, log and crown (the coconut fruit block drops nothing with an empty tool). 3 files. |
+| Regions Unexplored `kapok_sapling` | Grows as a plus-shaped patch of 5 (its grower has 1x1, 2x2, plus and 3x3 variants). 3 files. |
+| Regions Unexplored `small_oak_sapling` | Still no tree: `SmallOakTreeFeature` returns false at its first line unless the RU common config option `small_oak_trees` is true, and the default is false. No recipe (a player on default settings gets no tree). |
+
+### Checks
+
+- Checker (air, zero amounts, first drop, conditions, duplicate keys over `common/` + `overrides/1.21.1` + this folder): 0 errors.
+- Scratch copy with Twilight Forest, Allthemodium, BWG, Bountiful Fares, BloomingNature and RU loaded: `SELFTEST drop recipes: 597 tree, 515 crop, 0 + 0 without drops: ok`, `resource recipes: 283`, `SELFTEST PASSED`, no `skyblock_resources` recipe parse error.
+- Real project `versions/mc1.21.1/neoforge`: `SELFTEST drop recipes: 258 tree, 312 crop`, `resource recipes: 152`, `SELFTEST PASSED`, no parse error (the new recipes are inert there: those mods are not loaded).
+- New 26.1.2 recipes in `common/` (see `RECIPES_mc26.1.2.md`) also apply here unless overridden. Checked against the scanned 1.21.1 registry: one file refers to an item this build lacks, so `plants/undergarden/crops/twistybush_in_dirt.json.delete` was added.

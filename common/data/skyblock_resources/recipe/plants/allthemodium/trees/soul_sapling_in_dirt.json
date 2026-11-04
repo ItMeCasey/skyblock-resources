@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "allthemodium"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "allthemodium:soul_sapling",
+  "soil": "#skyblock_resources:base_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "allthemodium:soul_log_0",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "allthemodium:soul_log_0",
+      "min": 1
+    },
+    {
+      "id": "allthemodium:soul_sapling",
+      "min": 1,
+      "max": 5,
+      "chance": 0.646
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 5,
+      "chance": 0.33
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

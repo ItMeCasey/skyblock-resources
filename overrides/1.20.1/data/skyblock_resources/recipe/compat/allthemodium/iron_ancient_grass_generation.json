@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "allthemodium"
+    }
+  ],
+  "type": "skyblock_resources:resource_generator",
+  "generator": "skyblock_resources:iron_generator",
+  "resource": "allthemodium:ancient_grass",
+  "output": {
+    "id": "allthemodium:ancient_grass",
+    "count": 8
+  },
+  "duration": 150,
+  "category": [
+    "misc"
+  ]
+}
