@@ -68,8 +68,8 @@ repositories {
 dependencies {
     implementation minecraft.dependency('net.minecraftforge:forge:1.21.1-52.1.20')
 
-    // SMWTI is not published yet, so use the jar from its own project build.
-    implementation files("${System.getProperty('user.home')}/Desktop/SMWTI/versions/mc1.21.1/forge/build/libs/smwti-forge-1.21.1-2026.11.1.jar")
+    // SMWTI is on the private Maven (a mirror of its CurseForge file).
+    implementation 'curse.maven:smwti-1781438:9422400'
 
     // JEI 19.64.0.455 for Forge (Modrinth version id). Jade and KubeJS have no Forge 1.21.1 build.
     compileOnly 'maven.modrinth:jei:qVF5T46z'

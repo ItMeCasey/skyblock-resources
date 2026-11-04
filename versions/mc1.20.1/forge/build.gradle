@@ -103,8 +103,8 @@ repositories {
 dependencies {
     minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
 
-    // SMWTI is not published yet, so use the jar from its own project build.
-    implementation fg.deobf(files("${System.getProperty('user.home')}/Desktop/SMWTI/versions/mc1.20.1/forge/build/libs/smwti-forge-1.20.1-2026.11.1.jar"))
+    // SMWTI is on the private Maven (a mirror of its CurseForge file).
+    implementation fg.deobf('curse.maven:smwti-1781438:9423201')
     compileOnly fg.deobf('maven.modrinth:jade:xJQHCmWJ')
 
     compileOnly fg.deobf('maven.modrinth:kubejs:hVR2xUSr')

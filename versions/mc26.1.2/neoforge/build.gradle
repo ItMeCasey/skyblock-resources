@@ -86,8 +86,8 @@ repositories {
 }
 
 dependencies {
-    // SMWTI is not published yet, so use the jar from its own project build.
-    implementation files("${System.getProperty('user.home')}/Desktop/SMWTI/versions/mc26.1.2/neoforge/build/libs/smwti-neoforge-26.1.2-2026.11.1.jar")
+    // SMWTI is on the private Maven (a mirror of its CurseForge file).
+    implementation 'curse.maven:smwti-1781438:9423204'
     compileOnly 'curse.maven:jade-324717:8647353'
 
     runtimeOnly 'curse.maven:placebo-283644:8502256'

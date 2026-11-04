@@ -99,8 +99,8 @@ dependencies {
     implementation minecraft.dependency('net.minecraftforge:forge:26.1.2-64.1.6')
     annotationProcessor 'net.minecraftforge:eventbus-validator:7.0.5'
 
-    // SMWTI is not published yet, so use the jar from its own project build.
-    implementation files("${System.getProperty('user.home')}/Desktop/SMWTI/versions/mc26.1.2/forge/build/libs/smwti-forge-26.1.2-2026.11.1.jar")
+    // SMWTI is on the private Maven (a mirror of its CurseForge file).
+    implementation 'curse.maven:smwti-1781438:9422401'
 
     // Dev-environment test mods that have a Forge 26.1.2 build (versions are Modrinth version ids). Croptopia, Mystical
     // Agriculture, Cucumber, Jade, KubeJS, JEI and the other mods the NeoForge build loads have no Forge 26.1.2 build.
