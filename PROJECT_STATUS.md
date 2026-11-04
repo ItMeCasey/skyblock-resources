@@ -41,3 +41,8 @@ Spend: none
 - [x] Orphan code deleted: fireball, eye of ender, portal, teleport, block damage, AI goals, unused renderers (w:2)
 - [x] Drakma author and website fields changed to ItMeCasey in neoforge.mods.toml (w:1)
 - [x] End, nether, and mycelium soil tags exist and are used by their soil recipes (w:1)
+
+## Branding
+- [~] Logo: empty diamond cube frame, drawn by branding/source/make_icon.py; not yet checked against the live CurseForge logo (w:1)
+- [x] Banners and section headers in the SMWTI style: banner, social, features and section headers in branding/banners/ (w:2)
+- [x] CurseForge and Modrinth listing copy in branding/LISTING.md; project IDs and repository name still to fill in (w:2)
