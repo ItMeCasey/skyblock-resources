@@ -65,6 +65,16 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 repositories {
+    def imcUser = System.getenv('IMC_MAVEN_USER') ?: project.findProperty('imcMavenUser')
+    def imcPass = System.getenv('IMC_MAVEN_PASSWORD') ?: project.findProperty('imcMavenPassword')
+    if (imcUser && imcPass) {
+        maven {
+            name = 'ItMeCasey mirror'
+            url = 'https://itmecasey.com/maven'
+            credentials { username = imcUser; password = imcPass }
+            content { includeGroup 'curse.maven' }
+        }
+    }
     maven { url 'https://maven.neoforged.net/releases' }
     maven { url 'https://maven.minecraftforge.net' }
     mavenCentral()

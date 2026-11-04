@@ -33,6 +33,9 @@ jobs:
             dir: versions/mc1.20.1/neoforge
             java: 17
     runs-on: ubuntu-latest
+    env:
+      IMC_MAVEN_USER: ${{ secrets.IMC_MAVEN_USER }}
+      IMC_MAVEN_PASSWORD: ${{ secrets.IMC_MAVEN_PASSWORD }}
     defaults:
       run:
         working-directory: ${{ matrix.dir }}
