@@ -25,6 +25,8 @@ neoForge {
         gameTest {
             server()
             systemProperty 'skyblock.selftest', 'true'
+            // Own port so builds for other versions can run their tests at the same time.
+            programArguments.addAll('--port', '8900')
         }
 
         configureEach {

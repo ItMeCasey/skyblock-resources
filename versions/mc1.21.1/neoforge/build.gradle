@@ -1,0 +1,123 @@
+plugins {
+    id 'eclipse'
+    id 'net.neoforged.moddev' version '2.0.148'
+}
+
+version = '2026.11.1'
+base.archivesName = 'skyblock_resources-neoforge-1.21.1'
+
+// Mojang ships Java 21 to end users in 1.20.5+, so the mod targets Java 21.
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+// Data and assets come from the shared common/ folder; see docs/PORTING_LAYOUT.md.
+ext.dataTarget = [mc: '1.21.1', format: 'v21', loader: 'neoforge']
+apply from: '../../../tools/common-data.gradle'
+
+neoForge {
+    version = '21.1.265'
+
+    runs {
+        client {
+            client()
+        }
+        server {
+            server()
+        }
+        gameTest {
+            server()
+            systemProperty 'skyblock.selftest', 'true'
+            // Own port so builds for other versions can run their tests at the same time.
+            programArguments.addAll('--port', '8902')
+        }
+
+        configureEach {
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+            logLevel = org.slf4j.event.Level.DEBUG
+        }
+    }
+
+    mods {
+        skyblock_resources {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.compilerArgs.addAll(['-Xmaxerrs', '2000'])
+}
+
+repositories {
+    maven {
+        url 'https://cursemaven.com'
+    }
+    maven {
+        name = "Progwml6's maven"
+        url = 'https://dvs1.progwml6.com/files/maven/'
+    }
+    maven {
+        name = "Jared's maven"
+        url = 'https://maven.blamejared.com/'
+    }
+    maven {
+        name = 'ModMaven'
+        url = 'https://modmaven.dev'
+    }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = 'Modrinth'
+                url = 'https://api.modrinth.com/maven'
+            }
+        }
+        filter {
+            includeGroup 'maven.modrinth'
+        }
+    }
+}
+
+dependencies {
+    // SMWTI is not published yet, so use the jar from its own project build.
+    implementation files("${System.getProperty('user.home')}/Desktop/SMWTI/versions/mc1.21.1/neoforge/build/libs/smwti-neoforge-1.21.1-2026.11.1.jar")
+    compileOnly 'curse.maven:jade-324717:8591319'
+
+    compileOnly 'maven.modrinth:kubejs:GDXCpKlp'
+    compileOnly 'maven.modrinth:rhino:SqkDvOLG'
+    runtimeOnly 'maven.modrinth:kubejs:GDXCpKlp'
+    runtimeOnly 'maven.modrinth:rhino:SqkDvOLG'
+    runtimeOnly 'maven.modrinth:better-advanced-tooltips:uPFbnD32'
+
+    // Test mods for the dev environment and the headless self-test (versions are Modrinth version ids; Croptopia is CurseForge only).
+    runtimeOnly 'curse.maven:croptopia-415438:7958876'
+    runtimeOnly 'curse.maven:epherolib-885449:5872111'
+    runtimeOnly 'maven.modrinth:cucumber:8421rqFF'
+    runtimeOnly 'maven.modrinth:mystical-agriculture:4Wc9oVPI'
+    runtimeOnly 'maven.modrinth:biomes-o-plenty:BtZKRp69'
+    runtimeOnly 'maven.modrinth:glitchcore:S2TfWrZR'
+    runtimeOnly 'maven.modrinth:terrablender:6e8GCrLb'
+
+    // Mods the bundled plant and block recipes cover, so they can be loaded and checked.
+    runtimeOnly 'maven.modrinth:terralith:IY93YaEe'
+    runtimeOnly 'maven.modrinth:lithostitched:cZu4cHY3'
+    runtimeOnly 'maven.modrinth:oh-the-trees-youll-grow:ZTJAJGUE'
+    runtimeOnly 'maven.modrinth:ecologics:SJySxVHt'
+    runtimeOnly 'maven.modrinth:natures-spirit:EQReaqUo'
+    runtimeOnly 'maven.modrinth:occultism:G2KAfQNU'
+    runtimeOnly 'maven.modrinth:modonomicon:OKyLanIn'
+    runtimeOnly 'maven.modrinth:curios:yohfFbgD'
+    runtimeOnly 'maven.modrinth:geckolib:Grwn5rUB'
+    runtimeOnly 'maven.modrinth:smartbrainlib:O5EpeqI3'
+    runtimeOnly 'maven.modrinth:evilcraft:mOGfae8K'
+    runtimeOnly 'maven.modrinth:cyclops-core:axSK9vET'
+    runtimeOnly 'maven.modrinth:integrated-dynamics:Y6B7nflS'
+    runtimeOnly 'maven.modrinth:common-capabilities:R9PufPlP'
+    runtimeOnly 'maven.modrinth:refined-storage:lHHiI26k'
+    runtimeOnly 'maven.modrinth:mystical-agradditions:fNQephU4'
+    runtimeOnly 'maven.modrinth:forbidden-arcanus:fNjxgZPH'
+    runtimeOnly 'maven.modrinth:valhelsia-core:cttRekq9'
+
+    compileOnly 'mezz.jei:jei-1.21.1-common-api:19.64.0.455'
+    compileOnly 'mezz.jei:jei-1.21.1-neoforge-api:19.64.0.455'
+    runtimeOnly 'mezz.jei:jei-1.21.1-neoforge:19.64.0.455'
+}
