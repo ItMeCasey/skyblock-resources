@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "biomeswevegone"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "biomeswevegone:red_birch_sapling",
+  "soil": "#skyblock_resources:improved_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "minecraft:birch_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "minecraft:birch_log",
+      "min": 1
+    },
+    {
+      "id": "biomeswevegone:red_birch_sapling",
+      "min": 1,
+      "max": 5,
+      "chance": 0.634
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 6,
+      "chance": 0.316
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}
