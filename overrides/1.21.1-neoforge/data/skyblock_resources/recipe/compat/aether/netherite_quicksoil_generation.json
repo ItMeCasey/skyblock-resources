@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "aether"
+    }
+  ],
+  "type": "skyblock_resources:resource_generator",
+  "generator": "skyblock_resources:netherite_generator",
+  "resource": "aether:quicksoil",
+  "output": {
+    "id": "aether:quicksoil",
+    "count": 64
+  },
+  "duration": 40,
+  "category": [
+    "misc"
+  ]
+}

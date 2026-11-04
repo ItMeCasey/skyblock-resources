@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "bountifulfares"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "bountifulfares:plum_sapling",
+  "soil": "#skyblock_resources:base_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "bountifulfares:plum_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "bountifulfares:plum_log",
+      "min": 1
+    },
+    {
+      "id": "bountifulfares:plum_sapling",
+      "min": 1,
+      "max": 5,
+      "chance": 0.726
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 6,
+      "chance": 0.632
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

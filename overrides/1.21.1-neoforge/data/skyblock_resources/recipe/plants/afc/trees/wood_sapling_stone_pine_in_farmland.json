@@ -1,0 +1,42 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "afc"
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tfc"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "afc:wood/sapling/stone_pine",
+  "soil": "minecraft:farmland",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "tfc:wood/log/pine",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "tfc:wood/log/pine",
+      "min": 1
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 8,
+      "chance": 0.658
+    },
+    {
+      "id": "afc:wood/sapling/stone_pine",
+      "min": 1,
+      "max": 4,
+      "chance": 0.426
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

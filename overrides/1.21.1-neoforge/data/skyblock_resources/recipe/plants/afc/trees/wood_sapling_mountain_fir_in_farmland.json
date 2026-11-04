@@ -1,0 +1,42 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "afc"
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tfc"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "afc:wood/sapling/mountain_fir",
+  "soil": "minecraft:farmland",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "tfc:wood/log/douglas_fir",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "tfc:wood/log/douglas_fir",
+      "min": 1
+    },
+    {
+      "id": "afc:wood/sapling/mountain_fir",
+      "min": 1,
+      "max": 5,
+      "chance": 0.69
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 8,
+      "chance": 0.614
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

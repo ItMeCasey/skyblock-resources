@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ars_nouveau"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "ars_nouveau:red_archwood_sapling",
+  "soil": "minecraft:farmland",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "ars_nouveau:red_archwood_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "ars_nouveau:red_archwood_log",
+      "min": 1
+    },
+    {
+      "id": "ars_nouveau:red_archwood_sapling",
+      "min": 1,
+      "max": 4,
+      "chance": 0.676
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 6,
+      "chance": 0.312
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

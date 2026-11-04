@@ -1,0 +1,32 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "biomeswevegone"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "biomeswevegone:white_puffball_spores",
+  "soil": "#skyblock_resources:mycelium_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "biomeswevegone:white_puffball_spores",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "biomeswevegone:white_puffball_spores",
+      "min": 1,
+      "max": 4
+    },
+    {
+      "id": "biomeswevegone:white_puffball_cap",
+      "min": 1,
+      "chance": 0.564
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

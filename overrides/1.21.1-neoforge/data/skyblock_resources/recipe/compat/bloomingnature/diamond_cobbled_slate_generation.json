@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "bloomingnature"
+    }
+  ],
+  "type": "skyblock_resources:resource_generator",
+  "generator": "skyblock_resources:diamond_generator",
+  "resource": "bloomingnature:cobbled_slate",
+  "output": {
+    "id": "bloomingnature:cobbled_slate",
+    "count": 16
+  },
+  "duration": 100,
+  "category": [
+    "misc"
+  ]
+}

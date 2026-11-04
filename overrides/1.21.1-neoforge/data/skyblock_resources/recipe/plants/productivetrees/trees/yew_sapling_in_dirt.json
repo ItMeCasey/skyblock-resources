@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "productivetrees"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "productivetrees:yew_sapling",
+  "soil": "#skyblock_resources:base_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "productivetrees:yew_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "productivetrees:yew_log",
+      "min": 1
+    },
+    {
+      "id": "productivetrees:yew_sapling",
+      "min": 1,
+      "max": 4,
+      "chance": 0.626
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 4,
+      "chance": 0.342
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

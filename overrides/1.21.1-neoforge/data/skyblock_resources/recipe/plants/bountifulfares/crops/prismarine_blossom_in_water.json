@@ -1,0 +1,34 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "bountifulfares"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "bountifulfares:prismarine_blossom",
+  "soil": "minecraft:water_bucket",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "minecraft:prismarine_crystals",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "minecraft:prismarine_crystals",
+      "min": 1,
+      "max": 3,
+      "chance": 0.864
+    },
+    {
+      "id": "minecraft:prismarine_shard",
+      "min": 1,
+      "max": 3,
+      "chance": 0.544
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

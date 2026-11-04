@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "upgrade_aquatic"
+    }
+  ],
+  "type": "skyblock_resources:resource_generator",
+  "generator": "skyblock_resources:diamond_generator",
+  "resource": "upgrade_aquatic:kelpy_cobblestone",
+  "output": {
+    "id": "upgrade_aquatic:kelpy_cobblestone",
+    "count": 16
+  },
+  "duration": 100,
+  "category": [
+    "misc"
+  ]
+}

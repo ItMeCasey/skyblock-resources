@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "undergarden"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "undergarden:grongle_sapling",
+  "soil": "#skyblock_resources:base_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "undergarden:grongle_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "undergarden:grongle_log",
+      "min": 1
+    },
+    {
+      "id": "undergarden:grongle_sapling",
+      "min": 1,
+      "max": 4,
+      "chance": 0.646
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 4,
+      "chance": 0.34
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

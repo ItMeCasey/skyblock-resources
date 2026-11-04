@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "regions_unexplored"
+    }
+  ],
+  "type": "skyblock_resources:resource_generator",
+  "generator": "skyblock_resources:iron_generator",
+  "resource": "regions_unexplored:argillite",
+  "output": {
+    "id": "regions_unexplored:argillite",
+    "count": 8
+  },
+  "duration": 150,
+  "category": [
+    "misc"
+  ]
+}

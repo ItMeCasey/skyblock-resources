@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "deeperdarker"
+    }
+  ],
+  "type": "skyblock_resources:resource_generator",
+  "generator": "skyblock_resources:netherite_generator",
+  "resource": "deeperdarker:cobbled_gloomslate",
+  "output": {
+    "id": "deeperdarker:cobbled_gloomslate",
+    "count": 64
+  },
+  "duration": 40,
+  "category": [
+    "misc"
+  ]
+}

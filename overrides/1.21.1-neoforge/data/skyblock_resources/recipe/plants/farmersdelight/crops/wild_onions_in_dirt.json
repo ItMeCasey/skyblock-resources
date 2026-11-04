@@ -1,0 +1,31 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "farmersdelight"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "farmersdelight:wild_onions",
+  "soil": "#skyblock_resources:crop_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "farmersdelight:onion",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "farmersdelight:onion",
+      "min": 1
+    },
+    {
+      "id": "minecraft:allium",
+      "min": 1,
+      "max": 3
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

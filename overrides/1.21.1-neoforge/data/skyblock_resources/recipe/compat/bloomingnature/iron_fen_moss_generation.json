@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "bloomingnature"
+    }
+  ],
+  "type": "skyblock_resources:resource_generator",
+  "generator": "skyblock_resources:iron_generator",
+  "resource": "bloomingnature:fen_moss",
+  "output": {
+    "id": "bloomingnature:fen_moss",
+    "count": 8
+  },
+  "duration": 150,
+  "category": [
+    "misc"
+  ]
+}

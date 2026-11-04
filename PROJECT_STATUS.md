@@ -1,6 +1,6 @@
 # Project Status
 <!-- status-format: 1 -->
-Updated: 2026-11-03
+Updated: 2026-11-04
 Summary: Skyblock Resources 2026.11.1 (NeoForge 26.1.2) builds and passes its headless test; remaining work is live-client verification, a security fix pass, and code cleanup.
 Spend: none
 
@@ -33,7 +33,9 @@ Spend: none
 - [x] Plant and block recipes for Nature's Spirit, Ecologics, Occultism, EvilCraft, Integrated Dynamics, Forbidden Arcanus on NeoForge 26.1.2 (112 plant files, 53 resource-generator files); Terralith, Oh The Trees You'll Grow, and Mystical Agradditions add nothing to cover; MOD_MATRIX.md lists the remaining mods and target versions (w:3)
 - [x] Porting layout designed (docs/PORTING_LAYOUT.md) and step 1 done: project moved to versions/mc26.1.2/neoforge, data and assets split into common/; the jar is identical to the pre-move jar and the self-test passes (w:2)
 - [x] Port step 2: tools/common-data.gradle builds per-version data from common/ (v26 byte-identical, v21 and v20 checked on output) (w:2)
-- [ ] Port steps 3 to 5: data transform, shared Forge/NeoForge code, Forge 26.1.2, then NeoForge 1.21.1 and 1.20.1 and their Forge builds (w:5)
+- [x] Ports built and self-tested: NeoForge 26.1.2, Forge 26.1.2, NeoForge 1.21.1, Forge 1.21.1, NeoForge 1.20.1, Forge 1.20.1 (each its own project under versions/; Forge and NeoForge are compatible only on 1.20.1) (w:5)
+- [x] Mod recipes by version and loader: 26.1.2 in common/, overrides/1.21.1-forge, overrides/1.20.1 (shared by both 1.20.1 loaders); overrides/1.21.1-neoforge (w:4)
+- [ ] Check every port in a client: overlays, models, JEI, Jade, KubeJS, SMWTI (only NeoForge 26.1.2 has been looked at) (w:4)
 - [~] Run the client and check generators, upgrade cards (done), tree and crop drops, screwdriver, and overlays (w:3)
 - [x] Dependencies come from Modrinth maven (Cucumber, Mystical Agriculture) and the SMWTI build output; libs/ jars removed (w:1)
 - [x] Orphan code deleted: fireball, eye of ender, portal, teleport, block damage, AI goals, unused renderers (w:2)

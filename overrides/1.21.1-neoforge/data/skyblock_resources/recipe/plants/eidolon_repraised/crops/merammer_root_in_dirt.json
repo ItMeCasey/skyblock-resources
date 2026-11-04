@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "eidolon_repraised"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "eidolon_repraised:merammer_root",
+  "soil": "#skyblock_resources:crop_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "eidolon_repraised:merammer_root",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "eidolon_repraised:merammer_root",
+      "min": 1,
+      "max": 2
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

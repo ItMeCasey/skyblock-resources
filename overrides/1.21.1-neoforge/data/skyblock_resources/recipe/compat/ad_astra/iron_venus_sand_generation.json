@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ad_astra"
+    }
+  ],
+  "type": "skyblock_resources:resource_generator",
+  "generator": "skyblock_resources:iron_generator",
+  "resource": "ad_astra:venus_sand",
+  "output": {
+    "id": "ad_astra:venus_sand",
+    "count": 8
+  },
+  "duration": 150,
+  "category": [
+    "misc"
+  ]
+}

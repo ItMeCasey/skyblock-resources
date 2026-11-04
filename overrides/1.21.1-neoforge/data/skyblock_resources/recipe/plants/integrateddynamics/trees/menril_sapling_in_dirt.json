@@ -1,0 +1,44 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "integrateddynamics"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "integrateddynamics:menril_sapling",
+  "soil": "#skyblock_resources:base_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "integrateddynamics:menril_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "integrateddynamics:menril_log",
+      "min": 1
+    },
+    {
+      "id": "integrateddynamics:menril_berries",
+      "min": 1,
+      "max": 8,
+      "chance": 0.968
+    },
+    {
+      "id": "integrateddynamics:menril_sapling",
+      "min": 1,
+      "max": 4,
+      "chance": 0.394
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 5,
+      "chance": 0.32
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}
