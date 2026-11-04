@@ -1,0 +1,13 @@
+{
+  "type": "skyblock_resources:resource_generator",
+  "generator": "skyblock_resources:iron_generator",
+  "resource": "minecraft:mossy_cobblestone",
+  "output": {
+    "id": "minecraft:mossy_cobblestone",
+    "count": 8
+  },
+  "duration": 150,
+  "category": [
+    "misc"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "skyblock_resources:item/iron_upgrade"
+  }
+}

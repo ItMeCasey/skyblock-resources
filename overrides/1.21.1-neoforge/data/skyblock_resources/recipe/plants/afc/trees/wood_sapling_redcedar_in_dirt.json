@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "afc"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "afc:wood/sapling/redcedar",
+  "soil": "#skyblock_resources:base_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "afc:wood/log/redcedar",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "afc:wood/log/redcedar",
+      "min": 1
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 8,
+      "chance": 0.626
+    },
+    {
+      "id": "afc:wood/sapling/redcedar",
+      "min": 1,
+      "max": 2,
+      "chance": 0.312
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

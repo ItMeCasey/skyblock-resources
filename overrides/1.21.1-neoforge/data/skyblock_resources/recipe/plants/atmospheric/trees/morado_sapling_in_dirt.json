@@ -1,0 +1,44 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "atmospheric"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "atmospheric:morado_sapling",
+  "soil": "#skyblock_resources:base_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "atmospheric:morado_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "atmospheric:morado_log",
+      "min": 1
+    },
+    {
+      "id": "atmospheric:morado_sapling",
+      "min": 1,
+      "max": 7,
+      "chance": 0.688
+    },
+    {
+      "id": "atmospheric:yellow_blossoms",
+      "min": 1,
+      "max": 5,
+      "chance": 0.378
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 7,
+      "chance": 0.326
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

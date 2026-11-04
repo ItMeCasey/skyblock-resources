@@ -1,0 +1,25 @@
+{
+  "type": "skyblock_resources:crop_drops",
+  "seed": "minecraft:chorus_flower",
+  "soil": "#skyblock_resources:end_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "minecraft:chorus_fruit",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "minecraft:chorus_fruit",
+      "min": 1,
+      "max": 3
+    },
+    {
+      "id": "minecraft:chorus_flower",
+      "min": 1
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

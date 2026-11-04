@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "regions_unexplored"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "regions_unexplored:cypress_sapling",
+  "soil": "minecraft:farmland",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "regions_unexplored:cypress_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "regions_unexplored:cypress_log",
+      "min": 1
+    },
+    {
+      "id": "regions_unexplored:cypress_sapling",
+      "min": 1,
+      "max": 5,
+      "chance": 0.642
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 7,
+      "chance": 0.316
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

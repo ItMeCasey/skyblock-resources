@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "promenade"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "promenade:blueberries",
+  "soil": "#skyblock_resources:crop_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "promenade:blueberries",
+    "count": 2
+  },
+  "drops": [
+    {
+      "id": "promenade:blueberries",
+      "min": 2,
+      "max": 3
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

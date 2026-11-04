@@ -1,0 +1,30 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "undergarden:deepsoil",
+      "required": false
+    },
+    "minecraft:netherrack",
+    "minecraft:prismarine",
+    "minecraft:blackstone",
+    "minecraft:soul_sand",
+    {
+      "id": "undergarden:dreadrock",
+      "required": false
+    },
+    "minecraft:basalt",
+    {
+      "id": "undergarden:depthrock",
+      "required": false
+    },
+    {
+      "id": "undergarden:sediment",
+      "required": false
+    },
+    {
+      "id": "undergarden:shiverstone",
+      "required": false
+    }
+  ]
+}

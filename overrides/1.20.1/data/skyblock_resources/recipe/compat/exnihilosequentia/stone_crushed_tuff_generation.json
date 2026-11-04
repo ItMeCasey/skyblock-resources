@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "exnihilosequentia"
+    }
+  ],
+  "type": "skyblock_resources:resource_generator",
+  "generator": "skyblock_resources:stone_generator",
+  "resource": "exnihilosequentia:crushed_tuff",
+  "output": {
+    "id": "exnihilosequentia:crushed_tuff",
+    "count": 4
+  },
+  "duration": 200,
+  "category": [
+    "misc"
+  ]
+}

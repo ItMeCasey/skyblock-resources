@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "biomemakeover"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "biomemakeover:purple_glowshroom",
+  "soil": "#skyblock_resources:crop_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "biomemakeover:purple_glowshroom",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "biomemakeover:purple_glowshroom",
+      "min": 1
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "meadow"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "meadow:alpine_birch_sapling",
+  "soil": "#skyblock_resources:base_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "meadow:alpine_birch_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "meadow:alpine_birch_log",
+      "min": 1
+    },
+    {
+      "id": "meadow:alpine_birch_sapling",
+      "min": 1,
+      "max": 5,
+      "chance": 0.678
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 5,
+      "chance": 0.376
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

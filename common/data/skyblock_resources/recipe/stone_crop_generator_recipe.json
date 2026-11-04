@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "bcb"
+  ],
+  "key": {
+    "a": "#minecraft:slabs",
+    "b": "#c:stones",
+    "c": "skyblock_resources:wooden_crop_generator"
+  },
+  "result": {
+    "id": "skyblock_resources:stone_crop_generator",
+    "count": 1
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "bpb"
+  ],
+  "key": {
+    "a": "#minecraft:slabs",
+    "b": "#c:stones",
+    "p": "minecraft:paper"
+  },
+  "result": {
+    "id": "skyblock_resources:stone_upgrade",
+    "count": 1
+  }
+}

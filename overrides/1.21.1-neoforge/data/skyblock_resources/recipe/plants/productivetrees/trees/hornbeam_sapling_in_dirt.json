@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "productivetrees"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "productivetrees:hornbeam_sapling",
+  "soil": "#skyblock_resources:base_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "productivetrees:hornbeam_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "productivetrees:hornbeam_log",
+      "min": 1
+    },
+    {
+      "id": "productivetrees:hornbeam_sapling",
+      "min": 1,
+      "max": 5,
+      "chance": 0.642
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 5,
+      "chance": 0.368
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

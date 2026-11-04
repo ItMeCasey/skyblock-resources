@@ -1,0 +1,21 @@
+{
+  "type": "skyblock_resources:crop_drops",
+  "seed": "minecraft:nether_wart",
+  "soil": "#skyblock_resources:nether_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "minecraft:nether_wart",
+    "count": 2
+  },
+  "drops": [
+    {
+      "id": "minecraft:nether_wart",
+      "min": 2,
+      "max": 4
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

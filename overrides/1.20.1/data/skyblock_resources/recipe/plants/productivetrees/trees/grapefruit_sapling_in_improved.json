@@ -1,0 +1,43 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "productivetrees"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "productivetrees:grapefruit_sapling",
+  "soil": "#skyblock_resources:improved_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "productivetrees:grapefruit_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "productivetrees:grapefruit_log",
+      "min": 1
+    },
+    {
+      "id": "productivetrees:grapefruit",
+      "min": 12,
+      "max": 13
+    },
+    {
+      "id": "productivetrees:grapefruit_sapling",
+      "min": 1,
+      "max": 4,
+      "chance": 0.626
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 4,
+      "chance": 0.342
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

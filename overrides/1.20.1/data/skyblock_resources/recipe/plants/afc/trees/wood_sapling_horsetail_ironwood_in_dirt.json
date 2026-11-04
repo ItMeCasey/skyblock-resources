@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "afc"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "afc:wood/sapling/horsetail_ironwood",
+  "soil": "#skyblock_resources:base_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "afc:wood/wood/ironwood",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "afc:wood/wood/ironwood",
+      "min": 1
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 9,
+      "chance": 0.642
+    },
+    {
+      "id": "afc:wood/sapling/horsetail_ironwood",
+      "min": 1,
+      "max": 4,
+      "chance": 0.604
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

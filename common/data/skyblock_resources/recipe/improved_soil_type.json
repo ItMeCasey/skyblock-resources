@@ -1,0 +1,9 @@
+{
+  "type": "skyblock_resources:soil_type",
+  "soil": "#skyblock_resources:improved_soils",
+  "speed_bonus": 0.2,
+  "growth_multiplier": 2,
+  "category": [
+    "misc"
+  ]
+}

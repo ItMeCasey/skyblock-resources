@@ -1,0 +1,77 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#skyblock_resources:compat/vampirism_saplings",
+      "required": false
+    },
+    "minecraft:oak_sapling",
+    {
+      "id": "#skyblock_resources:compat/ars_elemental_saplings",
+      "required": false
+    },
+    {
+      "id": "#skyblock_resources:compat/aether_saplings",
+      "required": false
+    },
+    "minecraft:birch_sapling",
+    "minecraft:spruce_sapling",
+    {
+      "id": "#skyblock_resources:compat/twilightforest_saplings",
+      "required": false
+    },
+    {
+      "id": "#skyblock_resources:biomeswevegone_saplings",
+      "required": false
+    },
+    "minecraft:mangrove_propagule",
+    {
+      "id": "#skyblock_resources:compat/evilcraft_saplings",
+      "required": false
+    },
+    {
+      "id": "#skyblock_resources:compat/occultism_saplings",
+      "required": false
+    },
+    {
+      "id": "#skyblock_resources:biomesoplenty_saplings",
+      "required": false
+    },
+    {
+      "id": "#skyblock_resources:compat/silentgear_saplings",
+      "required": false
+    },
+    "minecraft:cherry_sapling",
+    {
+      "id": "#skyblock_resources:compat/integrateddynamics_saplings",
+      "required": false
+    },
+    {
+      "id": "#skyblock_resources:compat/eidolon_repraised_saplings",
+      "required": false
+    },
+    {
+      "id": "#skyblock_resources:compat/allthemodium_saplings",
+      "required": false
+    },
+    {
+      "id": "#skyblock_resources:compat/ars_nouveau_saplings",
+      "required": false
+    },
+    {
+      "id": "#skyblock_resources:regions_unexplored_saplings",
+      "required": false
+    },
+    {
+      "id": "#skyblock_resources:compat/quark_saplings",
+      "required": false
+    },
+    "minecraft:acacia_sapling",
+    "minecraft:jungle_sapling",
+    {
+      "id": "#skyblock_resources:compat/forbidden_arcanus_saplings",
+      "required": false
+    },
+    "minecraft:dark_oak_sapling"
+  ]
+}

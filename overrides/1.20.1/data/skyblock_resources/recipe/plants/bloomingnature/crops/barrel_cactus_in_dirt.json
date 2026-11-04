@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "bloomingnature"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "bloomingnature:barrel_cactus",
+  "soil": "#skyblock_resources:crop_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "bloomingnature:barrel_cactus",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "bloomingnature:barrel_cactus",
+      "min": 1
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:end_stone",
+    "minecraft:slime_block",
+    "minecraft:obsidian",
+    "minecraft:sponge"
+  ]
+}

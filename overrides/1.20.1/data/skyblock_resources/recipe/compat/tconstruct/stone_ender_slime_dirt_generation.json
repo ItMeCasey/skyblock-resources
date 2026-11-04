@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "type": "skyblock_resources:resource_generator",
+  "generator": "skyblock_resources:stone_generator",
+  "resource": "tconstruct:ender_slime_dirt",
+  "output": {
+    "id": "tconstruct:ender_slime_dirt",
+    "count": 4
+  },
+  "duration": 200,
+  "category": [
+    "misc"
+  ]
+}

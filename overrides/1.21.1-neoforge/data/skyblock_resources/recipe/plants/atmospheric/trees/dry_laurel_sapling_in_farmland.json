@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "atmospheric"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "atmospheric:dry_laurel_sapling",
+  "soil": "minecraft:farmland",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "atmospheric:laurel_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "atmospheric:laurel_log",
+      "min": 1
+    },
+    {
+      "id": "atmospheric:dry_laurel_sapling",
+      "min": 1,
+      "max": 4,
+      "chance": 0.662
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 5,
+      "chance": 0.326
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

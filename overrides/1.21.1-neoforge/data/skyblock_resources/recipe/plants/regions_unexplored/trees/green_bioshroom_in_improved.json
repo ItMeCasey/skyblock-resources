@@ -1,0 +1,31 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "regions_unexplored"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "regions_unexplored:green_bioshroom",
+  "soil": "#skyblock_resources:improved_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "regions_unexplored:green_bioshroom",
+    "count": 7
+  },
+  "drops": [
+    {
+      "id": "regions_unexplored:green_bioshroom",
+      "min": 7,
+      "max": 31
+    },
+    {
+      "id": "regions_unexplored:green_bioshroom_stem",
+      "min": 1
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

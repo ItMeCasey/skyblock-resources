@@ -1,0 +1,201 @@
+// Builds the data and assets of one version and loader from the shared common/ folder.
+// See docs/PORTING_LAYOUT.md. A version project sets `ext.dataTarget` and applies this file:
+//
+//   ext.dataTarget = [mc: '1.21.1', format: 'v21', loader: 'neoforge']
+//   apply from: '../../../tools/common-data.gradle'
+//
+// format: v26 (26.x, the format common/ is written in), v21 (1.21.x), v20 (1.20.x)
+// Everything else has a default for the format and loader and can be overridden in the map:
+//   conditionsKey, modLoadedType, tagMap (item tag renames), droppedPaths (path prefixes to leave out)
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+
+abstract class PrepareCommonData extends DefaultTask {
+    @InputDirectory
+    abstract DirectoryProperty getCommonDir()
+
+    // Fixes for one Minecraft version (data formats, vanilla items), shared by both loaders of that version.
+    @Optional
+    @InputDirectory
+    abstract DirectoryProperty getOverridesDir()
+
+    // Files for one version AND loader: recipes for mods, which differ between Forge and NeoForge. Wins over overridesDir.
+    @Optional
+    @InputDirectory
+    abstract DirectoryProperty getLoaderOverridesDir()
+
+    @OutputDirectory
+    abstract DirectoryProperty getOutputDir()
+
+    @Input
+    abstract Property<String> getFormat()
+
+    @Input
+    abstract Property<String> getConditionsKey()
+
+    @Input
+    abstract Property<String> getModLoadedType()
+
+    // 'array': "<key>": [ {condition}, ... ]; 'single': "<key>": {condition} (several become a forge:and), as Forge 26.1.2 reads them.
+    @Input
+    abstract Property<String> getConditionsMode()
+
+    @Input
+    abstract MapProperty<String, String> getTagMap()
+
+    @Input
+    abstract ListProperty<String> getDroppedPaths()
+
+    // 1.20.x names the data folders in the plural.
+    static final Map<String, String> PLURAL = ['recipe': 'recipes', 'loot_table': 'loot_tables', 'structure': 'structures', 'advancement': 'advancements', 'function': 'functions',
+            'tags/item': 'tags/items', 'tags/block': 'tags/blocks', 'tags/fluid': 'tags/fluids', 'tags/entity_type': 'tags/entity_types']
+
+    Object ingredient(Object value) {
+        if (value instanceof String) {
+            return value.startsWith('#') ? [tag: value.substring(1)] : [item: value]
+        }
+        if (value instanceof List) {
+            return value.collect { ingredient(it) }
+        }
+        return value
+    }
+
+    Map convertCrafting(Map recipe) {
+        if (recipe.key instanceof Map) {
+            recipe.key = recipe.key.collectEntries { k, v -> [(k): ingredient(v)] }
+        }
+        if (recipe.ingredients instanceof List) {
+            recipe.ingredients = recipe.ingredients.collect { ingredient(it) }
+        }
+        if (recipe.ingredient != null) {
+            recipe.ingredient = ingredient(recipe.ingredient)
+        }
+        ['template', 'base', 'addition'].each { String key ->
+            if (recipe[key] != null) {
+                recipe[key] = ingredient(recipe[key])
+            }
+        }
+        if (format.get() == 'v20' && recipe.result instanceof Map && recipe.result.id != null) {
+            def result = [item: recipe.result.id]
+            if (recipe.result.count != null) {
+                result.count = recipe.result.count
+            }
+            recipe.result = result
+        }
+        return recipe
+    }
+
+    @TaskAction
+    void run() {
+        def fmt = format.get()
+        def common = commonDir.get().asFile
+        def out = outputDir.get().asFile
+        out.deleteDir()
+        out.mkdirs()
+
+        Map<String, File> sources = [:]   // relative path -> file; overrides win over common
+        common.eachFileRecurse(groovy.io.FileType.FILES) { f ->
+            sources[common.toPath().relativize(f.toPath()).toString().replace('\\', '/')] = f
+        }
+        Set<String> deleted = [] as Set
+        [overridesDir, loaderOverridesDir].each { prop ->
+            def overrides = prop.isPresent() ? prop.get().asFile : null
+            if (overrides != null && overrides.exists()) {
+                overrides.eachFileRecurse(groovy.io.FileType.FILES) { f ->
+                    def rel = overrides.toPath().relativize(f.toPath()).toString().replace('\\', '/')
+                    if (rel.endsWith('.delete')) {
+                        deleted << rel.substring(0, rel.length() - '.delete'.length())
+                    } else {
+                        deleted.remove(rel)
+                        sources[rel] = f
+                    }
+                }
+            }
+        }
+
+        sources.each { String rel, File src ->
+            if (deleted.contains(rel)) {
+                return
+            }
+            if (droppedPaths.get().any { String p -> p.contains('*') ? rel.matches(p.replace('*', '[^/]+') + '.*') : rel.startsWith(p) }) {
+                return
+            }
+            String outRel = rel
+            if (fmt == 'v20' && rel.startsWith('data/')) {
+                def parts = rel.split('/', 3)   // data, namespace, rest
+                String rest = parts[2]
+                PLURAL.each { from, to ->
+                    if (rest.startsWith(from + '/')) {
+                        rest = to + rest.substring(from.length())
+                    }
+                }
+                outRel = parts[0] + '/' + parts[1] + '/' + rest
+            }
+            def dest = new File(out, outRel)
+            dest.parentFile.mkdirs()
+
+            if (!(rel.endsWith('.json') && rel.startsWith('data/'))) {
+                dest.bytes = src.bytes
+                return
+            }
+            String text = src.getText('UTF-8')
+            if (conditionsKey.get() != 'neoforge:conditions') {
+                text = text.replace('"neoforge:conditions"', '"' + conditionsKey.get() + '"')
+            }
+            if (modLoadedType.get() != 'neoforge:mod_loaded') {
+                text = text.replace('"neoforge:mod_loaded"', '"' + modLoadedType.get() + '"')
+            }
+            if (conditionsMode.get() == 'single' && text.contains('"' + conditionsKey.get() + '"')) {
+                def json = new JsonSlurper().parseText(text)
+                def list = json[conditionsKey.get()]
+                if (list instanceof List) {
+                    json.remove(conditionsKey.get())
+                    def single = list.size() == 1 ? list[0] : [type: 'forge:and', values: list]
+                    def converted = new LinkedHashMap()
+                    converted[conditionsKey.get()] = single
+                    converted.putAll(json)
+                    text = JsonOutput.prettyPrint(JsonOutput.toJson(converted)) + '\n'
+                }
+            }
+            tagMap.get().each { from, to -> text = text.replace('"#' + from + '"', '"#' + to + '"').replace('"' + from + '"', '"' + to + '"') }
+            if (fmt != 'v26' && rel.matches('data/[^/]+/recipes?/.*\\.json') && (text.contains('"minecraft:crafting_') || text.contains('"minecraft:smithing_'))) {
+                def json = new JsonSlurper().parseText(text)
+                if (json instanceof Map && (json.type?.toString()?.startsWith('minecraft:crafting_') || json.type?.toString()?.startsWith('minecraft:smithing_'))) {
+                    text = JsonOutput.prettyPrint(JsonOutput.toJson(convertCrafting(json))) + '\n'
+                }
+            }
+            dest.setText(text, 'UTF-8')
+        }
+    }
+}
+
+def target = project.ext.dataTarget
+def format = target.format
+def loader = target.loader
+def rootDir = target.root ? file(target.root) : file('../../../')
+def overrides = new File(rootDir, "overrides/${target.mc}")
+def loaderOverrides = new File(rootDir, "overrides/${target.mc}-${loader}")
+
+def prepare = tasks.register('prepareCommonData', PrepareCommonData) {
+    commonDir = new File(rootDir, 'common')
+    if (overrides.exists()) {
+        overridesDir = overrides
+    }
+    if (loaderOverrides.exists()) {
+        loaderOverridesDir = loaderOverrides
+    }
+    outputDir = layout.buildDirectory.dir('generated/common-data')
+    it.format = format
+    conditionsMode = target.conditionsMode ?: 'array'
+    conditionsKey = target.conditionsKey ?: (format == 'v20' ? 'conditions' : (loader == 'forge' ? 'forge:conditions' : 'neoforge:conditions'))
+    modLoadedType = target.modLoadedType ?: ((format == 'v20' || loader == 'forge') ? 'forge:mod_loaded' : 'neoforge:mod_loaded')
+    // Item tags that exist under another name; older versions use the Forge names.
+    tagMap = target.tagMap ?: (format == 'v20' ? ['c:stones': 'forge:stone'] : [:])
+    // Paths that only exist in newer formats (item definitions came with 1.21.4).
+    droppedPaths = target.droppedPaths ?: (format == 'v26' ? [] : ['assets/*/items/'])
+}
+
+sourceSets.main.resources.srcDir(prepare.flatMap { it.outputDir })
+tasks.named('processResources') {
+    dependsOn(prepare)
+}

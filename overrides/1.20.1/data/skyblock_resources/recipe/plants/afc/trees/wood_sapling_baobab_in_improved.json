@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "afc"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "afc:wood/sapling/baobab",
+  "soil": "#skyblock_resources:improved_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "afc:wood/log/baobab",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "afc:wood/log/baobab",
+      "min": 1
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 6,
+      "chance": 0.658
+    },
+    {
+      "id": "afc:wood/sapling/baobab",
+      "min": 1,
+      "max": 6,
+      "chance": 0.652
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

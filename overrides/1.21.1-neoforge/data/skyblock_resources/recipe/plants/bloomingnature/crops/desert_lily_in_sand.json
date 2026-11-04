@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "bloomingnature"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "bloomingnature:desert_lily",
+  "soil": "#skyblock_resources:sand_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "bloomingnature:desert_lily",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "bloomingnature:desert_lily",
+      "min": 1
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

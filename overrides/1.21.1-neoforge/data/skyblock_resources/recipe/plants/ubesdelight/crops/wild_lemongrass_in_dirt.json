@@ -1,0 +1,32 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ubesdelight"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "ubesdelight:wild_lemongrass",
+  "soil": "#skyblock_resources:crop_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "ubesdelight:lemongrass_seeds",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "ubesdelight:lemongrass_seeds",
+      "min": 1,
+      "chance": 0.936
+    },
+    {
+      "id": "ubesdelight:lemongrass",
+      "min": 1,
+      "chance": 0.064
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

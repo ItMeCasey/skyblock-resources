@@ -1,0 +1,20 @@
+{
+  "type": "skyblock_resources:crop_drops",
+  "seed": "minecraft:blue_orchid",
+  "soil": "#skyblock_resources:base_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "minecraft:blue_orchid",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "minecraft:blue_orchid",
+      "min": 1
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

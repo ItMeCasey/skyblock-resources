@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "blue_skies"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "blue_skies:midday_bayhop",
+  "soil": "#skyblock_resources:crop_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "blue_skies:midday_bayhop",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "blue_skies:midday_bayhop",
+      "min": 1
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

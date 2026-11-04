@@ -1,0 +1,9 @@
+{
+  "type": "skyblock_resources:soil_type",
+  "soil": "#skyblock_resources:nether_soils",
+  "speed_bonus": 0,
+  "growth_multiplier": 1,
+  "category": [
+    "misc"
+  ]
+}

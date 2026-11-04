@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "skyblock_resources:block/wooden_generator"
+    },
+    "facing=east": {
+      "model": "skyblock_resources:block/wooden_generator",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "skyblock_resources:block/wooden_generator",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "skyblock_resources:block/wooden_generator",
+      "y": 270
+    }
+  }
+}

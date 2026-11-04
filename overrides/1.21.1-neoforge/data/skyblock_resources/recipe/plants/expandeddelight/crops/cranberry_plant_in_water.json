@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "expandeddelight"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "expandeddelight:cranberry_plant",
+  "soil": "minecraft:water_bucket",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "expandeddelight:cranberries",
+    "count": 2
+  },
+  "drops": [
+    {
+      "id": "expandeddelight:cranberries",
+      "min": 2,
+      "max": 3
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

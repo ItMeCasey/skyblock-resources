@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "skyblock_resources:block/iron_tree_generator"
+    }
+  }
+}

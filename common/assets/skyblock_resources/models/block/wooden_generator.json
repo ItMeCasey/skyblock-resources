@@ -1,0 +1,9 @@
+{
+  "parent": "skyblock_resources:custom/wooden_generator2",
+  "textures": {
+    "all": "minecraft:block/oak_planks",
+    "particle": "minecraft:block/oak_planks",
+    "0": "minecraft:block/oak_log",
+    "1": "minecraft:block/glass"
+  }
+}

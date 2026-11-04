@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ],
+  "type": "skyblock_resources:soil_type",
+  "soil": "mysticalagriculture:prudentium_farmland",
+  "speed_bonus": 0.0,
+  "growth_multiplier": 1.0,
+  "bonus_seed_chance": 0.1,
+  "category": [
+    "misc"
+  ]
+}

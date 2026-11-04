@@ -1,0 +1,44 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "regions_unexplored"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "regions_unexplored:small_oak_sapling",
+  "soil": "minecraft:farmland",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "regions_unexplored:small_oak_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "regions_unexplored:small_oak_log",
+      "min": 1
+    },
+    {
+      "id": "regions_unexplored:small_oak_sapling",
+      "min": 1,
+      "max": 6,
+      "chance": 0.784
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 6,
+      "chance": 0.344
+    },
+    {
+      "id": "minecraft:apple",
+      "min": 1,
+      "max": 2,
+      "chance": 0.12
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

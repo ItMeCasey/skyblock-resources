@@ -1,0 +1,13 @@
+{
+  "type": "skyblock_resources:resource_generator",
+  "generator": "skyblock_resources:stone_generator",
+  "resource": "minecraft:clay",
+  "output": {
+    "id": "minecraft:clay",
+    "count": 4
+  },
+  "duration": 200,
+  "category": [
+    "misc"
+  ]
+}

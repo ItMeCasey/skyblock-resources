@@ -1,0 +1,134 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'eclipse'
+    id 'net.minecraftforge.gradle' version '[6.0.54,6.2)'
+}
+
+version = '2026.11.1'
+base.archivesName = 'skyblock_resources-neoforge-1.20.1'
+
+// Mojang ships Java 17 to end users in 1.18+, so the mod targets Java 17.
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+// Data and assets come from the shared common/ folder; see docs/PORTING_LAYOUT.md.
+ext.dataTarget = [mc: '1.20.1', format: 'v20', loader: 'neoforge']
+apply from: '../../../tools/common-data.gradle'
+
+// NeoForge 1.20.1 (47.1.x) is Forge-compatible and is built with ForgeGradle 6, which also remaps the Forge mods used
+// for testing (and their mixin refmaps) to the dev environment's names. NeoGradle 7 does not do that on 1.20.1.
+def selfTest = gradle.startParameter.taskNames.any { it == 'runGameTest' || it.endsWith(':runGameTest') }
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+
+    runs {
+        configureEach {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            // Test mods' mixins carry SRG reference maps; remap them to the dev environment's names.
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+            mods {
+                skyblock_resources {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        client {
+        }
+
+        // The dedicated server. With `runGameTest` it runs the headless self-test (-Dskyblock.selftest=true), which prints
+        // SELFTEST PASSED or SELFTEST FAILED and stops the server.
+        server {
+            args '--nogui'
+            if (selfTest) {
+                workingDirectory project.file('run-gametest')
+                property 'skyblock.selftest', 'true'
+                // Own port so builds for other versions can run their tests at the same time.
+                args '--port', '8904'
+            }
+        }
+    }
+}
+
+// ForgeGradle 6 cannot derive a second server run from the first, so runGameTest runs the server task in self-test mode.
+tasks.register('runGameTest') {
+    group = 'forgegradle runs'
+    description = 'Runs the dedicated server with the headless self-test.'
+    dependsOn 'runServer'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    maven { url 'https://maven.neoforged.net/releases' }
+    maven { url 'https://maven.minecraftforge.net' }
+    mavenCentral()
+    maven {
+        url 'https://cursemaven.com'
+    }
+    maven {
+        name = "Progwml6's maven"
+        url = 'https://dvs1.progwml6.com/files/maven/'
+    }
+    maven {
+        name = "Jared's maven"
+        url = 'https://maven.blamejared.com/'
+    }
+    maven {
+        name = 'ModMaven'
+        url = 'https://modmaven.dev'
+    }
+    // Not exclusiveContent: ForgeGradle's deobf repository must also be allowed to serve this group.
+    maven {
+        name = 'Modrinth'
+        url = 'https://api.modrinth.com/maven'
+        content {
+            includeGroup 'maven.modrinth'
+        }
+    }
+}
+
+dependencies {
+    minecraft 'net.neoforged:forge:1.20.1-47.1.106'
+
+    // SMWTI is not published yet, so use the jar from its own project build.
+    implementation fg.deobf(files("${System.getProperty('user.home')}/Desktop/SMWTI/versions/mc1.20.1/neoforge/build/libs/smwti-neoforge-1.20.1-2026.11.1.jar"))
+    compileOnly fg.deobf('maven.modrinth:jade:xJQHCmWJ')
+
+    compileOnly fg.deobf('maven.modrinth:kubejs:hVR2xUSr')
+    compileOnly fg.deobf('maven.modrinth:rhino:uNALdylI')
+    compileOnly fg.deobf('maven.modrinth:architectury-api:1MKTLiiG')
+
+    runtimeOnly fg.deobf('maven.modrinth:kubejs:hVR2xUSr')
+    runtimeOnly fg.deobf('maven.modrinth:rhino:uNALdylI')
+    runtimeOnly fg.deobf('maven.modrinth:architectury-api:1MKTLiiG')
+
+    // Test mods for the dev environment and the headless self-test. On 1.20.1, Forge builds also run on NeoForge.
+    // Not usable: Biomes O' Plenty and GlitchCore (need Forge 47.3+, NeoForge 1.20.1 is 47.1.106), Nature's Spirit
+    // (calls a Forge method NeoForge lacks), Ecologics and Oh The Trees You'll Grow (mixins break in the dev environment).
+    runtimeOnly fg.deobf('curse.maven:croptopia-415438:8066550')
+    runtimeOnly fg.deobf('maven.modrinth:epherolib:vZWRmjl2')
+    runtimeOnly fg.deobf('maven.modrinth:cucumber:xnLznSfT')
+    runtimeOnly fg.deobf('maven.modrinth:mystical-agriculture:EEilTecF')
+    runtimeOnly fg.deobf('maven.modrinth:mystical-agradditions:48qKWNA7')
+    runtimeOnly fg.deobf('maven.modrinth:terralith:WeYhEb5d')
+    runtimeOnly fg.deobf('maven.modrinth:occultism:hs5pHmiU')
+    runtimeOnly fg.deobf('maven.modrinth:modonomicon:J0YtwRxM')
+    runtimeOnly fg.deobf('maven.modrinth:curios:IPQlZkz1')
+    runtimeOnly fg.deobf('maven.modrinth:geckolib:aC5KMoNg')
+    runtimeOnly fg.deobf('maven.modrinth:smartbrainlib:YkeJNm33')
+    runtimeOnly fg.deobf('maven.modrinth:evilcraft:1kckRDGI')
+    runtimeOnly fg.deobf('maven.modrinth:cyclops-core:IUMQKt4M')
+    runtimeOnly fg.deobf('maven.modrinth:integrated-dynamics:Bx2Meo4e')
+    runtimeOnly fg.deobf('maven.modrinth:common-capabilities:xyk3SeaC')
+    runtimeOnly fg.deobf('maven.modrinth:forbidden-arcanus:1GswR5qC')
+    runtimeOnly fg.deobf('maven.modrinth:valhelsia-core:eP3L8E7C')
+
+    compileOnly fg.deobf('maven.modrinth:jei:6E4ps2ER')
+    runtimeOnly fg.deobf('maven.modrinth:jei:6E4ps2ER')
+}

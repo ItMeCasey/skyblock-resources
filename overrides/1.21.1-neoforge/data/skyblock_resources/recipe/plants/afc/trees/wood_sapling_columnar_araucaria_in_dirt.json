@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "afc"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "afc:wood/sapling/columnar_araucaria",
+  "soil": "#skyblock_resources:base_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "afc:wood/log/araucaria",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "afc:wood/log/araucaria",
+      "min": 1
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 7,
+      "chance": 0.612
+    },
+    {
+      "id": "afc:wood/sapling/columnar_araucaria",
+      "min": 1,
+      "max": 4,
+      "chance": 0.502
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

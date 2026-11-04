@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": "minecraft:netherite_upgrade_smithing_template",
+  "base": "skyblock_resources:diamond_generator",
+  "addition": "minecraft:netherite_block",
+  "result": {
+    "id": "skyblock_resources:netherite_generator"
+  }
+}

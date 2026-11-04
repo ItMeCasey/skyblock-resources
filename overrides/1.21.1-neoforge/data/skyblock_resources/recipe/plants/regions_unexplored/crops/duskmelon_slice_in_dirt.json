@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "regions_unexplored"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "regions_unexplored:duskmelon_slice",
+  "soil": "#skyblock_resources:crop_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "regions_unexplored:duskmelon_slice",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "regions_unexplored:duskmelon_slice",
+      "min": 1,
+      "max": 2
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

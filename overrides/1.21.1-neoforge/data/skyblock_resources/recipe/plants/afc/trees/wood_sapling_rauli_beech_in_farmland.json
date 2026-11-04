@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "afc"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "afc:wood/sapling/rauli_beech",
+  "soil": "minecraft:farmland",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "afc:wood/log/beech",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "afc:wood/log/beech",
+      "min": 1
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 9,
+      "chance": 0.646
+    },
+    {
+      "id": "afc:wood/sapling/rauli_beech",
+      "min": 1,
+      "max": 3,
+      "chance": 0.298
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

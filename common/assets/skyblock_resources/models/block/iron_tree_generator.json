@@ -1,0 +1,11 @@
+{
+  "parent": "skyblock_resources:custom/tree_iron_generator",
+  "textures": {
+    "all": "minecraft:block/iron_block",
+    "particle": "minecraft:block/iron_block",
+    "2": "minecraft:block/iron_block",
+    "3": "minecraft:block/iron_block",
+    "4": "minecraft:block/podzol_side",
+    "missing": "minecraft:block/iron_block"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:pumpkin_seeds",
+    "minecraft:beetroot_seeds",
+    "minecraft:wheat_seeds",
+    "minecraft:carrot",
+    "minecraft:potato",
+    "minecraft:melon_seeds",
+    "minecraft:beetroot",
+    {
+      "id": "#mysticalagriculture:seeds",
+      "required": false
+    }
+  ]
+}

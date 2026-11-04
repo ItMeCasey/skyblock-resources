@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "productivetrees"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "productivetrees:papaya_sapling",
+  "soil": "#skyblock_resources:improved_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "productivetrees:papaya_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "productivetrees:papaya_log",
+      "min": 1
+    },
+    {
+      "id": "productivetrees:papaya_sapling",
+      "min": 1,
+      "max": 5,
+      "chance": 0.648
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 5,
+      "chance": 0.318
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

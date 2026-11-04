@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "occultism:otherworld_sapling",
+      "required": false
+    },
+    {
+      "id": "occultism:otherworld_natural_sapling",
+      "required": false
+    }
+  ]
+}

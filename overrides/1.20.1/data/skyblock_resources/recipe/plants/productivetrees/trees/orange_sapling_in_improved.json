@@ -1,0 +1,43 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "productivetrees"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "productivetrees:orange_sapling",
+  "soil": "#skyblock_resources:improved_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "productivetrees:orange_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "productivetrees:orange_log",
+      "min": 1
+    },
+    {
+      "id": "productivetrees:orange",
+      "min": 12,
+      "max": 13
+    },
+    {
+      "id": "productivetrees:orange_sapling",
+      "min": 1,
+      "max": 5,
+      "chance": 0.624
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 5,
+      "chance": 0.338
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

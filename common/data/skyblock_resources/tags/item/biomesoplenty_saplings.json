@@ -1,0 +1,62 @@
+{
+  "replace": false,
+  "values": [
+	{
+		"id": "biomesoplenty:dead_sapling",
+		"required": false
+	},
+	{
+		"id": "biomesoplenty:empyreal_sapling",
+		"required": false
+	},
+	{
+		"id": "biomesoplenty:fir_sapling",
+		"required": false
+	},
+	{
+		"id": "biomesoplenty:hellbark_sapling",
+		"required": false
+	},
+	{
+		"id": "biomesoplenty:jacaranda_sapling",
+		"required": false
+	},
+	{
+		"id": "biomesoplenty:magic_sapling",
+		"required": false
+	},
+	{
+		"id": "biomesoplenty:mahogany_sapling",
+		"required": false
+	},
+	{
+		"id": "biomesoplenty:maple_sapling",
+		"required": false
+	},
+	{
+		"id": "biomesoplenty:origin_oak_sapling",
+		"required": false
+	},
+	{
+		"id": "biomesoplenty:palm_sapling",
+		"required": false
+	},
+	{
+		"id": "biomesoplenty:pine_sapling",
+		"required": false
+	},
+	{
+		"id": "biomesoplenty:redwood_sapling",
+		"required": false
+	},
+	{
+		"id": "biomesoplenty:umbran_sapling",
+		"required": false
+	},
+	{
+		"id": "biomesoplenty:willow_sapling",
+		"required": false
+	}
+
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "vintagedelight"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "vintagedelight:gearo_berry",
+  "soil": "#skyblock_resources:crop_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "vintagedelight:gearo_berry",
+    "count": 2
+  },
+  "drops": [
+    {
+      "id": "vintagedelight:gearo_berry",
+      "min": 2,
+      "max": 3
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

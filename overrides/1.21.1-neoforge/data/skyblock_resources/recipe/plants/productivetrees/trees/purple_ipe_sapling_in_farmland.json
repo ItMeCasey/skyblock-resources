@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "productivetrees"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "productivetrees:purple_ipe_sapling",
+  "soil": "minecraft:farmland",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "productivetrees:purple_ipe_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "productivetrees:purple_ipe_log",
+      "min": 1
+    },
+    {
+      "id": "productivetrees:purple_ipe_sapling",
+      "min": 1,
+      "max": 5,
+      "chance": 0.668
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 6,
+      "chance": 0.348
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

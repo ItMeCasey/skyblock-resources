@@ -1,0 +1,8 @@
+{
+  "parent": "skyblock_resources:custom/screwdriver",
+  "textures": {
+    "0": "minecraft:block/red_concrete",
+    "1": "minecraft:block/light_gray_concrete",
+    "particle": "skyblock_resources:item/red_concrete"
+  }
+}

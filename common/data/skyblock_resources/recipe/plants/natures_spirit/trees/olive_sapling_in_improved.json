@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "natures_spirit"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "natures_spirit:olive_sapling",
+  "soil": "#skyblock_resources:improved_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "natures_spirit:olive_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "natures_spirit:olive_log",
+      "min": 1
+    },
+    {
+      "id": "natures_spirit:olive_sapling",
+      "min": 1,
+      "max": 4,
+      "chance": 0.662
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 6,
+      "chance": 0.334
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

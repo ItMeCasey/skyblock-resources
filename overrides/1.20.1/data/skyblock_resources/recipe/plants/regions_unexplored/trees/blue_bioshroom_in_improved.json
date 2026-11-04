@@ -1,0 +1,32 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "regions_unexplored"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "regions_unexplored:blue_bioshroom",
+  "soil": "#skyblock_resources:improved_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "regions_unexplored:blue_bioshroom_stem",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "regions_unexplored:blue_bioshroom_stem",
+      "min": 1
+    },
+    {
+      "id": "regions_unexplored:blue_bioshroom",
+      "min": 1,
+      "max": 16,
+      "chance": 0.994
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

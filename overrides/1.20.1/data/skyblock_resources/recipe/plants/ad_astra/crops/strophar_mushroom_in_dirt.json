@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ad_astra"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "ad_astra:strophar_mushroom",
+  "soil": "#skyblock_resources:crop_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "ad_astra:strophar_mushroom",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "ad_astra:strophar_mushroom",
+      "min": 1
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

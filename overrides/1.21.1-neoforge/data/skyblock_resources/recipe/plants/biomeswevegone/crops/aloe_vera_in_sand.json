@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "biomeswevegone"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "biomeswevegone:aloe_vera",
+  "soil": "#skyblock_resources:sand_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "biomeswevegone:aloe_vera",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "biomeswevegone:aloe_vera",
+      "min": 1
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "allthemodium:ancient_sapling",
+      "required": false
+    },
+    {
+      "id": "allthemodium:demonic_sapling",
+      "required": false
+    },
+    {
+      "id": "allthemodium:soul_sapling",
+      "required": false
+    }
+  ]
+}

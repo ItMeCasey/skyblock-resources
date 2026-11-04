@@ -1,0 +1,15 @@
+{
+  "note": "CurseForge file IDs for supported targets. Fill in other loaders and versions as they are needed.",
+  "neoforge-26.1.2": {
+    "kubejs": {
+      "projectId": 238086,
+      "fileId": 9396057,
+      "fileName": "kubejs-neoforge-26.1.2-8.0.8.jar"
+    },
+    "crafttweaker": {
+      "projectId": 239197,
+      "fileId": null,
+      "note": "No NeoForge 26.1.2 build found on CurseForge (checked 200 most recent files)."
+    }
+  }
+}

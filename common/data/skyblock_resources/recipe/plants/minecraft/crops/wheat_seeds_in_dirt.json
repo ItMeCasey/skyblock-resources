@@ -1,0 +1,25 @@
+{
+  "type": "skyblock_resources:crop_drops",
+  "seed": "minecraft:wheat_seeds",
+  "soil": "#skyblock_resources:crop_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "minecraft:wheat",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "minecraft:wheat",
+      "min": 1
+    },
+    {
+      "id": "minecraft:wheat_seeds",
+      "min": 1,
+      "max": 4
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

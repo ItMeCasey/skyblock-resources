@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "afc"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "afc:wood/sapling/flame_of_the_forest",
+  "soil": "#skyblock_resources:base_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "afc:wood/log/teak",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "afc:wood/log/teak",
+      "min": 1
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 7,
+      "chance": 0.67
+    },
+    {
+      "id": "afc:wood/sapling/flame_of_the_forest",
+      "min": 1,
+      "max": 4,
+      "chance": 0.598
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

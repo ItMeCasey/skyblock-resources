@@ -1,0 +1,120 @@
+plugins {
+    id 'eclipse'
+    id 'net.neoforged.moddev' version '2.0.141'
+}
+
+version = '2026.11.1'
+base.archivesName = 'skyblock_resources-neoforge-26.1.2'
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+
+// Data and assets come from the shared common/ folder; see docs/PORTING_LAYOUT.md.
+ext.dataTarget = [mc: '26.1.2', format: 'v26', loader: 'neoforge']
+apply from: '../../../tools/common-data.gradle'
+
+neoForge {
+    version = '26.1.2.125'
+
+    runs {
+        client {
+            client()
+        }
+        server {
+            server()
+        }
+        gameTest {
+            server()
+            systemProperty 'skyblock.selftest', 'true'
+            // Own port so builds for other versions can run their tests at the same time.
+            programArguments.addAll('--port', '8900')
+        }
+
+        configureEach {
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+            logLevel = org.slf4j.event.Level.DEBUG
+        }
+    }
+
+    mods {
+        skyblock_resources {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    maven {
+        url 'https://cursemaven.com'
+    }
+    maven {
+        name = "Progwml6's maven"
+        url = 'https://dvs1.progwml6.com/files/maven/'
+    }
+    maven {
+        name = "Jared's maven"
+        url = 'https://maven.blamejared.com/'
+    }
+    maven {
+        name = 'ModMaven'
+        url = 'https://modmaven.dev'
+    }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = 'Modrinth'
+                url = 'https://api.modrinth.com/maven'
+            }
+        }
+        filter {
+            includeGroup 'maven.modrinth'
+        }
+    }
+}
+
+dependencies {
+    // SMWTI is not published yet, so use the jar from its own project build.
+    implementation files("${System.getProperty('user.home')}/Desktop/SMWTI/versions/mc26.1.2/neoforge/build/libs/smwti-neoforge-26.1.2-2026.11.1.jar")
+    compileOnly 'curse.maven:jade-324717:8647353'
+
+    runtimeOnly 'curse.maven:placebo-283644:8502256'
+    runtimeOnly 'curse.maven:toast-control-271740:8262279'
+    runtimeOnly 'curse.maven:mouse-tweaks-60089:7840778'
+    runtimeOnly 'curse.maven:inventory-sorter-240633:7940779'
+    runtimeOnly 'curse.maven:biomes-o-plenty-220318:8239932'
+    runtimeOnly 'curse.maven:glitchcore-955399:8109770'
+    runtimeOnly 'curse.maven:terrablender-neoforge-940057:8384529'
+    runtimeOnly 'curse.maven:epherolib-885449:7937982'
+    runtimeOnly 'curse.maven:croptopia-415438:8908643'
+    runtimeOnly 'maven.modrinth:cucumber:9.0.7'
+    compileOnly 'curse.maven:kubejs-238086:9396057'
+    runtimeOnly 'curse.maven:kubejs-238086:9396057'
+    runtimeOnly 'curse.maven:rhino-416294:8463898'
+    runtimeOnly 'curse.maven:better-advanced-tooltips-1637623:9148547'
+    runtimeOnly 'maven.modrinth:mystical-agriculture:9.0.11'
+
+    // Mods the bundled plant and block recipes cover, so they can be loaded and checked (versions are Modrinth version ids).
+    runtimeOnly 'maven.modrinth:terralith:4xxRkKvw'
+    runtimeOnly 'maven.modrinth:lithostitched:pLlJIqyp'
+    runtimeOnly 'maven.modrinth:oh-the-trees-youll-grow:8bagmcj0'
+    runtimeOnly 'maven.modrinth:ecologics:wMAgOvu9'
+    runtimeOnly 'maven.modrinth:natures-spirit:fXzcxJN1'
+    runtimeOnly 'maven.modrinth:occultism:DNhPZeT0'
+    runtimeOnly 'maven.modrinth:modonomicon:PoZW527q'
+    runtimeOnly 'maven.modrinth:curios:dRnRThvD'
+    runtimeOnly 'maven.modrinth:geckolib:xfVfPcoC'
+    runtimeOnly 'maven.modrinth:evilcraft:hgJ1hHmD'
+    runtimeOnly 'maven.modrinth:cyclops-core:6YSSNROf'
+    runtimeOnly 'maven.modrinth:integrated-dynamics:6YvxewAd'
+    runtimeOnly 'maven.modrinth:common-capabilities:JRpGAgAB'
+    runtimeOnly 'maven.modrinth:mystical-agradditions:jDNfRQZi'
+    runtimeOnly 'maven.modrinth:forbidden-arcanus:Ct4WQf6n'
+    runtimeOnly 'maven.modrinth:valhelsia-core:l4EKYaUc'
+
+    compileOnly 'mezz.jei:jei-26.1.2-common-api:29.47.0.111'
+    compileOnly 'mezz.jei:jei-26.1.2-neoforge-api:29.47.0.111'
+    runtimeOnly 'mezz.jei:jei-26.1.2-neoforge:29.47.0.111'
+}

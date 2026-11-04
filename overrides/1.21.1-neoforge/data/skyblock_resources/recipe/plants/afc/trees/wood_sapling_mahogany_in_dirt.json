@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "afc"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "afc:wood/sapling/mahogany",
+  "soil": "#skyblock_resources:base_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "afc:wood/log/mahogany",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "afc:wood/log/mahogany",
+      "min": 1
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 7,
+      "chance": 0.678
+    },
+    {
+      "id": "afc:wood/sapling/mahogany",
+      "min": 1,
+      "max": 2,
+      "chance": 0.246
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

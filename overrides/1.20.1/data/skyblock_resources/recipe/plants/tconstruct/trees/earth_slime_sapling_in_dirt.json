@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "tconstruct:earth_slime_sapling",
+  "soil": "#skyblock_resources:base_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "tconstruct:greenheart_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "tconstruct:greenheart_log",
+      "min": 1
+    },
+    {
+      "id": "tconstruct:earth_slime_sapling",
+      "min": 1,
+      "max": 4,
+      "chance": 0.616
+    },
+    {
+      "id": "minecraft:slime_ball",
+      "min": 1,
+      "max": 3,
+      "chance": 0.342
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

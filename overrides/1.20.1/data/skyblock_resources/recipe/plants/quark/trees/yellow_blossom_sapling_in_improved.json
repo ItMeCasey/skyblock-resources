@@ -1,0 +1,32 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "quark"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "quark:yellow_blossom_sapling",
+  "soil": "#skyblock_resources:improved_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "quark:blossom_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "quark:blossom_log",
+      "min": 1
+    },
+    {
+      "id": "quark:yellow_blossom_sapling",
+      "min": 1,
+      "max": 2,
+      "chance": 0.102
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

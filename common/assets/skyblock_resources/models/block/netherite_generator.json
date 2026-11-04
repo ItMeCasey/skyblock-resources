@@ -1,0 +1,9 @@
+{
+  "parent": "skyblock_resources:custom/netherite_generator2",
+  "textures": {
+    "all": "minecraft:block/netherite_block",
+    "particle": "minecraft:block/netherite_block",
+    "0": "minecraft:block/netherite_block",
+    "1": "minecraft:block/glass"
+  }
+}

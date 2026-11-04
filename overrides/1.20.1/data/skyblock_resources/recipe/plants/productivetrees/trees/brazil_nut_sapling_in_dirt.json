@@ -1,0 +1,43 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "productivetrees"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "productivetrees:brazil_nut_sapling",
+  "soil": "#skyblock_resources:base_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "productivetrees:brazil_nut_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "productivetrees:brazil_nut_log",
+      "min": 1
+    },
+    {
+      "id": "productivetrees:brazil_nut",
+      "min": 13,
+      "max": 14
+    },
+    {
+      "id": "productivetrees:brazil_nut_sapling",
+      "min": 1,
+      "max": 6,
+      "chance": 0.656
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 5,
+      "chance": 0.322
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

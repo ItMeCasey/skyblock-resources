@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "natures_spirit"
+    }
+  ],
+  "type": "skyblock_resources:resource_generator",
+  "generator": "skyblock_resources:stone_generator",
+  "resource": "natures_spirit:travertine",
+  "output": {
+    "id": "natures_spirit:travertine",
+    "count": 4
+  },
+  "duration": 200,
+  "category": [
+    "misc"
+  ]
+}

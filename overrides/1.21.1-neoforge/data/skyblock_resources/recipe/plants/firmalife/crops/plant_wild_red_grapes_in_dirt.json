@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "firmalife"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "firmalife:plant/wild_red_grapes",
+  "soil": "#skyblock_resources:crop_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "firmalife:seeds/red_grape",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "firmalife:seeds/red_grape",
+      "min": 1,
+      "max": 3
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

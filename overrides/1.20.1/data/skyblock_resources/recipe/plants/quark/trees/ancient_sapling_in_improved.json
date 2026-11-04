@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "quark"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "quark:ancient_sapling",
+  "soil": "#skyblock_resources:improved_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "quark:ancient_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "quark:ancient_log",
+      "min": 1
+    },
+    {
+      "id": "quark:ancient_sapling",
+      "min": 1,
+      "max": 3,
+      "chance": 0.368
+    },
+    {
+      "id": "quark:ancient_fruit",
+      "min": 1,
+      "max": 2,
+      "chance": 0.114
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

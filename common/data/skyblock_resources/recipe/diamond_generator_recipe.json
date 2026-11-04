@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "bcb"
+  ],
+  "key": {
+    "a": "minecraft:light_weighted_pressure_plate",
+    "b": "minecraft:diamond_block",
+    "c": "skyblock_resources:iron_generator"
+  },
+  "result": {
+    "id": "skyblock_resources:diamond_generator",
+    "count": 1
+  }
+}

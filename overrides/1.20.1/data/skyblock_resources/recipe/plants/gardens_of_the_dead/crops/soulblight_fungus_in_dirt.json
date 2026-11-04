@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "gardens_of_the_dead"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "gardens_of_the_dead:soulblight_fungus",
+  "soil": "#skyblock_resources:crop_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "gardens_of_the_dead:soulblight_fungus",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "gardens_of_the_dead:soulblight_fungus",
+      "min": 1
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}
