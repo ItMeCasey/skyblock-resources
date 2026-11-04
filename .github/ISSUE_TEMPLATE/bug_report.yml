@@ -1,0 +1,74 @@
+name: Bug report
+description: Something in Skyblock Resources does not work as expected
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for reporting a bug. Please fill in as much as you can.
+  - type: input
+    id: mod-version
+    attributes:
+      label: Skyblock Resources version
+      description: Shown in the jar name, for example skyblock_resources-neoforge-26.1.2-2026.11.1.jar
+      placeholder: 2026.11.1
+    validations:
+      required: true
+  - type: dropdown
+    id: loader
+    attributes:
+      label: Loader
+      options:
+        - NeoForge
+        - Forge
+    validations:
+      required: true
+  - type: dropdown
+    id: minecraft-version
+    attributes:
+      label: Minecraft version
+      options:
+        - "26.1.2"
+        - "1.21.1"
+        - "1.20.1"
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: side
+    attributes:
+      label: Where it happens
+      options:
+        - Singleplayer
+        - Multiplayer client
+        - Dedicated server
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you saw, and what you expected to happen instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Place a stone generator
+        2. Feed it ...
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: other-mods
+    attributes:
+      label: Other mods
+      description: Relevant mods only, such as KubeJS, JEI, Jade, SMWTI, or the mod that a recipe or drop depends on.
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Paste the crash report or latest.log lines around the error. Paste long logs in a gist and link it.
+      render: text
