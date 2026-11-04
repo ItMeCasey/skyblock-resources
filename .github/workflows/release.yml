@@ -62,6 +62,9 @@ jobs:
       - run: ./gradlew build --no-daemon
       - name: Headless self test
         run: |
+          # The test server stops at the EULA prompt on a clean runner; accept it for the test server only.
+          mkdir -p run run-gametest
+          echo 'eula=true' | tee run/eula.txt run-gametest/eula.txt > /dev/null
           ./gradlew runGameTest --no-daemon 2>&1 | tee selftest.log
           grep -q "SELFTEST PASSED" selftest.log
           ! grep -q "SELFTEST FAILED" selftest.log
