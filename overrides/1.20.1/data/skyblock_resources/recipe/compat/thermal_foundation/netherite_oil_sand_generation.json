@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "thermal_foundation"
+    }
+  ],
+  "type": "skyblock_resources:resource_generator",
+  "generator": "skyblock_resources:netherite_generator",
+  "resource": "thermal:oil_sand",
+  "output": {
+    "id": "thermal:oil_sand",
+    "count": 64
+  },
+  "duration": 40,
+  "category": [
+    "misc"
+  ]
+}

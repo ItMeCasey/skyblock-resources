@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "thermal_cultivation"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "thermal:gunpowder_mushroom_spores",
+  "soil": "#skyblock_resources:crop_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "thermal:gunpowder_mushroom_spores",
+    "count": 2
+  },
+  "drops": [
+    {
+      "id": "thermal:gunpowder_mushroom_spores",
+      "min": 2,
+      "max": 3
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

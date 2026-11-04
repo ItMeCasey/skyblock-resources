@@ -1,0 +1,42 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "afc"
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tfc"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "afc:wood/sapling/weeping_maple",
+  "soil": "#skyblock_resources:improved_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "tfc:wood/log/maple",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "tfc:wood/log/maple",
+      "min": 1
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 8,
+      "chance": 0.67
+    },
+    {
+      "id": "afc:wood/sapling/weeping_maple",
+      "min": 1,
+      "max": 5,
+      "chance": 0.646
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

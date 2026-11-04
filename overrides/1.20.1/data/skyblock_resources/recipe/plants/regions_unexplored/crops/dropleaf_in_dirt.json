@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "regions_unexplored"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "regions_unexplored:dropleaf",
+  "soil": "#skyblock_resources:crop_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "regions_unexplored:dropleaf",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "regions_unexplored:dropleaf",
+      "min": 1,
+      "chance": 0.358
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

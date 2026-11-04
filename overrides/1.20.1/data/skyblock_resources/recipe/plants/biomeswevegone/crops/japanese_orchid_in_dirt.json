@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "biomeswevegone"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "biomeswevegone:japanese_orchid",
+  "soil": "#skyblock_resources:crop_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "biomeswevegone:japanese_orchid",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "biomeswevegone:japanese_orchid",
+      "min": 1
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

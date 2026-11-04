@@ -1,0 +1,42 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "afc"
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tfc"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "afc:wood/sapling/jaggery_palm",
+  "soil": "#skyblock_resources:base_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "tfc:wood/wood/palm",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "tfc:wood/wood/palm",
+      "min": 1
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 7,
+      "chance": 0.648
+    },
+    {
+      "id": "afc:wood/sapling/jaggery_palm",
+      "min": 1,
+      "max": 4,
+      "chance": 0.622
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

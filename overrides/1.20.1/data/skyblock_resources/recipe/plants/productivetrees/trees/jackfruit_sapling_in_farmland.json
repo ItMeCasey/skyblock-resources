@@ -1,0 +1,43 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "productivetrees"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "productivetrees:jackfruit_sapling",
+  "soil": "minecraft:farmland",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "productivetrees:jackfruit_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "productivetrees:jackfruit_log",
+      "min": 1
+    },
+    {
+      "id": "productivetrees:jackfruit",
+      "min": 1,
+      "chance": 0.594
+    },
+    {
+      "id": "productivetrees:jackfruit_sapling",
+      "min": 1,
+      "max": 3,
+      "chance": 0.39
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 7,
+      "chance": 0.338
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "regions_unexplored"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "regions_unexplored:flowering_sapling",
+  "soil": "#skyblock_resources:base_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "minecraft:oak_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "minecraft:oak_log",
+      "min": 1
+    },
+    {
+      "id": "minecraft:oak_sapling",
+      "min": 1,
+      "max": 4,
+      "chance": 0.542
+    },
+    {
+      "id": "regions_unexplored:flowering_sapling",
+      "min": 1,
+      "max": 3,
+      "chance": 0.34
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 4,
+      "chance": 0.33
+    },
+    {
+      "id": "minecraft:apple",
+      "min": 1,
+      "chance": 0.102
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

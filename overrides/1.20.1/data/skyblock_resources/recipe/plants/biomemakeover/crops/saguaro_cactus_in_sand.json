@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "biomemakeover"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "biomemakeover:saguaro_cactus",
+  "soil": "#skyblock_resources:sand_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "biomemakeover:saguaro_cactus",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "biomemakeover:saguaro_cactus",
+      "min": 1
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

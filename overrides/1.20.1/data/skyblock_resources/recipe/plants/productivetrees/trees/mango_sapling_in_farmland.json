@@ -1,0 +1,43 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "productivetrees"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "productivetrees:mango_sapling",
+  "soil": "minecraft:farmland",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "productivetrees:mango_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "productivetrees:mango_log",
+      "min": 1
+    },
+    {
+      "id": "productivetrees:mango",
+      "min": 12,
+      "max": 13
+    },
+    {
+      "id": "productivetrees:mango_sapling",
+      "min": 1,
+      "max": 5,
+      "chance": 0.608
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 5,
+      "chance": 0.334
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

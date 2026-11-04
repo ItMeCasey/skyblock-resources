@@ -21,14 +21,14 @@
     {
       "id": "occultism:otherworld_sapling",
       "min": 1,
-      "max": 4,
-      "chance": 0.608
+      "max": 5,
+      "chance": 0.658
     },
     {
       "id": "minecraft:stick",
       "min": 1,
       "max": 6,
-      "chance": 0.304
+      "chance": 0.336
     }
   ],
   "duration": 1000,

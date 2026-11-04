@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "twilightforest"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "twilightforest:trollber",
+  "soil": "#skyblock_resources:crop_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "twilightforest:torchberries",
+    "count": 4
+  },
+  "drops": [
+    {
+      "id": "twilightforest:torchberries",
+      "min": 4,
+      "max": 8
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "meadow"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "meadow:saxifrage",
+  "soil": "#skyblock_resources:crop_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "meadow:saxifrage",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "meadow:saxifrage",
+      "min": 1
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

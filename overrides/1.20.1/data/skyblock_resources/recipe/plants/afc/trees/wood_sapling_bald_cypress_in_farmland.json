@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "afc"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "afc:wood/sapling/bald_cypress",
+  "soil": "minecraft:farmland",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "afc:wood/log/cypress",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "afc:wood/log/cypress",
+      "min": 1
+    },
+    {
+      "id": "afc:wood/sapling/bald_cypress",
+      "min": 1,
+      "max": 7,
+      "chance": 0.714
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 7,
+      "chance": 0.606
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

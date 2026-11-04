@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "vintagedelight"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "vintagedelight:magic_peanut",
+  "soil": "#skyblock_resources:improved_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "vintagedelight:magic_vine",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "vintagedelight:magic_vine",
+      "min": 1
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

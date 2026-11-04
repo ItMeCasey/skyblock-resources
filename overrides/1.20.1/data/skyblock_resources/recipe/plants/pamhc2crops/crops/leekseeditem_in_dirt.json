@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "pamhc2crops"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "pamhc2crops:leekseeditem",
+  "soil": "#skyblock_resources:crop_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "pamhc2crops:leekitem",
+    "count": 2
+  },
+  "drops": [
+    {
+      "id": "pamhc2crops:leekitem",
+      "min": 2,
+      "max": 5
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

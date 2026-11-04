@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "biomeswevegone"
+    }
+  ],
+  "type": "skyblock_resources:resource_generator",
+  "generator": "skyblock_resources:diamond_generator",
+  "resource": "biomeswevegone:lush_dirt",
+  "output": {
+    "id": "biomeswevegone:lush_dirt",
+    "count": 16
+  },
+  "duration": 100,
+  "category": [
+    "misc"
+  ]
+}

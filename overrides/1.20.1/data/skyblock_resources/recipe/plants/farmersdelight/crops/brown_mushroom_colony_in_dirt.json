@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "farmersdelight"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "farmersdelight:brown_mushroom_colony",
+  "soil": "#skyblock_resources:crop_soils",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "minecraft:brown_mushroom",
+    "count": 5
+  },
+  "drops": [
+    {
+      "id": "minecraft:brown_mushroom",
+      "min": 5
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

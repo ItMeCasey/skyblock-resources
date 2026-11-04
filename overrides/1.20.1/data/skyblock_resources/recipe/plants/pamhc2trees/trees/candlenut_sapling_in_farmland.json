@@ -1,0 +1,48 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "pamhc2trees"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "pamhc2trees:candlenut_sapling",
+  "soil": "minecraft:farmland",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "minecraft:oak_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "minecraft:oak_log",
+      "min": 1
+    },
+    {
+      "id": "pamhc2trees:candlenutitem",
+      "min": 8
+    },
+    {
+      "id": "minecraft:oak_sapling",
+      "min": 1,
+      "max": 5,
+      "chance": 0.63
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 5,
+      "chance": 0.312
+    },
+    {
+      "id": "minecraft:apple",
+      "min": 1,
+      "max": 2,
+      "chance": 0.098
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

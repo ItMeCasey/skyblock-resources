@@ -1,0 +1,42 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "pamhc2trees"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "pamhc2trees:banana_sapling",
+  "soil": "#skyblock_resources:improved_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "minecraft:jungle_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "minecraft:jungle_log",
+      "min": 1
+    },
+    {
+      "id": "pamhc2trees:bananaitem",
+      "min": 8
+    },
+    {
+      "id": "minecraft:jungle_sapling",
+      "min": 1,
+      "max": 3,
+      "chance": 0.378
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 5,
+      "chance": 0.312
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

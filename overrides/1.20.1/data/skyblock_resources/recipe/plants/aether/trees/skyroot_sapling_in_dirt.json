@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "aether"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "aether:skyroot_sapling",
+  "soil": "#skyblock_resources:base_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "aether:skyroot_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "aether:skyroot_log",
+      "min": 1
+    },
+    {
+      "id": "aether:skyroot_sapling",
+      "min": 1,
+      "max": 5,
+      "chance": 0.624
+    },
+    {
+      "id": "aether:skyroot_stick",
+      "min": 1,
+      "max": 4,
+      "chance": 0.308
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

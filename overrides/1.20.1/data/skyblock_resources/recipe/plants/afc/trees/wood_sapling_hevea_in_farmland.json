@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "afc"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "afc:wood/sapling/hevea",
+  "soil": "minecraft:farmland",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "afc:wood/wood/hevea",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "afc:wood/wood/hevea",
+      "min": 1
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 9,
+      "chance": 0.606
+    },
+    {
+      "id": "afc:wood/sapling/hevea",
+      "min": 1,
+      "max": 2,
+      "chance": 0.248
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "productivetrees"
+    }
+  ],
+  "type": "skyblock_resources:tree_drops",
+  "sapling": "productivetrees:apricot_sapling",
+  "soil": "#skyblock_resources:base_soils",
+  "generator": "#skyblock_resources:tree_generators",
+  "outputs": {
+    "id": "productivetrees:apricot_log",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "productivetrees:apricot_log",
+      "min": 1
+    },
+    {
+      "id": "productivetrees:apricot",
+      "min": 13,
+      "max": 14
+    },
+    {
+      "id": "productivetrees:apricot_sapling",
+      "min": 1,
+      "max": 6,
+      "chance": 0.684
+    },
+    {
+      "id": "minecraft:stick",
+      "min": 1,
+      "max": 4,
+      "chance": 0.366
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}

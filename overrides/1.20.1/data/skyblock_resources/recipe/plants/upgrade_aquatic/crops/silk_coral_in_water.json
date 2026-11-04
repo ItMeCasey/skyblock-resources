@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "upgrade_aquatic"
+    }
+  ],
+  "type": "skyblock_resources:crop_drops",
+  "seed": "upgrade_aquatic:silk_coral",
+  "soil": "minecraft:water_bucket",
+  "generator": "#skyblock_resources:crop_generators",
+  "outputs": {
+    "id": "upgrade_aquatic:silk_coral",
+    "count": 1
+  },
+  "drops": [
+    {
+      "id": "upgrade_aquatic:silk_coral",
+      "min": 1,
+      "max": 2
+    }
+  ],
+  "duration": 1000,
+  "category": [
+    "misc"
+  ]
+}
