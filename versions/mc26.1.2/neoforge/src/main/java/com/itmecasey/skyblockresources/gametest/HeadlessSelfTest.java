@@ -68,6 +68,7 @@ public final class HeadlessSelfTest {
 		}
 
 		passed &= checkDropRecipes(level);
+		passed &= checkPushConservesItems(level);
 
 		LOGGER.info("SELFTEST {}", passed ? "PASSED" : "FAILED");
 		server.halt(false);
@@ -97,6 +98,43 @@ public final class HeadlessSelfTest {
 		LOGGER.info("SELFTEST upgrade {} -> {}: {}", from, to, ok ? "ok" : "FAIL");
 		level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
 		return ok;
+	}
+
+	/** A generator pushing into a nearly full chest must not lose the items the chest could not take. */
+	private static boolean checkPushConservesItems(ServerLevel level) {
+		BlockPos pos = new BlockPos(0, 100, 0);
+		BlockPos above = pos.above();
+		level.setBlock(pos, SkyblockResourcesModBlocks.IRON_GENERATOR.get().defaultBlockState(), 3);
+		level.setBlock(above, Blocks.CHEST.defaultBlockState(), 3);
+		Container generator = (Container) level.getBlockEntity(pos);
+		Container chest = (Container) level.getBlockEntity(above);
+		generator.setItem(0, new ItemStack(Items.GRAVEL, 64));
+		for (int slot = 0; slot < chest.getContainerSize(); slot++)
+			chest.setItem(slot, new ItemStack(Items.STONE, 64));
+		chest.setItem(0, new ItemStack(Items.GRAVEL, 62));
+		var data = level.getBlockEntity(pos).getPersistentData();
+		data.putString("resource_name", "empty");
+		data.putString("output_direction", "UP");
+		data.put("BlockDirections", new net.minecraft.nbt.CompoundTag());
+		data.getCompoundOrEmpty("BlockDirections").putBoolean("item_out_up", true);
+		data.getCompoundOrEmpty("BlockDirections").putBoolean("item_touched_up", true);
+		data.putDouble("output_timer", 1_000_000);
+		int before = countItem(generator, Items.GRAVEL) + countItem(chest, Items.GRAVEL);
+		com.itmecasey.skyblockresources.procedures.IronGeneratorOnTickUpdateProcedure.execute(level, pos.getX(), pos.getY(), pos.getZ());
+		int after = countItem(generator, Items.GRAVEL) + countItem(chest, Items.GRAVEL);
+		boolean ok = before == after && countItem(chest, Items.GRAVEL) > 62;
+		LOGGER.info("SELFTEST push into a nearly full chest keeps every item ({} before, {} after, chest has {}): {}", before, after, countItem(chest, Items.GRAVEL), ok ? "ok" : "FAIL");
+		level.setBlock(above, Blocks.AIR.defaultBlockState(), 3);
+		level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
+		return ok;
+	}
+
+	private static int countItem(Container container, Item item) {
+		int count = 0;
+		for (int slot = 0; slot < container.getContainerSize(); slot++)
+			if (container.getItem(slot).is(item))
+				count += container.getItem(slot).getCount();
+		return count;
 	}
 
 	/** Every tree and crop recipe must list at least one real drop, so a bad generated or hand-edited file fails here. */

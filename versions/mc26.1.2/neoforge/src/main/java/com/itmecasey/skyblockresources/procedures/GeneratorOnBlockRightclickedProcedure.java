@@ -338,6 +338,9 @@ public class GeneratorOnBlockRightclickedProcedure {
 						int extracted = (int) src.extract(slot, res, remainingAmount, tx);
 						if (extracted > 0) {
 							int inserted = (int) dst.insert(res, extracted, tx);
+							// Put back what the target did not take, or the difference would vanish when the transaction commits.
+							if (inserted < extracted)
+								src.insert(slot, res, extracted - inserted, tx);
 							if (inserted > 0) {
 								tx.commit();
 								return inserted;
@@ -352,6 +355,9 @@ public class GeneratorOnBlockRightclickedProcedure {
 						int extracted = (int) src.extract(s, res, remainingAmount, tx);
 						if (extracted > 0) {
 							int inserted = (int) dst.insert(res, extracted, tx);
+							// Put back what the target did not take, or the difference would vanish when the transaction commits.
+							if (inserted < extracted)
+								src.insert(s, res, extracted - inserted, tx);
 							if (inserted > 0) {
 								totalTransferred += inserted;
 								remainingAmount -= inserted;

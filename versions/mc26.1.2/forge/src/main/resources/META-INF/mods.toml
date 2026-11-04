@@ -1,0 +1,32 @@
+modLoader="javafml"
+loaderVersion="[64,)"
+license="GNU General Public License version 3 (GPLv3)"
+
+[[mods]]
+modId="skyblock_resources"
+version="2026.11.1"
+displayName="Skyblock Resources"
+displayURL="https://github.com/ItMeCasey"
+credits="ItMeCasey"
+authors="ItMeCasey"
+
+[[dependencies.skyblock_resources]]
+    modId="forge"
+    mandatory=true
+    versionRange="[64,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.skyblock_resources]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[26.1.2]"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.skyblock_resources]]
+    modId="smwti"
+    mandatory=false
+    versionRange="[2026.11.1,)"
+    ordering="NONE"
+    side="BOTH"

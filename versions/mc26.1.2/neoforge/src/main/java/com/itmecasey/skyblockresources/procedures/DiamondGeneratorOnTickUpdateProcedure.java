@@ -76,6 +76,9 @@ public class DiamondGeneratorOnTickUpdateProcedure {
 				int extracted = (int) source.extract(slot, resource, remainingAmount, tx);
 				if (extracted > 0) {
 					int inserted = (int) target.insert(resource, extracted, tx);
+					// Put back what the target did not take, or the difference would vanish when the transaction commits.
+					if (inserted < extracted)
+						source.insert(slot, resource, extracted - inserted, tx);
 					if (inserted > 0) {
 						totalTransferred += inserted;
 						remainingAmount -= inserted;

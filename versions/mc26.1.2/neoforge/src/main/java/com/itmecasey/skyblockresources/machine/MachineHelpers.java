@@ -604,6 +604,9 @@ public final class MachineHelpers {
 					int extracted = (int) src.extract(i, res, toExtract, tx);
 					if (extracted > 0) {
 						int inserted = (int) dst.insert(res, extracted, tx);
+						// Put back what the target did not take, or the difference would vanish when the transaction commits.
+						if (inserted < extracted)
+							src.insert(i, res, extracted - inserted, tx);
 						if (inserted > 0) {
 							tx.commit();
 							return inserted;
@@ -720,6 +723,9 @@ public final class MachineHelpers {
 					int extracted = (int) src.extract(i, res, toExtract, tx);
 					if (extracted > 0) {
 						int inserted = (int) dst.insert(res, extracted, tx);
+						// Put back what the target did not take, or the difference would vanish when the transaction commits.
+						if (inserted < extracted)
+							src.insert(i, res, extracted - inserted, tx);
 						if (inserted > 0) {
 							tx.commit();
 							return inserted;

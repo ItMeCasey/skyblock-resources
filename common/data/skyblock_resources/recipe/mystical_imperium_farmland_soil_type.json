@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ],
   "type": "skyblock_resources:soil_type",
   "soil": "mysticalagriculture:imperium_farmland",
   "speed_bonus": 0.0,

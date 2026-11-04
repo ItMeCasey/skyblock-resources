@@ -2,11 +2,29 @@
   "replace": false,
   "values": [
     "minecraft:farmland",
-    "mysticalagriculture:inferium_farmland",
-    "mysticalagriculture:prudentium_farmland",
-    "mysticalagriculture:tertium_farmland",
-    "mysticalagriculture:imperium_farmland",
-    "mysticalagriculture:supremium_farmland",
-    "mysticalagriculture:awakened_supremium_farmland"
+    {
+      "id": "mysticalagriculture:inferium_farmland",
+      "required": false
+    },
+    {
+      "id": "mysticalagriculture:prudentium_farmland",
+      "required": false
+    },
+    {
+      "id": "mysticalagriculture:tertium_farmland",
+      "required": false
+    },
+    {
+      "id": "mysticalagriculture:imperium_farmland",
+      "required": false
+    },
+    {
+      "id": "mysticalagriculture:supremium_farmland",
+      "required": false
+    },
+    {
+      "id": "mysticalagriculture:awakened_supremium_farmland",
+      "required": false
+    }
   ]
 }

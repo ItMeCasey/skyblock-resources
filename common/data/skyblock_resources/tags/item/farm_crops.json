@@ -8,6 +8,9 @@
     "minecraft:potato",
     "minecraft:melon_seeds",
     "minecraft:beetroot",
-    "#mysticalagriculture:seeds"
+    {
+      "id": "#mysticalagriculture:seeds",
+      "required": false
+    }
   ]
 }

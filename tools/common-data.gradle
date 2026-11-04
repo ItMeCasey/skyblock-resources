@@ -30,6 +30,10 @@ abstract class PrepareCommonData extends DefaultTask {
     @Input
     abstract Property<String> getModLoadedType()
 
+    // 'array': "<key>": [ {condition}, ... ]; 'single': "<key>": {condition} (several become a forge:and), as Forge 26.1.2 reads them.
+    @Input
+    abstract Property<String> getConditionsMode()
+
     @Input
     abstract MapProperty<String, String> getTagMap()
 
@@ -59,6 +63,11 @@ abstract class PrepareCommonData extends DefaultTask {
         }
         if (recipe.ingredient != null) {
             recipe.ingredient = ingredient(recipe.ingredient)
+        }
+        ['template', 'base', 'addition'].each { String key ->
+            if (recipe[key] != null) {
+                recipe[key] = ingredient(recipe[key])
+            }
         }
         if (format.get() == 'v20' && recipe.result instanceof Map && recipe.result.id != null) {
             def result = [item: recipe.result.id]
@@ -127,10 +136,22 @@ abstract class PrepareCommonData extends DefaultTask {
             if (modLoadedType.get() != 'neoforge:mod_loaded') {
                 text = text.replace('"neoforge:mod_loaded"', '"' + modLoadedType.get() + '"')
             }
-            tagMap.get().each { from, to -> text = text.replace('"#' + from + '"', '"#' + to + '"').replace('"' + from + '"', '"' + to + '"') }
-            if (fmt != 'v26' && rel.matches('data/[^/]+/recipes?/.*\\.json') && text.contains('"minecraft:crafting_')) {
+            if (conditionsMode.get() == 'single' && text.contains('"' + conditionsKey.get() + '"')) {
                 def json = new JsonSlurper().parseText(text)
-                if (json instanceof Map && json.type?.toString()?.startsWith('minecraft:crafting_')) {
+                def list = json[conditionsKey.get()]
+                if (list instanceof List) {
+                    json.remove(conditionsKey.get())
+                    def single = list.size() == 1 ? list[0] : [type: 'forge:and', values: list]
+                    def converted = new LinkedHashMap()
+                    converted[conditionsKey.get()] = single
+                    converted.putAll(json)
+                    text = JsonOutput.prettyPrint(JsonOutput.toJson(converted)) + '\n'
+                }
+            }
+            tagMap.get().each { from, to -> text = text.replace('"#' + from + '"', '"#' + to + '"').replace('"' + from + '"', '"' + to + '"') }
+            if (fmt != 'v26' && rel.matches('data/[^/]+/recipes?/.*\\.json') && (text.contains('"minecraft:crafting_') || text.contains('"minecraft:smithing_'))) {
+                def json = new JsonSlurper().parseText(text)
+                if (json instanceof Map && (json.type?.toString()?.startsWith('minecraft:crafting_') || json.type?.toString()?.startsWith('minecraft:smithing_'))) {
                     text = JsonOutput.prettyPrint(JsonOutput.toJson(convertCrafting(json))) + '\n'
                 }
             }
@@ -152,6 +173,7 @@ def prepare = tasks.register('prepareCommonData', PrepareCommonData) {
     }
     outputDir = layout.buildDirectory.dir('generated/common-data')
     it.format = format
+    conditionsMode = target.conditionsMode ?: 'array'
     conditionsKey = target.conditionsKey ?: (format == 'v20' ? 'conditions' : (loader == 'forge' ? 'forge:conditions' : 'neoforge:conditions'))
     modLoadedType = target.modLoadedType ?: ((format == 'v20' || loader == 'forge') ? 'forge:mod_loaded' : 'neoforge:mod_loaded')
     // Item tags that exist under another name; older versions use the Forge names.
