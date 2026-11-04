@@ -4,7 +4,7 @@ Targets: Forge and NeoForge for 1.20.1, 1.21.1, and 26.1.2 (six builds). The cur
 
 ## Decision
 
-One repository, one source of truth for data, and one independent project per Minecraft version AND loader. Forge and NeoForge are different loaders with different APIs, mod builds and mod ids; they are never treated as interchangeable, and nothing is assumed to work on both.
+One repository, one source of truth for data, and one independent project per Minecraft version AND loader. NeoForge forked from Forge at 1.20.1, so on 1.20.1 ONLY the two loaders are compatible (Forge mod builds run on NeoForge 1.20.1). From 1.21.1 on they have zero compatibility: different APIs, mod builds and mod ids, and nothing may be assumed to work on both.
 
 ```
 SkyblockResources2/
@@ -27,7 +27,7 @@ Each `versions/<mc>/<loader>` is a self-contained Gradle project, like SMWTI's `
 
 ## Why code is split per Minecraft version
 
-The Java uses version-specific APIs, so it cannot be one tree: 26.1.2 has `Identifier`, `TagValueInput` and the new recipe-input classes, and 1.21.1 and 1.20.1 use `ResourceLocation`, `CompoundTag` load and save, `Container` recipes, and different networking and registry calls. Forge and NeoForge are separate loaders with different event buses, registries, capability systems, networking, mod metadata, and different builds (and sometimes ids) of every mod, so each loader gets its own complete project even at the same Minecraft version. Code that two projects happen to share is copied, not shared.
+The Java uses version-specific APIs, so it cannot be one tree: 26.1.2 has `Identifier`, `TagValueInput` and the new recipe-input classes, and 1.21.1 and 1.20.1 use `ResourceLocation`, `CompoundTag` load and save, `Container` recipes, and different networking and registry calls. From 1.21.1 on, Forge and NeoForge are separate loaders with different event buses, registries, capability systems, networking, mod metadata, and different builds (and sometimes ids) of every mod, so each loader gets its own complete project. On 1.20.1 the two are compatible, so a 1.20.1 mod build or data file made for one is usable by the other, but each still has its own project. Code that two projects happen to share is copied, not shared.
 
 Porting a version means copying the nearest newer version of the SAME loader (and using the other loader's port only as a reference for what had to change), fixing what the compiler reports, and recording the changes in `docs/PORT_NOTES_<mc>.md`. Port in this order: NeoForge 1.21.1 (closest API), NeoForge 1.20.1, then Forge for each version.
 

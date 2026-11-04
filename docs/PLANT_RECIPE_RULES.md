@@ -5,7 +5,7 @@ How the recipes under `recipe/plants/<modid>/` and `recipe/compat/<modid>/` were
 ## Where files go
 
 - 26.1.2 recipes live in `common/data/skyblock_resources/recipe/...` (shared by all builds; each has a `neoforge:conditions` load condition that the build transform rewrites per loader).
-- Recipes for a mod on another Minecraft version live in `overrides/<mc>-<loader>/data/skyblock_resources/recipe/...` (for example `overrides/1.21.1-neoforge/...`). Forge and NeoForge are different loaders with different mod builds and sometimes different ids, so each loader is scanned with its own mod builds and has its own folder; never reuse one loader's scan for the other. Write them in the 26.1.2 JSON format with `neoforge:conditions`; the transform converts them for the loader.
+- Recipes for a mod on another Minecraft version live in `overrides/<mc>-<loader>/data/skyblock_resources/recipe/...` (for example `overrides/1.21.1-neoforge/...`). On 1.21.1 and 26.1.2 Forge and NeoForge have zero compatibility: different mod builds and sometimes different ids, so each loader is scanned with its own mod builds and has its own folder; never reuse one loader's scan for the other. 1.20.1 is the exception: NeoForge forked from Forge there, so Forge builds run on NeoForge 1.20.1 and one scan serves both; put 1.20.1 mod recipes in `overrides/1.20.1/`. Write them in the 26.1.2 JSON format with `neoforge:conditions`; the transform converts them for the loader.
 - Never edit a `common/` file to fix one version. If a shared file is wrong for a version, replace it or add a `.delete` marker in `overrides/<mc>/` (fixes that are true for the Minecraft version) or `overrides/<mc>-<loader>/` (anything about mods).
 
 ## What to scan
