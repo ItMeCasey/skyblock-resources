@@ -1,0 +1,80 @@
+plugins {
+    id 'java'
+    id 'eclipse'
+    id 'net.minecraftforge.gradle' version '[7.0.3,8)'
+}
+
+version = '2026.11.1'
+base.archivesName = 'skyblock_resources-forge-1.21.1'
+
+// Mojang ships Java 21 to end users in 1.20.5+, so the mod targets Java 21.
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+// Data and assets come from the shared common/ folder; see docs/PORTING_LAYOUT.md.
+ext.dataTarget = [mc: '1.21.1', format: 'v21', loader: 'forge', conditionsKey: 'forge:condition', conditionsMode: 'single', modLoadedType: 'forge:mod_loaded']
+apply from: '../../../tools/common-data.gradle'
+
+minecraft {
+    mappings channel: 'official', version: '1.21.1'
+
+    runs {
+        configureEach {
+            workingDir = layout.projectDirectory.dir('run')
+        }
+
+        register('client')
+
+        register('server') {
+            args '--nogui'
+        }
+
+        register('gameTest') {
+            // Forge's game test server (needs no EULA) runs the headless self-test (see gametest/HeadlessSelfTest) and stops.
+            mainClass = 'net.minecraftforge.bootstrap.ForgeBootstrap'
+            args '--launchTarget', 'forge_userdev_server_gametest', '--gameDir', '.', '--nogui', '--port', '8903'
+            systemProperty 'skyblock.selftest', 'true'
+        }
+    }
+}
+
+repositories {
+    minecraft.mavenizer(it)
+    maven fg.forgeMaven
+    maven fg.minecraftLibsMaven
+    mavenCentral()
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = 'Modrinth'
+                url = 'https://api.modrinth.com/maven'
+            }
+        }
+        filter {
+            includeGroup 'maven.modrinth'
+        }
+    }
+}
+
+dependencies {
+    implementation minecraft.dependency('net.minecraftforge:forge:1.21.1-52.1.20')
+
+    // SMWTI is not published yet, so use the jar from its own project build.
+    implementation files("${System.getProperty('user.home')}/Desktop/SMWTI/versions/mc1.21.1/forge/build/libs/smwti-forge-1.21.1-2026.11.1.jar")
+
+    // JEI 19.64.0.455 for Forge (Modrinth version id). Jade and KubeJS have no Forge 1.21.1 build.
+    compileOnly 'maven.modrinth:jei:qVF5T46z'
+    runtimeOnly 'maven.modrinth:jei:qVF5T46z'
+
+    // Test mods for the dev environment and the headless self-test (Modrinth version ids, Forge builds only).
+    // Forge 1.21.1 has no build of Croptopia, Mystical Agriculture (+Cucumber, Agradditions), Nature's Spirit, Occultism,
+    // Ecologics, EvilCraft, Integrated Dynamics, Forbidden Arcanus, Lithostitched, Curios, KubeJS or Jade.
+    runtimeOnly 'maven.modrinth:biomes-o-plenty:QjacNZfm'
+    runtimeOnly 'maven.modrinth:glitchcore:dE20KE7b'
+    runtimeOnly 'maven.modrinth:terrablender:GYvJwlAJ'
+    runtimeOnly 'maven.modrinth:terralith:MuJMtPGQ'
+    runtimeOnly 'maven.modrinth:oh-the-trees-youll-grow:XiQ6zlPe'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
