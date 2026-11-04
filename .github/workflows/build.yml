@@ -1,0 +1,56 @@
+name: build
+
+# Builds all six Skyblock Resources jars and runs each headless self test on every push and pull request.
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - module: forge-26.1.2
+            dir: versions/mc26.1.2/forge
+            java: 25
+          - module: neoforge-26.1.2
+            dir: versions/mc26.1.2/neoforge
+            java: 25
+          - module: forge-1.21.1
+            dir: versions/mc1.21.1/forge
+            java: 21
+          - module: neoforge-1.21.1
+            dir: versions/mc1.21.1/neoforge
+            java: 21
+          - module: forge-1.20.1
+            dir: versions/mc1.20.1/forge
+            java: 17
+          - module: neoforge-1.20.1
+            dir: versions/mc1.20.1/neoforge
+            java: 17
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ matrix.dir }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+      - run: chmod +x gradlew
+      - run: ./gradlew build --no-daemon
+      - name: Headless self test
+        run: |
+          ./gradlew runGameTest --no-daemon 2>&1 | tee selftest.log
+          grep -q "SELFTEST PASSED" selftest.log
+          ! grep -q "SELFTEST FAILED" selftest.log
+      - uses: actions/upload-artifact@v5
+        with:
+          name: jar-${{ matrix.module }}
+          path: ${{ matrix.dir }}/build/libs/*.jar
+          if-no-files-found: error

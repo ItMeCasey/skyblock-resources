@@ -6,7 +6,7 @@ Everything you need to fill in the two project forms. Files are in `branding/ico
 
 | Field | CurseForge | Modrinth |
 |---|---|---|
-| Project ID | _fill in_ (not in the repository yet) | _fill in_ |
+| Project ID | 594061 | _not used yet_ |
 | Name | Skyblock Resources | Skyblock Resources |
 | Slug / URL | `skyblock-resources` | `skyblock-resources` |
 | Icon / logo | `icon/icon_512.png` (square, at least 400x400) | `icon/icon_512.png` (square, under 256 KiB) |

@@ -42,6 +42,13 @@ Spend: none
 - [x] Drakma author and website fields changed to ItMeCasey in neoforge.mods.toml (w:1)
 - [x] End, nether, and mycelium soil tags exist and are used by their soil recipes (w:1)
 
+## Release
+- [x] CI build of all six jars with the headless self test (build.yml) (w:2)
+- [x] Release workflow and CurseForge upload script for project 594061 (release.yml, publish_curseforge.py) (w:2)
+- [ ] CURSEFORGE_TOKEN repository secret set by Casey (w:1)
+- [ ] Tag v2026.11.1 as a beta and check the CurseForge files (w:2)
+- [ ] Logo and banners uploaded to CurseForge (w:1)
+
 ## Branding
 - [~] Logo: empty diamond cube frame, drawn by branding/source/make_icon.py; not yet checked against the live CurseForge logo (w:1)
 - [x] Banners and section headers in the SMWTI style: banner, social, features and section headers in branding/banners/ (w:2)
