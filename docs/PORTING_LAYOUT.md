@@ -4,7 +4,7 @@ Targets: Forge and NeoForge for 1.20.1, 1.21.1, and 26.1.2 (six builds). The cur
 
 ## Decision
 
-One repository, one source of truth for data, one source tree per Minecraft version shared by its two loaders.
+One repository, one source of truth for data, and one independent project per Minecraft version AND loader. Forge and NeoForge are different loaders with different APIs, mod builds and mod ids; they are never treated as interchangeable, and nothing is assumed to work on both.
 
 ```
 SkyblockResources2/
@@ -13,23 +13,23 @@ SkyblockResources2/
     assets/skyblock_resources/ models, blockstates, textures, lang, item definitions
   versions/
     mc26.1.2/
-      common/java/             code shared by Forge and NeoForge at this version
       neoforge/                Gradle project: build.gradle, gradle.properties, loader-only java, mods.toml
       forge/
     mc1.21.1/ (same shape)
     mc1.20.1/ (same shape)
-  overrides/<mc>/              per-version data patches (see below), applied last
+  overrides/<mc>/              data fixes for one Minecraft version (formats, vanilla items), used by both loaders of it
+  overrides/<mc>-<loader>/     files for one version AND loader: recipes for mods, which differ between Forge and NeoForge; wins over overrides/<mc>/
   tools/                       the sync script and the check script
   docs/  MOD_MATRIX.md  PROJECT_STATUS.md
 ```
 
-Each `versions/<mc>/<loader>` is a self-contained Gradle project, like SMWTI's `versions/` folder. It adds `../common/java` as a source directory and builds the data from `common/` through a transform (below). Nothing is generated into git: the transform runs inside `processResources`.
+Each `versions/<mc>/<loader>` is a self-contained Gradle project, like SMWTI's `versions/` folder. It has its own full source tree and builds the data from `common/` through a transform (below). Nothing is generated into git: the transform runs inside `processResources`.
 
 ## Why code is split per Minecraft version
 
-The Java uses version-specific APIs, so it cannot be one tree: 26.1.2 has `Identifier`, `TagValueInput` and the new recipe-input classes, and 1.21.1 and 1.20.1 use `ResourceLocation`, `CompoundTag` load and save, `Container` recipes, and different networking and registry calls. Forge and NeoForge at the same Minecraft version differ far less (event bus, registration, config), so they share `versions/<mc>/common/java` and keep only loader glue in their own folder. That is the same ratio SMWTI measured: 15 of its files differ between Forge and NeoForge at one version.
+The Java uses version-specific APIs, so it cannot be one tree: 26.1.2 has `Identifier`, `TagValueInput` and the new recipe-input classes, and 1.21.1 and 1.20.1 use `ResourceLocation`, `CompoundTag` load and save, `Container` recipes, and different networking and registry calls. Forge and NeoForge are separate loaders with different event buses, registries, capability systems, networking, mod metadata, and different builds (and sometimes ids) of every mod, so each loader gets its own complete project even at the same Minecraft version. Code that two projects happen to share is copied, not shared.
 
-Porting a version means copying the nearest newer version's `common/java`, fixing what the compiler reports, and recording the changes in `docs/PORT_NOTES_<mc>.md`. Port in this order: NeoForge 1.21.1 (closest API), NeoForge 1.20.1, then Forge for each version.
+Porting a version means copying the nearest newer version of the SAME loader (and using the other loader's port only as a reference for what had to change), fixing what the compiler reports, and recording the changes in `docs/PORT_NOTES_<mc>.md`. Port in this order: NeoForge 1.21.1 (closest API), NeoForge 1.20.1, then Forge for each version.
 
 ## Why data is shared, and what has to be transformed
 
@@ -66,7 +66,7 @@ Each version's `build.gradle` pins its own KubeJS, JEI, Jade, SMWTI and test-mod
 2. (Done) `tools/common-data.gradle` builds each version's data from `common/` (task `prepareCommonData`, wired into `processResources`). A version project sets `ext.dataTarget = [mc: ..., format: 'v26'|'v21'|'v20', loader: ...]` and applies it. For 26.1.2 the jar is byte-identical to the pre-transform jar. For v21 and v20 it was checked on the output files: folder names, load conditions, `c:stones` to `forge:stone`, vanilla crafting recipes (ingredient and result shapes), and the dropped `items/` definitions.
 
    Not transformed, so each port's recipe codecs must accept both shapes: our own recipe types write ingredients as strings (`"#tag"`, `"ns:item"`) and the output as `{"id", "count"}`. Older versions' Ingredient and ItemStack codecs want `{"item"}`/`{"tag"}` and `{"item", "count"}`, so the port reads both.
-3. Create `versions/mc26.1.2/common/java` and leave only loader glue in `neoforge/`.
+3. (Dropped) A shared Forge/NeoForge source folder: the loaders are not compatible, so every project keeps its own source.
 4. Add `mc26.1.2/forge`.
 5. Start `mc1.21.1/neoforge` from a copy of 26.1.2, then 1.20.1.
 
