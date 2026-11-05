@@ -97,5 +97,10 @@
   "block.skyblock_resources.stone_crop_generator": "Stone Crop Generator",
   "block.skyblock_resources.iron_crop_generator": "Iron Crop Generator",
   "block.skyblock_resources.diamond_crop_generator": "Diamond Crop Generator",
-  "block.skyblock_resources.netherite_crop_generator": "Netherite Crop Generator"
+  "block.skyblock_resources.netherite_crop_generator": "Netherite Crop Generator",
+  "skyblock_resources.viewer.ticks": "%s ticks",
+  "skyblock_resources.viewer.chance": "%s%% chance",
+  "skyblock_resources.viewer.speed": "Duration Reduction: %s%%",
+  "skyblock_resources.viewer.growth": "Drop Multiplier: %sx",
+  "skyblock_resources.viewer.bonus_seed": "Bonus Seed Chance: %s%%"
 }

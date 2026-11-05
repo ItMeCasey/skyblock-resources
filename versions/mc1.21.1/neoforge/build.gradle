@@ -43,6 +43,10 @@ neoForge {
     }
 }
 
+if (project.hasProperty('viewerCheck')) {
+    sourceSets.main.java.srcDir 'src/devtest/java'
+}
+
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
     options.compilerArgs.addAll(['-Xmaxerrs', '2000'])
@@ -90,6 +94,13 @@ repositories {
 dependencies {
     // SMWTI is on the private Maven (a mirror of its CurseForge file).
     implementation 'curse.maven:smwti-1781438:9423203'
+    // BEI (Barely Enough Items), a recipe viewer of ours. Only its API is compiled against, from the jar in libs.
+    compileOnly files('libs/bei-neoforge-1.21.1-2026.11.4-api.jar')
+    // REI and EMI, the other recipe viewers: compiled against only, never required. REI needs Cloth Config and Architectury at run time.
+    compileOnly 'maven.modrinth:rei:b8gfS9Je'
+    compileOnly 'maven.modrinth:cloth-config:izKINKFg'
+    compileOnly 'maven.modrinth:architectury-api:1IiqEQGl'
+    compileOnly 'maven.modrinth:emi:5sIPA1To'
     compileOnly 'curse.maven:jade-324717:8591319'
 
     compileOnly 'maven.modrinth:kubejs:GDXCpKlp'
@@ -129,5 +140,8 @@ dependencies {
 
     compileOnly 'mezz.jei:jei-1.21.1-common-api:19.64.0.455'
     compileOnly 'mezz.jei:jei-1.21.1-neoforge-api:19.64.0.455'
-    runtimeOnly 'mezz.jei:jei-1.21.1-neoforge:19.64.0.455'
+    // -PviewerCheck leaves JEI out of the dev client and compiles the dev-only tour in src/devtest, so a recipe viewer
+    // check shows this mod with one viewer. -PbeiJar=<path> adds a local BEI jar to the dev client.
+    if (!project.hasProperty('viewerCheck')) runtimeOnly 'mezz.jei:jei-1.21.1-neoforge:19.64.0.455'
+    if (project.hasProperty('beiJar')) runtimeOnly files(project.property('beiJar'))
 }
