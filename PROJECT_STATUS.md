@@ -1,7 +1,7 @@
 # Project Status
 <!-- status-format: 1 -->
 Updated: 2026-11-04
-Summary: Skyblock Resources 2026.11.1 is released as a beta for six builds (NeoForge and Forge on 26.1.2, 1.21.1 and 1.20.1); CI passes on all six; remaining work is CurseForge approval, live-client checks, and the logo check.
+Summary: Skyblock Resources 2026.11.1 is released as a beta for six builds (NeoForge and Forge on 26.1.2, 1.21.1 and 1.20.1); CI passes on all six; remaining work is live-client checks, and the logo check.
 Spend: none
 
 ## Done
@@ -47,7 +47,7 @@ Spend: none
 - [x] CURSEFORGE_TOKEN, IMC_MAVEN_USER and IMC_MAVEN_PASSWORD repository secrets set (w:1)
 - [x] Private Maven: curse.maven dependencies and SMWTI resolve from itmecasey.com/maven, with cursemaven as fallback (w:2)
 - [x] Release v2026.11.1 as a GitHub prerelease with six jars; tag v2026.11.1 pushed (w:2)
-- [~] CurseForge: six 2026.11.1 files uploaded; approval confirmed for NeoForge and Forge 1.20.1 only, the other four still pending (w:2)
+- [x] CurseForge: six 2026.11.1 files uploaded and all six approved (w:2)
 - [ ] Logo and banners uploaded to CurseForge (w:1)
 
 ## Wiki and branding
