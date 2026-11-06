@@ -144,7 +144,7 @@ public final class BeiTour {
 	// --- The check ---------------------------------------------------------------------------
 
 	private static void plan() {
-		then(0, () -> server("time set noon", "gamemode survival @a"));
+		then(0, () -> server("difficulty peaceful", "time set noon", "gamemode survival @a"));
 		then(20, () -> Minecraft.getInstance().setScreen(new InventoryScreen(player())));
 		then(40, () -> search("@skyblock_resources"));
 		hoverFirst();

@@ -1,7 +1,7 @@
 # Project Status
 <!-- status-format: 1 -->
-Updated: 2026-11-05
-Summary: Skyblock Resources 2026.11.1 is released as a beta for six builds; BEI, REI and EMI integrations are written and compile where those viewers have builds, BEI is seen working on NeoForge 1.21.1; remaining work is client checks of the other viewers and builds, and the logo check.
+Updated: 2026-11-06
+Summary: Skyblock Resources 2026.11.1 is released as a beta for six builds; BEI, REI and EMI integrations are written and compile where those viewers have builds, BEI is seen working on all six builds; remaining work is client checks of REI, EMI, JEI, Jade and SMWTI, and the logo check.
 Spend: none
 
 ## Done
@@ -39,9 +39,10 @@ Spend: none
 - [x] BEI plugin on all six builds (integration/bei), compiles on each (w:3)
 - [x] REI plugin on 26.1.2 NeoForge, 1.21.1 NeoForge and both 1.20.1 builds; EMI plugin on 1.21.1 NeoForge and both 1.20.1 builds; the other builds have no REI or EMI file (w:3)
 - [x] JEI, Jade and SMWTI integrations still compile on every build they exist on (w:1)
-- [x] BEI checked in a client on NeoForge 1.21.1: resource generator cards and the generator recipe seen, frames in docs/frames (w:2)
+- [x] BEI checked in a client on all six builds: resource generator, tree drop, crop drop and soil type cards seen (NeoForge 1.21.1: resource cards only), frames in docs/frames (w:4)
 - [ ] Client checks for BEI on the other five builds and REI, EMI, JEI, Jade, SMWTI on each build that has them (needs a dev tour per viewer) (w:4)
-- [ ] Add the tree drop, crop drop and soil card views to the BEI check (w:1)
+- [x] Tree drop, crop drop and soil card views seen in the BEI check on five builds (w:1)
+- [x] Forge 26.1.2: BEI showed none of our cards because our recipes arrive after BEI indexes; fixed with BeiRefresh (w:2)
 
 ## Open
 - [ ] Verify crop tiers in a live world (side config, break drops, Jade and overlay) (w:2)

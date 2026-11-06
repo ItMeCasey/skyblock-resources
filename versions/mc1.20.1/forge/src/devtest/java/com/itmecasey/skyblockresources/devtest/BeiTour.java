@@ -102,8 +102,7 @@ public final class BeiTour {
 			stage = Stage.LOADING_WORLD;
 			idle = 0;
 			SkyblockResourcesMod.LOGGER.info("SKYRES-SHOTS opening world {}", OPEN_WORLD);
-			minecraft.createWorldOpenFlows().openWorld(OPEN_WORLD, () -> {
-			});
+			minecraft.createWorldOpenFlows().loadLevel(new TitleScreen(), OPEN_WORLD);
 			return;
 		}
 		if (source.levelExists(WORLD)) {
@@ -147,7 +146,7 @@ public final class BeiTour {
 	// --- The check ---------------------------------------------------------------------------
 
 	private static void plan() {
-		then(0, () -> server("gamerule doFireTick false", "gamerule doDaylightCycle false", "time set noon", "gamemode survival @a"));
+		then(0, () -> server("difficulty peaceful", "gamerule doFireTick false", "gamerule doDaylightCycle false", "time set noon", "gamemode survival @a"));
 		then(20, () -> Minecraft.getInstance().setScreen(new InventoryScreen(player())));
 		then(40, () -> search("@skyblock_resources"));
 		hoverFirst();

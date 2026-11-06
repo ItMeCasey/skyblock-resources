@@ -37,16 +37,28 @@ types, each with the generators of its family as workstations. They read the sam
 
 ## Client checks
 
-Seen in a client (frames in `docs/frames/`):
+Client checks use a dev-only tour (`versions/<build>/src/devtest`, compiled only with `-PviewerCheck`, started with
+`SKYRES_SHOTS=bei`). It drives the game with its own handlers and reflection; nothing touches the desktop cursor or keyboard. Every
+frame below was read by eye. Frames are in `docs/frames/`, named `bei_<mc>_<loader>_<view>.png`.
 
-- BEI on NeoForge 1.21.1: the browser lists our items, the Wooden Generator recipe popup shows its crafting grid, and the
-  Cobblestone popup shows our "Resource Generator" cards (generator tier and resource in, output and count out, ticks below,
-  with the generators as the category's workstation tab). Tree drop, crop drop and soil cards were not opened in that run
-  (the oak sapling lookup grouped all saplings and did not open a popup).
+| Check | 26.1.2 NeoForge | 26.1.2 Forge | 1.21.1 NeoForge | 1.21.1 Forge | 1.20.1 NeoForge | 1.20.1 Forge |
+|---|---|---|---|---|---|---|
+| BEI: our items in the browser, generator popup, Resource Generator cards | seen | seen | seen | seen | seen | seen |
+| BEI: Tree Drops cards (apple popup) | seen | seen | not opened | seen | seen | seen |
+| BEI: Crop Drops card (carrot popup) | seen | seen | not opened | seen | seen | seen |
+| BEI: Soil Type card (farmland popup) | seen | seen | not opened | seen | seen | seen |
+
+The NeoForge 1.21.1 frames are from the first run, before the tour opened tree, crop and soil popups; they show the resource
+generator cards and the generator recipe only.
+
+Two things the checks found and fixed:
+
+- **Forge 26.1.2 showed none of our cards.** Forge 26.1 sends this mod's recipes in a message of its own, which arrived after BEI had
+  built its index. `BeiRefresh` now asks BEI to read its stored server recipes again when the message arrives.
+- **JEI classes on a viewer-check run.** Another dev mod (Occultism) loads JEI classes when the player logs out, so the 26.1.2
+  NeoForge viewer check keeps JEI's API jars on the classpath without the JEI mod.
 
 Not tested, and why:
 
-- BEI on the other five builds, and REI and EMI on every build: the only client tour that exists is a dev-only one for BEI on
-  NeoForge 1.21.1 (`versions/mc1.21.1/neoforge/src/devtest`, compiled only with `-PviewerCheck`). Each other viewer needs its own
-  tour, so those were not launched. All of them compile.
-- JEI, Jade and SMWTI: unchanged by this audit and still compile on every build; not looked at in a client in this run.
+- **REI and EMI on every build, and JEI, Jade and SMWTI on every build:** the tours so far only drive BEI. Each other viewer needs
+  its own tour step. They compile, and JEI, Jade and SMWTI were not changed by this work.
