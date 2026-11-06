@@ -60,11 +60,17 @@ tasks.register('runGameTest') {
     dependsOn 'runServer'
 }
 
+if (project.hasProperty('viewerCheck')) {
+    sourceSets.main.java.srcDir 'src/devtest/java'
+}
+
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
 
 repositories {
+    // The viewer jar a -PviewerCheck run uses, dropped in ./devlibs and never committed.
+    flatDir { dir 'devlibs' }
     def imcUser = System.getenv('IMC_MAVEN_USER') ?: project.findProperty('imcMavenUser')
     def imcPass = System.getenv('IMC_MAVEN_PASSWORD') ?: project.findProperty('imcMavenPassword')
     if (imcUser && imcPass) {
@@ -147,5 +153,7 @@ dependencies {
     runtimeOnly fg.deobf('maven.modrinth:valhelsia-core:eP3L8E7C')
 
     compileOnly fg.deobf('maven.modrinth:jei:6E4ps2ER')
-    runtimeOnly fg.deobf('maven.modrinth:jei:6E4ps2ER')
+    // -PviewerCheck leaves JEI out of the dev client and compiles the dev-only tour in src/devtest, so a recipe viewer check shows this mod with one viewer.
+    if (!project.hasProperty('viewerCheck')) runtimeOnly fg.deobf('maven.modrinth:jei:6E4ps2ER')
+    if (project.hasProperty('viewerCheck') && file('devlibs/bei-neoforge-1.20.1-2026.11.4.jar').exists()) runtimeOnly fg.deobf('local.dev:bei-neoforge-1.20.1:2026.11.4')
 }

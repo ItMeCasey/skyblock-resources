@@ -60,6 +60,10 @@ minecraft {
 // The game test server exits with a non-zero status after halting; the result is the SELFTEST line in the log.
 tasks.matching { it.name == 'runGameTest' }.configureEach { it.ignoreExitValue = true }
 
+if (project.hasProperty('viewerCheck')) {
+    sourceSets.main.java.srcDir 'src/devtest/java'
+}
+
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }

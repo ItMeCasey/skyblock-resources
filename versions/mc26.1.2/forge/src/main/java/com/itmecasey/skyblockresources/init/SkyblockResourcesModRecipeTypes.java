@@ -89,6 +89,7 @@ public class SkyblockResourcesModRecipeTypes {
 		/** Called on the client when the server's recipe message arrives. */
 		public static void receive(List<RecipeHolder<?>> recipes) {
 			recipeMap = RecipeMap.create(recipes);
+			com.itmecasey.skyblockresources.integration.bei.BeiRefresh.afterRecipes();
 		}
 
 		@SubscribeEvent

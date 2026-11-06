@@ -42,6 +42,10 @@ neoForge {
     }
 }
 
+if (project.hasProperty('viewerCheck')) {
+    sourceSets.main.java.srcDir 'src/devtest/java'
+}
+
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
@@ -131,5 +135,13 @@ dependencies {
 
     compileOnly 'mezz.jei:jei-26.1.2-common-api:29.47.0.111'
     compileOnly 'mezz.jei:jei-26.1.2-neoforge-api:29.47.0.111'
-    runtimeOnly 'mezz.jei:jei-26.1.2-neoforge:29.47.0.111'
+    // -PviewerCheck leaves JEI out of the dev client and compiles the dev-only tour in src/devtest, so a recipe viewer check shows this mod with one viewer.
+    if (!project.hasProperty('viewerCheck')) {
+        runtimeOnly 'mezz.jei:jei-26.1.2-neoforge:29.47.0.111'
+    } else {
+        // Other test mods (Occultism) load JEI classes when the player logs out, so a viewer check keeps JEI's API jars on the classpath without the JEI mod.
+        runtimeOnly 'mezz.jei:jei-26.1.2-common-api:29.47.0.111'
+        runtimeOnly 'mezz.jei:jei-26.1.2-neoforge-api:29.47.0.111'
+    }
+    if (project.hasProperty('beiJar')) runtimeOnly files(project.property('beiJar'))
 }
