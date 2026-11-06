@@ -37,28 +37,35 @@ types, each with the generators of its family as workstations. They read the sam
 
 ## Client checks
 
-Client checks use a dev-only tour (`versions/<build>/src/devtest`, compiled only with `-PviewerCheck`, started with
-`SKYRES_SHOTS=bei`). It drives the game with its own handlers and reflection; nothing touches the desktop cursor or keyboard. Every
-frame below was read by eye. Frames are in `docs/frames/`, named `bei_<mc>_<loader>_<view>.png`.
+Client checks use a dev-only tour (`versions/<build>/src/devtest`, compiled only with `-PviewerCheck`; `SKYRES_SHOTS=bei` for the
+recipe viewer, `SKYRES_SHOTS=overlay` for the in-world info mods). It drives the game with its own handlers and reflection; nothing
+touches the desktop cursor or keyboard. Each run has one viewer or overlay mod in the dev client (`-PjadeCheck` swaps SMWTI for Jade).
+Every frame below was read by eye. Frames are in `docs/frames/`, named `<mod>_<mc>_<loader>_<view>.png`.
 
 | Check | 26.1.2 NeoForge | 26.1.2 Forge | 1.21.1 NeoForge | 1.21.1 Forge | 1.20.1 NeoForge | 1.20.1 Forge |
 |---|---|---|---|---|---|---|
-| BEI: our items in the browser, generator popup, Resource Generator cards | seen | seen | seen | seen | seen | seen |
-| BEI: Tree Drops cards (apple popup) | seen | seen | not opened | seen | seen | seen |
-| BEI: Crop Drops card (carrot popup) | seen | seen | not opened | seen | seen | seen |
-| BEI: Soil Type card (farmland popup) | seen | seen | not opened | seen | seen | seen |
+| BEI: Resource Generator cards | seen | seen | seen | seen | seen | seen |
+| BEI: Tree Drops cards (apple) | seen | seen | seen | seen | seen | seen |
+| BEI: Crop Drops card (carrot) | seen | seen | seen | seen | seen | seen |
+| BEI: Soil Type card (farmland) | seen | seen | seen | seen | seen | seen |
+| Jade: generator progress, "Empty" crop generator, mod name | seen | n/a | seen | n/a | seen | seen |
+| SMWTI: generator name, mod, working-on item, progress bar | seen | seen | seen | seen | seen | seen |
+| SMWTI: tree and crop generator name and mod | tree and crop | tree only | tree and crop | tree and crop | tree only | tree and crop |
+| REI, EMI, JEI | not tested | n/a | not tested | n/a | not tested | not tested |
 
-The NeoForge 1.21.1 frames are from the first run, before the tour opened tree, crop and soil popups; they show the resource
-generator cards and the generator recipe only.
+Notes on the SMWTI row: a freshly fed tree or crop generator shows no progress line, because it needs a soil and a seed or sapling
+the tour does not set up. The "tree only" cells are camera misses in the tour (it aimed at stone terrain), not SMWTI failures; the
+generator name was seen on another build of the same version.
 
-Two things the checks found and fixed:
+Things the checks found and fixed:
 
-- **Forge 26.1.2 showed none of our cards.** Forge 26.1 sends this mod's recipes in a message of its own, which arrived after BEI had
-  built its index. `BeiRefresh` now asks BEI to read its stored server recipes again when the message arrives.
+- **Forge 26.1.2 showed none of our BEI cards.** Forge 26.1 sends this mod's recipes in a message of its own, which arrived after BEI
+  had built its index. `BeiRefresh` now asks BEI to read its stored server recipes again when the message arrives.
 - **JEI classes on a viewer-check run.** Another dev mod (Occultism) loads JEI classes when the player logs out, so the 26.1.2
   NeoForge viewer check keeps JEI's API jars on the classpath without the JEI mod.
 
 Not tested, and why:
 
-- **REI and EMI on every build, and JEI, Jade and SMWTI on every build:** the tours so far only drive BEI. Each other viewer needs
-  its own tour step. They compile, and JEI, Jade and SMWTI were not changed by this work.
+- **REI, EMI and JEI in a client, on every build that has them.** The tours only drive BEI. REI needs Architectury and Cloth Config
+  in the dev client, and each of the three viewers needs its own step to open a recipe page. The plugins compile, load only when the
+  viewer is installed, and read the same recipes as the JEI plugin.

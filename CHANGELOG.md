@@ -2,6 +2,17 @@
 
 All notable changes to the **Skyblock Resources** mod will be documented in this file.
 
+## [2026.11.2] - 2026-11-06
+
+### Added
+- Barely Enough Items support on all six builds, and REI and EMI support where those viewers have a build (REI: 26.1.2 NeoForge, 1.21.1 NeoForge, both 1.20.1 builds; EMI: 1.21.1 NeoForge, both 1.20.1 builds). The viewers show cards for resource generator outputs, tree drops, crop drops and soil types, with the generators as workstations.
+
+### Fixed
+- Forge 26.1.2: Barely Enough Items showed none of this mod's cards, because the mod's recipes arrive after BEI builds its index. The mod now asks BEI to read the recipes again when they arrive.
+
+### Tested in a client
+- Barely Enough Items on all six builds; Jade on the four builds that have it; Show Me What This Is on all six. See docs/COMPATIBILITY.md for what each check showed and what was not tested (REI, EMI and JEI in a client).
+
 ## [2.2.0] - 2026-09-06
 
 ### Rebuilds & Maintenance

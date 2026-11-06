@@ -10,6 +10,11 @@ import net.minecraft.client.Screenshot;
 import net.minecraft.client.gui.screens.TitleScreen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.Difficulty;
@@ -35,7 +40,11 @@ import net.minecraftforge.fml.common.Mod;
  */
 @Mod.EventBusSubscriber(modid = SkyblockResourcesMod.MODID, value = Dist.CLIENT)
 public final class BeiTour {
-	private static final boolean ENABLED = "bei".equalsIgnoreCase(System.getenv("SKYRES_SHOTS"));
+	private static final String MODE = String.valueOf(System.getenv("SKYRES_SHOTS")).toLowerCase();
+	/** "bei" opens the viewer's recipe popups; "overlay" looks at our generators for an in-world info overlay. */
+	private static final boolean ENABLED = MODE.equals("bei") || MODE.equals("overlay");
+	/** Names the frames: skyres_<label>_<view>.png (the viewer or overlay mod being checked). */
+	private static final String LABEL = System.getenv("SKYRES_LABEL") == null ? MODE : System.getenv("SKYRES_LABEL");
 	private static final String WORLD = "skyres_shots";
 	/** Set SKYRES_WORLD to the name of a world in run/saves to open it instead of making a fresh one (Forge needs a fire-free flat world). */
 	private static final String OPEN_WORLD = System.getenv("SKYRES_WORLD");
@@ -147,6 +156,10 @@ public final class BeiTour {
 	// --- The check ---------------------------------------------------------------------------
 
 	private static void plan() {
+		if (MODE.equals("overlay")) {
+			overlayPlan();
+			return;
+		}
 		then(0, () -> server("difficulty peaceful", "gamerule doFireTick false", "gamerule doDaylightCycle false", "time set noon", "gamemode survival @a"));
 		then(20, () -> Minecraft.getInstance().setScreen(new InventoryScreen(player())));
 		then(40, () -> search("@skyblock_resources"));
@@ -162,6 +175,55 @@ public final class BeiTour {
 			SkyblockResourcesMod.LOGGER.info("SKYRES-SHOTS DONE");
 			quit();
 		});
+	}
+
+	/**
+	 * Builds a small stone platform with a generator of each family in front of the player with vanilla commands, then looks at each
+	 * through the game's own camera (a teleport with a rotation) and shoots the overlay the in-world info mod draws.
+	 */
+	private static void overlayPlan() {
+		final int[] at = new int[3];
+		// Wait for the player to land before reading the position (a world with terrain drops the player from the spawn height).
+		then(0, () -> SkyblockResourcesMod.LOGGER.info("SKYRES-SHOTS waiting for the player to land"));
+		then(120, () -> {
+			at[0] = (int) Math.floor(player().getX());
+			at[1] = (int) Math.floor(player().getY());
+			at[2] = (int) Math.floor(player().getZ());
+			server("difficulty peaceful", "gamerule doFireTick false", "gamerule doDaylightCycle false", "time set noon", "gamemode survival @a");
+		});
+		then(10, () -> {
+			String box = (at[0] - 4) + " " + at[1] + " " + at[2] + " " + (at[0] + 4) + " " + (at[1] + 4) + " " + (at[2] + 5);
+			String floor = (at[0] - 4) + " " + (at[1] - 1) + " " + at[2] + " " + (at[0] + 4) + " " + (at[1] - 1) + " " + (at[2] + 5);
+			server("fill " + box + " air", "fill " + floor + " stone", "setblock " + (at[0] - 3) + " " + at[1] + " " + (at[2] + 3) + " skyblock_resources:wooden_generator",
+					"setblock " + at[0] + " " + at[1] + " " + (at[2] + 3) + " skyblock_resources:wooden_tree_generator",
+					"setblock " + (at[0] + 3) + " " + at[1] + " " + (at[2] + 3) + " skyblock_resources:wooden_crop_generator");
+		});
+		clickWith(at, -3, "minecraft:cobblestone");
+		clickWith(at, 0, "minecraft:oak_sapling");
+		clickWith(at, 3, "minecraft:wheat_seeds");
+		lookAndShoot(at, -3, "generator");
+		lookAndShoot(at, 0, "tree_generator");
+		lookAndShoot(at, 3, "crop_generator");
+		then(40, () -> {
+			SkyblockResourcesMod.LOGGER.info("SKYRES-SHOTS DONE");
+			quit();
+		});
+	}
+
+	/** Gives the player an item and right-clicks the top of the generator, as the crosshair would, so the generator starts working on it. */
+	private static void clickWith(int[] at, int dx, String item) {
+		then(10, () -> server("clear @p", "give @p " + item + " 64"));
+		then(10, () -> {
+			BlockPos pos = new BlockPos(at[0] + dx, at[1], at[2] + 3);
+			Vec3 hit = new Vec3(pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5);
+			Minecraft.getInstance().gameMode.useItemOn(player(), InteractionHand.MAIN_HAND, new BlockHitResult(hit, Direction.UP, pos, false));
+		});
+	}
+
+	private static void lookAndShoot(int[] at, int dx, String name) {
+		then(20, () -> server("tp @p " + (at[0] + dx + 0.5) + " " + at[1] + " " + (at[2] + 0.5) + " 0 28"));
+		then(80, () -> SkyblockResourcesMod.LOGGER.info("SKYRES-SHOTS looking at {}", name));
+		shoot(name, 30);
 	}
 
 	/** Opens BEI's recipe popup for an item directly, on one category's tab when a category is given. */
@@ -256,7 +318,7 @@ public final class BeiTour {
 		});
 		then(2, () -> {
 			Minecraft minecraft = Minecraft.getInstance();
-			Screenshot.grab(minecraft.gameDirectory, "skyres_bei_" + name + ".png", minecraft.getMainRenderTarget(), message -> SkyblockResourcesMod.LOGGER.info("SKYRES-SHOTS saved {}", name));
+			Screenshot.grab(minecraft.gameDirectory, "skyres_" + LABEL + "_" + name + ".png", minecraft.getMainRenderTarget(), message -> SkyblockResourcesMod.LOGGER.info("SKYRES-SHOTS saved {}", name));
 		});
 	}
 

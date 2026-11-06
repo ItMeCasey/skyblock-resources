@@ -22,6 +22,16 @@ Skyblock Resources adds resource generators, tree generators and crop generators
 
 Minecraft 1.20.1, 1.21.1 and 26.1.2, on NeoForge and Forge. Download the file for your loader and Minecraft version from the Files tab.
 
+![Compatibility](https://raw.githubusercontent.com/ItMeCasey/skyblock-resources/main/branding/banners/h_features.png)
+
+All of these are optional. The mod loads and works with none of them installed.
+
+- **Recipe viewers:** Barely Enough Items (all six builds), REI (26.1.2 NeoForge, 1.21.1 NeoForge, both 1.20.1 builds), EMI (1.21.1 NeoForge, both 1.20.1 builds) and JEI (every build that has JEI). They show resource generator outputs, tree drops, crop drops and soil types, with every generator as a workstation.
+- **In-world info:** Show Me What This Is (all six builds) and Jade (NeoForge 26.1.2, NeoForge 1.21.1, both 1.20.1 builds) show what a generator is working on and how far along it is.
+- **KubeJS:** typed recipe schemas for soil types, tree drops and crop drops.
+
+**Tested:** Barely Enough Items was checked in a client on all six builds (resource generator, tree drop, crop drop and soil type cards). Jade was checked on all four builds that have it, and Show Me What This Is on all six. REI, EMI and JEI were not checked in a client; they compile and load only when installed.
+
 ![FAQ](https://raw.githubusercontent.com/ItMeCasey/skyblock-resources/main/branding/banners/h_faq.png)
 
 **Does it need to be on the server?** Install it on both. The client needs it to show the machines, and the server needs it to run them.

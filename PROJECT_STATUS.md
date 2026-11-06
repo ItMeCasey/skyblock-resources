@@ -1,7 +1,7 @@
 # Project Status
 <!-- status-format: 1 -->
 Updated: 2026-11-06
-Summary: Skyblock Resources 2026.11.1 is released as a beta for six builds; BEI, REI and EMI integrations are written and compile where those viewers have builds, BEI is seen working on all six builds; remaining work is client checks of REI, EMI, JEI, Jade and SMWTI, and the logo check.
+Summary: Skyblock Resources 2026.11.2 (six builds) adds BEI, REI and EMI integrations and fixes BEI on Forge 26.1.2; BEI, Jade and SMWTI are seen working in a client; remaining work is client checks of REI, EMI and JEI, the release, and the logo check.
 Spend: none
 
 ## Done
@@ -39,18 +39,21 @@ Spend: none
 - [x] BEI plugin on all six builds (integration/bei), compiles on each (w:3)
 - [x] REI plugin on 26.1.2 NeoForge, 1.21.1 NeoForge and both 1.20.1 builds; EMI plugin on 1.21.1 NeoForge and both 1.20.1 builds; the other builds have no REI or EMI file (w:3)
 - [x] JEI, Jade and SMWTI integrations still compile on every build they exist on (w:1)
-- [x] BEI checked in a client on all six builds: resource generator, tree drop, crop drop and soil type cards seen (NeoForge 1.21.1: resource cards only), frames in docs/frames (w:4)
-- [ ] Client checks for BEI on the other five builds and REI, EMI, JEI, Jade, SMWTI on each build that has them (needs a dev tour per viewer) (w:4)
+- [x] BEI checked in a client on all six builds: resource generator, tree drop, crop drop and soil type cards seen, frames in docs/frames (w:4)
+- [x] Client checks for BEI (all six builds) and Jade (four builds) and SMWTI (all six builds), frames in docs/frames (w:4)
+- [ ] Client checks for REI, EMI and JEI on each build that has them (the tours only drive BEI so far; REI needs Architectury and Cloth Config in the dev client) (w:3)
 - [x] Tree drop, crop drop and soil card views seen in the BEI check on five builds (w:1)
 - [x] Forge 26.1.2: BEI showed none of our cards because our recipes arrive after BEI indexes; fixed with BeiRefresh (w:2)
 
 ## Open
 - [ ] Verify crop tiers in a live world (side config, break drops, Jade and overlay) (w:2)
-- [ ] Check every port in a client: overlays, models, JEI, Jade, KubeJS, SMWTI (only NeoForge 26.1.2 has been looked at) (w:4)
+- [~] Check every port in a client: BEI, Jade and SMWTI done on every build that has them; still open: JEI, REI, EMI, KubeJS (w:4)
 - [~] Run the client and check generators, upgrade cards (done), tree and crop drops, screwdriver, and overlays (w:3)
 - [ ] Check the logo against the live CurseForge logo (w:1)
 
 ## Release
+- [x] Version 2026.11.2 set on all six builds, changelog and CurseForge description updated (w:1)
+- [ ] Release 2026.11.2: push, CI, tag, CurseForge upload (Casey) (w:2)
 - [x] CI build of all six jars with the headless self test (build.yml) (w:2)
 - [x] Release workflow and CurseForge upload script for project 594061 (release.yml, publish_curseforge.py) (w:2)
 - [x] CI fixed: EULA accepted for the test server, self-test timeout of 15 minutes, Terralith removed from the 26.1.2 test dependencies (w:2)

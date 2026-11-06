@@ -3,7 +3,7 @@ plugins {
     id 'net.neoforged.moddev' version '2.0.141'
 }
 
-version = '2026.11.1'
+version = '2026.11.2'
 base.archivesName = 'skyblock_resources-neoforge-26.1.2'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(25)
@@ -91,7 +91,9 @@ repositories {
 
 dependencies {
     // SMWTI is on the private Maven (a mirror of its CurseForge file).
-    implementation 'curse.maven:smwti-1781438:9423204'
+    compileOnly 'curse.maven:smwti-1781438:9423204'
+    // -PjadeCheck leaves SMWTI out of the dev client and puts Jade in, so an overlay check shows one overlay mod.
+    if (!project.hasProperty('jadeCheck')) runtimeOnly 'curse.maven:smwti-1781438:9423204'
     // BEI (Barely Enough Items), a recipe viewer of ours. Only its API is compiled against, from the jar in libs.
     compileOnly files('libs/bei-neoforge-26.1.2-2026.11.4-api.jar')
     // REI, another recipe viewer: compiled against only, never required. REI needs Cloth Config and Architectury at run time.
@@ -99,6 +101,7 @@ dependencies {
     compileOnly 'maven.modrinth:cloth-config:TimoYzse'
     compileOnly 'maven.modrinth:architectury-api:fyNzvIcr'
     compileOnly 'curse.maven:jade-324717:8647353'
+    if (project.hasProperty('jadeCheck')) runtimeOnly 'curse.maven:jade-324717:8647353'
 
     runtimeOnly 'curse.maven:placebo-283644:8502256'
     runtimeOnly 'curse.maven:toast-control-271740:8262279'
