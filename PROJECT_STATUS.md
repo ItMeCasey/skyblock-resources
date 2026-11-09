@@ -1,6 +1,6 @@
 # Project Status
 <!-- status-format: 1 -->
-Updated: 2026-11-06
+Updated: 2026-11-09
 Summary: Skyblock Resources 2026.11.2 (six builds) adds BEI, REI and EMI integrations and fixes BEI on Forge 26.1.2; BEI, Jade and SMWTI are seen working in a client; remaining work is client checks of REI, EMI and JEI, the release, and the logo check.
 Spend: none
 
@@ -53,7 +53,7 @@ Spend: none
 
 ## Release
 - [x] Version 2026.11.2 set on all six builds, changelog and CurseForge description updated (w:1)
-- [ ] Release 2026.11.2: push, CI, tag, CurseForge upload (Casey) (w:2)
+- [x] Release 2026.11.2: pushed, CI green, tagged v2026.11.2, six jars on CurseForge as beta (w:2)
 - [x] CI build of all six jars with the headless self test (build.yml) (w:2)
 - [x] Release workflow and CurseForge upload script for project 594061 (release.yml, publish_curseforge.py) (w:2)
 - [x] CI fixed: EULA accepted for the test server, self-test timeout of 15 minutes, Terralith removed from the 26.1.2 test dependencies (w:2)
