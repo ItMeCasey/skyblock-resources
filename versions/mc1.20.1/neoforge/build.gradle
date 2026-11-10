@@ -148,7 +148,8 @@ dependencies {
     runtimeOnly fg.deobf('maven.modrinth:curios:IPQlZkz1')
     runtimeOnly fg.deobf('maven.modrinth:geckolib:aC5KMoNg')
     runtimeOnly fg.deobf('maven.modrinth:smartbrainlib:YkeJNm33')
-    runtimeOnly fg.deobf('maven.modrinth:evilcraft:1kckRDGI')
+    // EvilCraft's JEI compat crashes on NeoForge 1.20.1 when a player joins (SmartBrainLib needs Forge's BrainBuilder), so the JEI viewer check leaves it out.
+    if (project.findProperty('viewer') != 'jei') runtimeOnly fg.deobf('maven.modrinth:evilcraft:1kckRDGI')
     runtimeOnly fg.deobf('maven.modrinth:cyclops-core:IUMQKt4M')
     runtimeOnly fg.deobf('maven.modrinth:integrated-dynamics:Bx2Meo4e')
     runtimeOnly fg.deobf('maven.modrinth:common-capabilities:xyk3SeaC')

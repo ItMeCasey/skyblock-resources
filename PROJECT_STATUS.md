@@ -1,7 +1,7 @@
 # Project Status
 <!-- status-format: 1 -->
 Updated: 2026-11-09
-Summary: Skyblock Resources 2026.11.2 (six builds) is released; BEI, Jade, SMWTI, and on NeoForge 1.21.1 also JEI, REI and EMI, are seen working in a client, as are all five crop generator tiers; open: JEI, REI and EMI client checks on the other builds, and the banner upload.
+Summary: Skyblock Resources 2026.11.2 (six builds) is released; BEI, Jade, SMWTI, JEI, REI and EMI are seen working in a client on every build that has them, as are all five crop generator tiers and the KubeJS recipe schemas; only the banner upload (Casey) is open.
 Spend: none
 
 ## Done
@@ -42,13 +42,13 @@ Spend: none
 - [x] BEI checked in a client on all six builds: resource generator, tree drop, crop drop and soil type cards seen, frames in docs/frames (w:4)
 - [x] Client checks for BEI (all six builds) and Jade (four builds) and SMWTI (all six builds), frames in docs/frames (w:4)
 - [x] Client checks for REI, EMI and JEI on NeoForge 1.21.1: resource generator, tree drop, crop drop and soil cards and the generator workstations seen, frames in docs/frames (w:2)
-- [ ] Client checks for JEI, REI and EMI on the other builds that have them (JEI: 26.1.2 NeoForge, 1.21.1 Forge, both 1.20.1; REI: 26.1.2 NeoForge, both 1.20.1; EMI: both 1.20.1); the viewer tour code is now in every build (`-PviewerCheck -Pviewer=jei|rei|emi`, `SKYRES_SHOTS=viewer`) but has not been run or compiled there: client slot starved for an hour by other sessions' runs; 1.20.1 builds need JAVA_HOME=jdk-21 for Gradle (w:2)
+- [x] Client checks for JEI, REI and EMI on every other build that has them, frames in docs/frames: JEI on 26.1.2 NeoForge, 1.21.1 Forge, both 1.20.1; REI on 26.1.2 NeoForge and both 1.20.1; EMI on both 1.20.1 (`-PviewerCheck -Pviewer=jei|rei|emi`, `SKYRES_SHOTS=viewer`; 1.20.1 needs JAVA_HOME=jdk-21 for Gradle). n/a: no REI build for Forge 26.1.2, 1.21.1 Forge; no EMI build for 26.1.2 or 1.21.1 Forge (w:2)
 - [x] Tree drop, crop drop and soil card views seen in the BEI check on five builds (w:1)
 - [x] Forge 26.1.2: BEI showed none of our cards because our recipes arrive after BEI indexes; fixed with BeiRefresh (w:2)
 
 ## Open
 - [x] Verify crop tiers in a live world: all five tiers took soil and seed, the screwdriver set the output side to a chest and every tier filled it, breaking each dropped its contents and itself, Jade showed each tier (NeoForge 1.21.1, docs/frames) (w:2)
-- [~] Check every port in a client: BEI, Jade and SMWTI done on every build that has them; JEI, REI and EMI done on NeoForge 1.21.1; still open: those three on the other builds, and KubeJS (w:4)
+- [x] Check every port in a client: BEI, Jade, SMWTI, JEI, REI and EMI done on every build that has them; KubeJS checked on NeoForge 1.21.1 (typed recipe schemas add soil_type, crop_drops and tree_drops recipes in a live world, all three loaded); n/a: no KubeJS build for Forge 1.21.1 or Forge 26.1.2 (w:4)
 - [x] Run the client and check generators, upgrade cards, tree and crop drops, screwdriver, and overlays (crop tiers, screwdriver side and Jade on NeoForge 1.21.1; overlays and cards on all builds earlier) (w:3)
 - [x] Check the logo against the live CurseForge logo: the live logo is the same cube icon as branding/icon (w:1)
 

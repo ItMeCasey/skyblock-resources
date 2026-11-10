@@ -56,7 +56,7 @@ final class ViewerShow {
 				runtime.getRecipesGui().showTypes(java.util.List.of(type));
 				return true;
 			}
-			var role = mezz.jei.api.recipe.RecipeIngredientRole.CATALYST;
+			var role = mezz.jei.api.recipe.RecipeIngredientRole.CRAFTING_STATION;
 			var focus =runtime.getJeiHelpers().getFocusFactory().createFocus(role, mezz.jei.api.constants.VanillaTypes.ITEM_STACK, new net.minecraft.world.item.ItemStack(item));
 			runtime.getRecipesGui().show(focus);
 			return true;
