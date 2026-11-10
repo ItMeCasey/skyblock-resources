@@ -1,6 +1,6 @@
 # Project Status
 <!-- status-format: 1 -->
-Updated: 2026-11-09
+Updated: 2026-11-10
 Summary: Skyblock Resources 2026.11.2 (six builds) is released; BEI, Jade, SMWTI, JEI, REI and EMI are seen working in a client on every build that has them, as are all five crop generator tiers and the KubeJS recipe schemas; only the banner upload (Casey) is open.
 Spend: none
 
@@ -62,7 +62,7 @@ Spend: none
 - [x] Private Maven: curse.maven dependencies and SMWTI resolve from itmecasey.com/maven, with cursemaven as fallback (w:2)
 - [x] Release v2026.11.1 as a GitHub prerelease with six jars; tag v2026.11.1 pushed (w:2)
 - [x] CurseForge: six 2026.11.1 files uploaded and all six approved (w:2)
-- [~] Logo is live on CurseForge; banners are not uploadable through the API and are not confirmed on the page (w:1)
+- [x] Logo and banners are live on CurseForge (confirmed by Casey 2026-11-10) (w:1)
 
 ## Wiki and branding
 - [x] Wiki live at itmecasey.com/wiki/skyblock-resources with 12 pages and the logo (w:3)
