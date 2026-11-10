@@ -42,7 +42,7 @@ Spend: none
 - [x] BEI checked in a client on all six builds: resource generator, tree drop, crop drop and soil type cards seen, frames in docs/frames (w:4)
 - [x] Client checks for BEI (all six builds) and Jade (four builds) and SMWTI (all six builds), frames in docs/frames (w:4)
 - [x] Client checks for REI, EMI and JEI on NeoForge 1.21.1: resource generator, tree drop, crop drop and soil cards and the generator workstations seen, frames in docs/frames (w:2)
-- [ ] Client checks for JEI, REI and EMI on the other builds that have them (JEI: 26.1.2 NeoForge, 1.21.1 Forge, both 1.20.1; REI: 26.1.2 NeoForge, both 1.20.1; EMI: both 1.20.1); the viewer tour exists only in NeoForge 1.21.1 so far (w:2)
+- [ ] Client checks for JEI, REI and EMI on the other builds that have them (JEI: 26.1.2 NeoForge, 1.21.1 Forge, both 1.20.1; REI: 26.1.2 NeoForge, both 1.20.1; EMI: both 1.20.1); the viewer tour code is now in every build (`-PviewerCheck -Pviewer=jei|rei|emi`, `SKYRES_SHOTS=viewer`) but has not been run or compiled there: client slot starved for an hour by other sessions' runs; 1.20.1 builds need JAVA_HOME=jdk-21 for Gradle (w:2)
 - [x] Tree drop, crop drop and soil card views seen in the BEI check on five builds (w:1)
 - [x] Forge 26.1.2: BEI showed none of our cards because our recipes arrive after BEI indexes; fixed with BeiRefresh (w:2)
 

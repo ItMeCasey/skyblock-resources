@@ -70,5 +70,5 @@ Things the checks found and fixed:
 Not tested, and why:
 
 - **JEI, REI and EMI in a client on the builds other than NeoForge 1.21.1.** `SKYRES_SHOTS=viewer` with `SKYRES_LABEL=jei|rei|emi` and
-  `-Pviewer=<name>` exists only in the NeoForge 1.21.1 tour so far. The plugins on the other builds compile, load only when the viewer is
+  `-Pviewer=<name>` is in every build's tour but only run on NeoForge 1.21.1 so far (the 1.20.1 builds need JAVA_HOME set to JDK 21 for Gradle). The plugins on the other builds compile, load only when the viewer is
   installed, and read the same recipes.

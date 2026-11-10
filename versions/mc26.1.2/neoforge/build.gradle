@@ -139,7 +139,13 @@ dependencies {
     compileOnly 'mezz.jei:jei-26.1.2-common-api:29.47.0.111'
     compileOnly 'mezz.jei:jei-26.1.2-neoforge-api:29.47.0.111'
     // -PviewerCheck leaves JEI out of the dev client and compiles the dev-only tour in src/devtest, so a recipe viewer check shows this mod with one viewer.
-    if (!project.hasProperty('viewerCheck')) {
+    // -Pviewer=jei or -Pviewer=rei puts that viewer into the dev client for the viewer check.
+    if (project.findProperty('viewer') == 'rei') {
+        runtimeOnly 'maven.modrinth:rei:isd1MxO2'
+        runtimeOnly 'maven.modrinth:cloth-config:TimoYzse'
+        runtimeOnly 'maven.modrinth:architectury-api:fyNzvIcr'
+    }
+    if (!project.hasProperty('viewerCheck') || project.findProperty('viewer') == 'jei') {
         runtimeOnly 'mezz.jei:jei-26.1.2-neoforge:29.47.0.111'
     } else {
         // Other test mods (Occultism) load JEI classes when the player logs out, so a viewer check keeps JEI's API jars on the classpath without the JEI mod.

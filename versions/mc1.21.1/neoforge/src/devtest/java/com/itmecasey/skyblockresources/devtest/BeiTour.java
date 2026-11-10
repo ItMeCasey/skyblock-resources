@@ -237,7 +237,7 @@ public final class BeiTour {
 
 	private static void viewerShow(String itemId, boolean uses, String shot) {
 		then(30, () -> {
-			net.minecraft.world.item.Item item = net.minecraft.core.registries.BuiltInRegistries.ITEM.get(net.minecraft.resources.ResourceLocation.parse(itemId));
+			net.minecraft.world.item.Item item = itemById(itemId);
 			try {
 				boolean ok = ViewerShow.show(LABEL, item, uses);
 				SkyblockResourcesMod.LOGGER.info("SKYRES-SHOTS {} '{}' uses={} shown={} screen={}", LABEL, itemId, uses, ok, Minecraft.getInstance().screen == null ? "none" : Minecraft.getInstance().screen.getClass().getName());
@@ -246,6 +246,15 @@ public final class BeiTour {
 			}
 		});
 		shoot(shot, 40);
+	}
+
+	private static net.minecraft.world.item.Item itemById(String id) {
+		for (net.minecraft.world.item.Item item : net.minecraft.core.registries.BuiltInRegistries.ITEM) {
+			if (net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(item).toString().equals(id)) {
+				return item;
+			}
+		}
+		throw new IllegalStateException("no item " + id);
 	}
 
 	// --- Crop generator tiers in a live world: SKYRES_SHOTS=tiers (add -PjadeCheck for Jade frames) -----------------

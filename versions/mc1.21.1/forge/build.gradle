@@ -76,7 +76,7 @@ dependencies {
     // JEI 19.64.0.455 for Forge (Modrinth version id). Jade and KubeJS have no Forge 1.21.1 build.
     compileOnly 'maven.modrinth:jei:qVF5T46z'
     // -PviewerCheck leaves JEI out of the dev client and compiles the dev-only tour in src/devtest, so a recipe viewer check shows this mod with one viewer.
-    if (!project.hasProperty('viewerCheck')) runtimeOnly 'maven.modrinth:jei:qVF5T46z'
+    if (!project.hasProperty('viewerCheck') || project.findProperty('viewer') == 'jei') runtimeOnly 'maven.modrinth:jei:qVF5T46z'
 
     // Test mods for the dev environment and the headless self-test (Modrinth version ids, Forge builds only).
     // Forge 1.21.1 has no build of Croptopia, Mystical Agriculture (+Cucumber, Agradditions), Nature's Spirit, Occultism,

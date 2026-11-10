@@ -157,6 +157,12 @@ dependencies {
 
     compileOnly fg.deobf('maven.modrinth:jei:6E4ps2ER')
     // -PviewerCheck leaves JEI out of the dev client and compiles the dev-only tour in src/devtest, so a recipe viewer check shows this mod with one viewer.
-    if (!project.hasProperty('viewerCheck')) runtimeOnly fg.deobf('maven.modrinth:jei:6E4ps2ER')
+    if (!project.hasProperty('viewerCheck') || project.findProperty('viewer') == 'jei') runtimeOnly fg.deobf('maven.modrinth:jei:6E4ps2ER')
+    // -Pviewer=rei or -Pviewer=emi puts that viewer into the dev client for the viewer check (Architectury is already a runtime dependency).
+    if (project.findProperty('viewer') == 'rei') {
+        runtimeOnly fg.deobf('maven.modrinth:rei:IoS2AjPk')
+        runtimeOnly fg.deobf('maven.modrinth:cloth-config:t8TXrZvZ')
+    }
+    if (project.findProperty('viewer') == 'emi') runtimeOnly fg.deobf('maven.modrinth:emi:Axuu9I9R')
     if (project.hasProperty('viewerCheck') && file('devlibs/bei-neoforge-1.20.1-2026.11.4.jar').exists()) runtimeOnly fg.deobf('local.dev:bei-neoforge-1.20.1:2026.11.4')
 }

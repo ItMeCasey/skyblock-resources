@@ -42,7 +42,7 @@ import net.minecraftforge.fml.common.Mod;
 public final class BeiTour {
 	private static final String MODE = String.valueOf(System.getenv("SKYRES_SHOTS")).toLowerCase();
 	/** "bei" opens the viewer's recipe popups; "overlay" looks at our generators for an in-world info overlay. */
-	private static final boolean ENABLED = MODE.equals("bei") || MODE.equals("overlay");
+	private static final boolean ENABLED = MODE.equals("bei") || MODE.equals("overlay") || MODE.equals("viewer");
 	/** Names the frames: skyres_<label>_<view>.png (the viewer or overlay mod being checked). */
 	private static final String LABEL = System.getenv("SKYRES_LABEL") == null ? MODE : System.getenv("SKYRES_LABEL");
 	private static final String WORLD = "skyres_shots";
@@ -159,6 +159,10 @@ public final class BeiTour {
 			overlayPlan();
 			return;
 		}
+		if (MODE.equals("viewer")) {
+			viewerPlan();
+			return;
+		}
 		then(0, () -> server("difficulty peaceful", "gamerule doFireTick false", "gamerule doDaylightCycle false", "time set noon", "gamemode survival @a"));
 		then(20, () -> Minecraft.getInstance().setScreen(new InventoryScreen(player())));
 		then(40, () -> search("@skyblock_resources"));
@@ -207,6 +211,45 @@ public final class BeiTour {
 			SkyblockResourcesMod.LOGGER.info("SKYRES-SHOTS DONE");
 			quit();
 		});
+	}
+
+	// --- Other recipe viewers (JEI, REI, EMI): SKYRES_SHOTS=viewer, SKYRES_LABEL=jei|rei|emi ---------------------------
+
+	private static void viewerPlan() {
+		then(0, () -> server("difficulty peaceful", "gamerule doFireTick false", "gamerule doDaylightCycle false", "time set noon", "gamemode survival @a"));
+		then(20, () -> Minecraft.getInstance().setScreen(new InventoryScreen(player())));
+		shoot("browser", 60);
+		viewerShow("minecraft:cobblestone", false, "cobblestone_resource_generator");
+		viewerShow("minecraft:apple", false, "apple_tree_drops");
+		viewerShow("minecraft:carrot", false, "carrot_crop_drops");
+		viewerShow("minecraft:farmland", true, "farmland_soil_type");
+		viewerShow("skyblock_resources:wooden_generator", true, "wooden_generator");
+		then(40, () -> {
+			SkyblockResourcesMod.LOGGER.info("SKYRES-SHOTS DONE");
+			quit();
+		});
+	}
+
+	private static void viewerShow(String itemId, boolean uses, String shot) {
+		then(30, () -> {
+			net.minecraft.world.item.Item item = itemById(itemId);
+			try {
+				boolean ok = ViewerShow.show(LABEL, item, uses);
+				SkyblockResourcesMod.LOGGER.info("SKYRES-SHOTS {} '{}' uses={} shown={} screen={}", LABEL, itemId, uses, ok, Minecraft.getInstance().screen == null ? "none" : Minecraft.getInstance().screen.getClass().getName());
+			} catch (Throwable t) {
+				SkyblockResourcesMod.LOGGER.warn("SKYRES-SHOTS could not show {} in {}", itemId, LABEL, t);
+			}
+		});
+		shoot(shot, 40);
+	}
+
+	private static net.minecraft.world.item.Item itemById(String id) {
+		for (net.minecraft.world.item.Item item : net.minecraft.core.registries.BuiltInRegistries.ITEM) {
+			if (net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(item).toString().equals(id)) {
+				return item;
+			}
+		}
+		throw new IllegalStateException("no item " + id);
 	}
 
 	/** Gives the player an item and right-clicks the top of the generator, as the crosshair would, so the generator starts working on it. */
