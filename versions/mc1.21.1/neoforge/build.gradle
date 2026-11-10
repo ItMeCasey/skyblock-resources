@@ -145,6 +145,13 @@ dependencies {
     compileOnly 'mezz.jei:jei-1.21.1-neoforge-api:19.64.0.455'
     // -PviewerCheck leaves JEI out of the dev client and compiles the dev-only tour in src/devtest, so a recipe viewer
     // check shows this mod with one viewer. -PbeiJar=<path> adds a local BEI jar to the dev client.
-    if (!project.hasProperty('viewerCheck')) runtimeOnly 'mezz.jei:jei-1.21.1-neoforge:19.64.0.455'
+    if (!project.hasProperty('viewerCheck') || project.findProperty('viewer') == 'jei') runtimeOnly 'mezz.jei:jei-1.21.1-neoforge:19.64.0.455'
+    // -Pviewer=rei or -Pviewer=emi puts that viewer into the dev client for the viewer check.
+    if (project.findProperty('viewer') == 'rei') {
+        runtimeOnly 'maven.modrinth:rei:b8gfS9Je'
+        runtimeOnly 'maven.modrinth:cloth-config:izKINKFg'
+        runtimeOnly 'maven.modrinth:architectury-api:1IiqEQGl'
+    }
+    if (project.findProperty('viewer') == 'emi') runtimeOnly 'maven.modrinth:emi:5sIPA1To'
     if (project.hasProperty('beiJar')) runtimeOnly files(project.property('beiJar'))
 }

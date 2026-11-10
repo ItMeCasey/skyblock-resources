@@ -2,6 +2,11 @@
 
 All notable changes to the **Skyblock Resources** mod will be documented in this file.
 
+## [Unreleased]
+
+### Tested in a client
+- JEI, REI and EMI on NeoForge 1.21.1, and all five crop generator tiers in a live world (screwdriver output side, breaking, Jade). No jar changed. Create, Ex Deorum, Ex Nihilo Sequentia, AE2 and Quark recipe ids were checked against the real mods.
+
 ## [2026.11.2] - 2026-11-06
 
 ### Added

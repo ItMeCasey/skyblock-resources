@@ -51,7 +51,10 @@ Every frame below was read by eye. Frames are in `docs/frames/`, named `<mod>_<m
 | Jade: generator progress, "Empty" crop generator, mod name | seen | n/a | seen | n/a | seen | seen |
 | SMWTI: generator name, mod, working-on item, progress bar | seen | seen | seen | seen | seen | seen |
 | SMWTI: tree and crop generator name and mod | tree and crop | tree only | tree and crop | tree and crop | tree only | tree and crop |
-| REI, EMI, JEI | not tested | n/a | not tested | n/a | not tested | not tested |
+| JEI: Resource Generator, Tree Drops, Crop Drops, Soil Type cards, generators as catalysts | not tested | n/a | seen | not tested | not tested | not tested |
+| REI: the four cards, generators as workstations | not tested | n/a | seen | n/a | not tested | not tested |
+| EMI: the four cards, generators as workstations | n/a | n/a | seen | n/a | not tested | not tested |
+| Crop generator tiers in a live world (side config, break drops, Jade) | n/a | n/a | seen | n/a | n/a | n/a |
 
 Notes on the SMWTI row: a freshly fed tree or crop generator shows no progress line, because it needs a soil and a seed or sapling
 the tour does not set up. The "tree only" cells are camera misses in the tour (it aimed at stone terrain), not SMWTI failures; the
@@ -66,6 +69,6 @@ Things the checks found and fixed:
 
 Not tested, and why:
 
-- **REI, EMI and JEI in a client, on every build that has them.** The tours only drive BEI. REI needs Architectury and Cloth Config
-  in the dev client, and each of the three viewers needs its own step to open a recipe page. The plugins compile, load only when the
-  viewer is installed, and read the same recipes as the JEI plugin.
+- **JEI, REI and EMI in a client on the builds other than NeoForge 1.21.1.** `SKYRES_SHOTS=viewer` with `SKYRES_LABEL=jei|rei|emi` and
+  `-Pviewer=<name>` exists only in the NeoForge 1.21.1 tour so far. The plugins on the other builds compile, load only when the viewer is
+  installed, and read the same recipes.

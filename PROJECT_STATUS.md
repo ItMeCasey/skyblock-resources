@@ -1,7 +1,7 @@
 # Project Status
 <!-- status-format: 1 -->
 Updated: 2026-11-09
-Summary: Skyblock Resources 2026.11.2 (six builds) adds BEI, REI and EMI integrations and fixes BEI on Forge 26.1.2; BEI, Jade and SMWTI are seen working in a client; remaining work is client checks of REI, EMI and JEI, the release, and the logo check.
+Summary: Skyblock Resources 2026.11.2 (six builds) is released; BEI, Jade, SMWTI, and on NeoForge 1.21.1 also JEI, REI and EMI, are seen working in a client, as are all five crop generator tiers; open: JEI, REI and EMI client checks on the other builds, and the banner upload.
 Spend: none
 
 ## Done
@@ -15,7 +15,7 @@ Spend: none
 - [x] build.gradle rewritten without MCreator references; testing.gradle removed (it was never applied) (w:2)
 - [x] KubeJS typed recipe schemas (soil_type, tree_drops, crop_drops) with a `drops` list ({id, min, max, chance}); verified with a script that adds tree and crop recipes with drops and a custom duration (w:2)
 - [x] Tier upgrade cards (stone, iron, diamond, netherite): sneak-click upgrades a resource, tree, or crop generator one tier in place, keeps machine data (confirmed in a live world), recomputes duration and output count for the new tier, with icons, recipes, and a headless test through the real item-use path (w:3)
-- [~] Resource generator compat recipes for Create, Ex Deorum, Ex Nihilo Sequentia, AE2, and Quark blocks, only loaded when the mod is present; item ids not yet checked against the real mods (w:2)
+- [x] Resource generator compat recipes for Create, Ex Deorum, Ex Nihilo Sequentia, AE2, and Quark blocks, only loaded when the mod is present; every id checked against real mod jars (Create 0.5.1/6.0.9, Ex Deorum 1.43/3.10/4.0, Ex Nihilo Sequentia 5.0.0/7.0.0, AE2 15.2.13/19.2.17/26.1.13, Quark 4.0-458/4.1-488); Create, Quark and Ex Nihilo Sequentia have no 26.1.2 build (w:2)
 - [x] Tree and crop drops: Croptopia fruit trees, Mystical Agriculture seeds, produce items (wheat, beetroot, melon slice, Croptopia vegetables), and berries all produce drops; items that can never drop are no longer accepted by the crop generator (w:3)
 - [x] All tree and crop machines roll drops from explicit per-plant tree_drops and crop_drops recipes (442 files under recipe/plants/<modid>/, generated once and now plain data); no runtime guessing or any-sapling fallback; a self-test checks every recipe lists drops (w:4)
 - [x] Shared machine helpers moved to machine/MachineHelpers (side config, inventory insert, NBT access) (w:2)
@@ -41,15 +41,16 @@ Spend: none
 - [x] JEI, Jade and SMWTI integrations still compile on every build they exist on (w:1)
 - [x] BEI checked in a client on all six builds: resource generator, tree drop, crop drop and soil type cards seen, frames in docs/frames (w:4)
 - [x] Client checks for BEI (all six builds) and Jade (four builds) and SMWTI (all six builds), frames in docs/frames (w:4)
-- [ ] Client checks for REI, EMI and JEI on each build that has them (the tours only drive BEI so far; REI needs Architectury and Cloth Config in the dev client) (w:3)
+- [x] Client checks for REI, EMI and JEI on NeoForge 1.21.1: resource generator, tree drop, crop drop and soil cards and the generator workstations seen, frames in docs/frames (w:2)
+- [ ] Client checks for JEI, REI and EMI on the other builds that have them (JEI: 26.1.2 NeoForge, 1.21.1 Forge, both 1.20.1; REI: 26.1.2 NeoForge, both 1.20.1; EMI: both 1.20.1); the viewer tour exists only in NeoForge 1.21.1 so far (w:2)
 - [x] Tree drop, crop drop and soil card views seen in the BEI check on five builds (w:1)
 - [x] Forge 26.1.2: BEI showed none of our cards because our recipes arrive after BEI indexes; fixed with BeiRefresh (w:2)
 
 ## Open
-- [ ] Verify crop tiers in a live world (side config, break drops, Jade and overlay) (w:2)
-- [~] Check every port in a client: BEI, Jade and SMWTI done on every build that has them; still open: JEI, REI, EMI, KubeJS (w:4)
-- [~] Run the client and check generators, upgrade cards (done), tree and crop drops, screwdriver, and overlays (w:3)
-- [ ] Check the logo against the live CurseForge logo (w:1)
+- [x] Verify crop tiers in a live world: all five tiers took soil and seed, the screwdriver set the output side to a chest and every tier filled it, breaking each dropped its contents and itself, Jade showed each tier (NeoForge 1.21.1, docs/frames) (w:2)
+- [~] Check every port in a client: BEI, Jade and SMWTI done on every build that has them; JEI, REI and EMI done on NeoForge 1.21.1; still open: those three on the other builds, and KubeJS (w:4)
+- [x] Run the client and check generators, upgrade cards, tree and crop drops, screwdriver, and overlays (crop tiers, screwdriver side and Jade on NeoForge 1.21.1; overlays and cards on all builds earlier) (w:3)
+- [x] Check the logo against the live CurseForge logo: the live logo is the same cube icon as branding/icon (w:1)
 
 ## Release
 - [x] Version 2026.11.2 set on all six builds, changelog and CurseForge description updated (w:1)
@@ -61,11 +62,11 @@ Spend: none
 - [x] Private Maven: curse.maven dependencies and SMWTI resolve from itmecasey.com/maven, with cursemaven as fallback (w:2)
 - [x] Release v2026.11.1 as a GitHub prerelease with six jars; tag v2026.11.1 pushed (w:2)
 - [x] CurseForge: six 2026.11.1 files uploaded and all six approved (w:2)
-- [ ] Logo and banners uploaded to CurseForge (w:1)
+- [~] Logo is live on CurseForge; banners are not uploadable through the API and are not confirmed on the page (w:1)
 
 ## Wiki and branding
 - [x] Wiki live at itmecasey.com/wiki/skyblock-resources with 12 pages and the logo (w:3)
-- [~] Logo: empty diamond cube frame, drawn by branding/source/make_icon.py; not yet checked against the live CurseForge logo (w:1)
+- [x] Logo: empty diamond cube frame, drawn by branding/source/make_icon.py; matches the live CurseForge logo (w:1)
 - [x] Banners and section headers in the SMWTI style: banner, social, features and section headers in branding/banners/ (w:2)
 - [x] CurseForge and Modrinth listing copy in branding/LISTING.md; CurseForge project 594061 recorded, Modrinth not created (w:2)
 

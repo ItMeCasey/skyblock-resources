@@ -42,7 +42,7 @@ import net.neoforged.neoforge.client.event.ClientTickEvent;
 public final class BeiTour {
 	private static final String MODE = String.valueOf(System.getenv("SKYRES_SHOTS")).toLowerCase();
 	/** "bei" opens the viewer's recipe popups; "overlay" looks at our generators for an in-world info overlay. */
-	private static final boolean ENABLED = MODE.equals("bei") || MODE.equals("overlay");
+	private static final boolean ENABLED = MODE.equals("bei") || MODE.equals("overlay") || MODE.equals("viewer") || MODE.equals("tiers");
 	/** Names the frames: skyres_<label>_<view>.png (the viewer or overlay mod being checked). */
 	private static final String LABEL = System.getenv("SKYRES_LABEL") == null ? MODE : System.getenv("SKYRES_LABEL");
 	private static final String WORLD = "skyres_shots";
@@ -160,6 +160,14 @@ public final class BeiTour {
 			overlayPlan();
 			return;
 		}
+		if (MODE.equals("viewer")) {
+			viewerPlan();
+			return;
+		}
+		if (MODE.equals("tiers")) {
+			tiersPlan();
+			return;
+		}
 		then(0, () -> server("difficulty peaceful", "gamerule doFireTick false", "gamerule doDaylightCycle false", "time set noon", "gamemode survival @a"));
 		then(20, () -> Minecraft.getInstance().setScreen(new InventoryScreen(player())));
 		then(40, () -> search("@skyblock_resources"));
@@ -208,6 +216,150 @@ public final class BeiTour {
 			SkyblockResourcesMod.LOGGER.info("SKYRES-SHOTS DONE");
 			quit();
 		});
+	}
+
+	// --- Other recipe viewers (JEI, REI, EMI): SKYRES_SHOTS=viewer, SKYRES_LABEL=jei|rei|emi ---------------------------
+
+	private static void viewerPlan() {
+		then(0, () -> server("difficulty peaceful", "gamerule doFireTick false", "gamerule doDaylightCycle false", "time set noon", "gamemode survival @a"));
+		then(20, () -> Minecraft.getInstance().setScreen(new InventoryScreen(player())));
+		shoot("browser", 60);
+		viewerShow("minecraft:cobblestone", false, "cobblestone_resource_generator");
+		viewerShow("minecraft:apple", false, "apple_tree_drops");
+		viewerShow("minecraft:carrot", false, "carrot_crop_drops");
+		viewerShow("minecraft:farmland", true, "farmland_soil_type");
+		viewerShow("skyblock_resources:wooden_generator", true, "wooden_generator");
+		then(40, () -> {
+			SkyblockResourcesMod.LOGGER.info("SKYRES-SHOTS DONE");
+			quit();
+		});
+	}
+
+	private static void viewerShow(String itemId, boolean uses, String shot) {
+		then(30, () -> {
+			net.minecraft.world.item.Item item = net.minecraft.core.registries.BuiltInRegistries.ITEM.get(net.minecraft.resources.ResourceLocation.parse(itemId));
+			try {
+				boolean ok = ViewerShow.show(LABEL, item, uses);
+				SkyblockResourcesMod.LOGGER.info("SKYRES-SHOTS {} '{}' uses={} shown={} screen={}", LABEL, itemId, uses, ok, Minecraft.getInstance().screen == null ? "none" : Minecraft.getInstance().screen.getClass().getName());
+			} catch (Throwable t) {
+				SkyblockResourcesMod.LOGGER.warn("SKYRES-SHOTS could not show {} in {}", itemId, LABEL, t);
+			}
+		});
+		shoot(shot, 40);
+	}
+
+	// --- Crop generator tiers in a live world: SKYRES_SHOTS=tiers (add -PjadeCheck for Jade frames) -----------------
+
+	private static final String[] TIERS = {"wooden", "stone", "iron", "diamond", "netherite"};
+
+	private static void tiersPlan() {
+		final int[] at = new int[3];
+		then(0, () -> SkyblockResourcesMod.LOGGER.info("SKYRES-SHOTS waiting for the player to land"));
+		then(120, () -> {
+			at[0] = (int) Math.floor(player().getX());
+			at[1] = (int) Math.floor(player().getY());
+			at[2] = (int) Math.floor(player().getZ());
+			server("difficulty peaceful", "gamerule doFireTick false", "gamerule doDaylightCycle false", "time set noon", "gamemode survival @a");
+		});
+		then(10, () -> {
+			String box = (at[0] - 8) + " " + at[1] + " " + at[2] + " " + (at[0] + 8) + " " + (at[1] + 4) + " " + (at[2] + 5);
+			String floor = (at[0] - 8) + " " + (at[1] - 1) + " " + at[2] + " " + (at[0] + 8) + " " + (at[1] - 1) + " " + (at[2] + 5);
+			server("fill " + box + " air", "fill " + floor + " stone");
+			for (int i = 0; i < TIERS.length; i++) {
+				int x = at[0] + (i - 2) * 3;
+				server("setblock " + x + " " + at[1] + " " + (at[2] + 3) + " skyblock_resources:" + TIERS[i] + "_crop_generator", "setblock " + (x + 1) + " " + at[1] + " " + (at[2] + 3) + " minecraft:chest");
+			}
+		});
+		// A crop generator takes its soil first (right-click with the soil item), then the seed.
+		for (int i = 0; i < TIERS.length; i++) {
+			final int dx = (i - 2) * 3;
+			// Stand next to each generator: the outer ones are beyond reach from the middle.
+			then(10, () -> server("tp @p " + (at[0] + dx + 0.5) + " " + at[1] + " " + (at[2] + 0.5)));
+			clickWith(at, (i - 2) * 3, "minecraft:farmland");
+			clickWith(at, (i - 2) * 3, "minecraft:wheat_seeds");
+		}
+		then(10, () -> tierReport(at, "after soil and seed"));
+		// Side config: a sneak-click with the screwdriver on the east face makes it the output side (the chest sits there).
+		then(10, () -> serverWork(s -> {
+			net.minecraft.server.level.ServerPlayer sp = s.getPlayerList().getPlayers().get(0);
+			net.minecraft.server.level.ServerLevel level = sp.serverLevel();
+			net.minecraft.world.item.Item screwdriver = net.minecraft.core.registries.BuiltInRegistries.ITEM.get(net.minecraft.resources.ResourceLocation.parse("skyblock_resources:screwdriver"));
+			sp.setShiftKeyDown(true);
+			for (int i = 0; i < TIERS.length; i++) {
+				BlockPos pos = new BlockPos(at[0] + (i - 2) * 3, at[1], at[2] + 3);
+				net.minecraft.world.item.ItemStack tool = new net.minecraft.world.item.ItemStack(screwdriver);
+				BlockHitResult hit = new BlockHitResult(Vec3.atCenterOf(pos).add(0.5, 0, 0), Direction.EAST, pos, false);
+				var result = tool.useOn(new net.minecraft.world.item.context.UseOnContext(level, sp, InteractionHand.MAIN_HAND, tool, hit));
+				SkyblockResourcesMod.LOGGER.info("SKYRES-TIERS {} screwdriver east -> {} output_direction={}", TIERS[i], result, level.getBlockEntity(pos) == null ? "?" : level.getBlockEntity(pos).getPersistentData().getString("output_direction"));
+			}
+			sp.setShiftKeyDown(false);
+		}));
+		// Let the server run 3000 ticks as fast as it can, then read each generator and its chest.
+		then(10, () -> server("tick sprint 3000"));
+		then(400, () -> tierReport(at, "after 3000 ticks"));
+		for (int i = 0; i < TIERS.length; i++) {
+			lookAndShoot(at, (i - 2) * 3, "crop_" + TIERS[i]);
+		}
+		// Break each generator the way a player does (with drops) and count what lands on the ground.
+		then(20, () -> serverWork(s -> {
+			net.minecraft.server.level.ServerPlayer sp = s.getPlayerList().getPlayers().get(0);
+			net.minecraft.server.level.ServerLevel level = sp.serverLevel();
+			for (int i = 0; i < TIERS.length; i++) {
+				BlockPos pos = new BlockPos(at[0] + (i - 2) * 3, at[1], at[2] + 3);
+				boolean broke = level.destroyBlock(pos, true, sp);
+				int stacks = 0;
+				int items = 0;
+				boolean gen = false;
+				for (net.minecraft.world.entity.item.ItemEntity e : level.getEntitiesOfClass(net.minecraft.world.entity.item.ItemEntity.class, new net.minecraft.world.phys.AABB(pos).inflate(1.5))) {
+					stacks++;
+					items += e.getItem().getCount();
+					gen |= e.getItem().getItem().toString().contains("crop_generator");
+					e.discard();
+				}
+				SkyblockResourcesMod.LOGGER.info("SKYRES-TIERS {} break broke={} droppedStacks={} droppedItems={} generatorItemDropped={}", TIERS[i], broke, stacks, items, gen);
+			}
+		}));
+		then(40, () -> {
+			SkyblockResourcesMod.LOGGER.info("SKYRES-SHOTS DONE");
+			quit();
+		});
+	}
+
+	private static void tierReport(int[] at, String label) {
+		serverWork(s -> {
+			net.minecraft.server.level.ServerLevel level = s.getPlayerList().getPlayers().get(0).serverLevel();
+			for (int i = 0; i < TIERS.length; i++) {
+				BlockPos pos = new BlockPos(at[0] + (i - 2) * 3, at[1], at[2] + 3);
+				SkyblockResourcesMod.LOGGER.info("SKYRES-TIERS {} {} generator={} chest={}", TIERS[i], label, contents(level, pos), contents(level, pos.east()));
+			}
+		});
+	}
+
+	private static String contents(net.minecraft.server.level.ServerLevel level, BlockPos pos) {
+		if (!(level.getBlockEntity(pos) instanceof net.minecraft.world.Container container)) {
+			return "none";
+		}
+		java.util.Map<String, Integer> sum = new java.util.TreeMap<>();
+		for (int slot = 0; slot < container.getContainerSize(); slot++) {
+			net.minecraft.world.item.ItemStack stack = container.getItem(slot);
+			if (!stack.isEmpty()) {
+				sum.merge(net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(stack.getItem()).toString(), stack.getCount(), Integer::sum);
+			}
+		}
+		return sum + " slots=" + container.getContainerSize();
+	}
+
+	private static void serverWork(Consumer<MinecraftServer> work) {
+		MinecraftServer server = Minecraft.getInstance().getSingleplayerServer();
+		if (server != null) {
+			server.execute(() -> {
+				try {
+					work.accept(server);
+				} catch (Throwable t) {
+					SkyblockResourcesMod.LOGGER.error("SKYRES-TIERS server step failed", t);
+				}
+			});
+		}
 	}
 
 	/** Gives the player an item and right-clicks the top of the generator, as the crosshair would, so the generator starts working on it. */
