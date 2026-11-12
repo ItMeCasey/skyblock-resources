@@ -8,6 +8,8 @@ Resource generators, tree generators and crop generators for skyblock packs. Eac
 
 | Minecraft | NeoForge | Forge |
 |---|---|---|
+| 26.3 | yes | yes |
+| 26.2 | yes | yes |
 | 26.1.2 | yes | yes |
 | 1.21.1 | yes | yes |
 | 1.20.1 | yes | yes |

@@ -23,6 +23,10 @@ API = "https://minecraft.curseforge.com/api"
 
 # module -> (Minecraft version, loader name on CurseForge, Java version name on CurseForge)
 BUILDS = {
+    "forge-26.3": ("26.3", "Forge", "Java 25"),
+    "neoforge-26.3": ("26.3", "NeoForge", "Java 25"),
+    "forge-26.2": ("26.2", "Forge", "Java 25"),
+    "neoforge-26.2": ("26.2", "NeoForge", "Java 25"),
     "forge-26.1.2": ("26.1.2", "Forge", "Java 25"),
     "neoforge-26.1.2": ("26.1.2", "NeoForge", "Java 25"),
     "forge-1.21.1": ("1.21.1", "Forge", "Java 21"),

@@ -1,0 +1,107 @@
+plugins {
+    id 'eclipse'
+    id 'net.neoforged.moddev' version '2.0.148'
+}
+
+version = '2026.11.3'
+base.archivesName = 'skyblock_resources-neoforge-26.2'
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+
+// Data and assets come from the shared common/ folder; see docs/PORTING_LAYOUT.md.
+ext.dataTarget = [mc: '26.2', format: 'v26', loader: 'neoforge']
+apply from: '../../../tools/common-data.gradle'
+
+neoForge {
+    version = '26.2.0.93'
+
+    runs {
+        client {
+            client()
+        }
+        server {
+            server()
+        }
+        gameTest {
+            server()
+            systemProperty 'skyblock.selftest', 'true'
+            // Own port so builds for other versions can run their tests at the same time.
+            programArguments.addAll('--port', '8908')
+        }
+
+        configureEach {
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+            logLevel = org.slf4j.event.Level.DEBUG
+        }
+    }
+
+    mods {
+        skyblock_resources {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+if (project.hasProperty('viewerCheck')) {
+    sourceSets.main.java.srcDir 'src/devtest/java'
+}
+
+// KubeJS has no 26.2 build, so its recipe schema plugin is left out.
+sourceSets.main.java.exclude 'com/itmecasey/skyblockresources/kubejs/**'
+sourceSets.main.resources.exclude 'kubejs.plugins.txt'
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    def imcUser = System.getenv('IMC_MAVEN_USER') ?: project.findProperty('imcMavenUser')
+    def imcPass = System.getenv('IMC_MAVEN_PASSWORD') ?: project.findProperty('imcMavenPassword')
+    if (imcUser && imcPass) {
+        maven {
+            name = 'ItMeCasey mirror'
+            url = 'https://itmecasey.com/maven'
+            credentials { username = imcUser; password = imcPass }
+            content { includeGroup 'curse.maven' }
+        }
+    }
+    maven {
+        url 'https://cursemaven.com'
+    }
+    maven {
+        name = "Progwml6's maven"
+        url = 'https://dvs1.progwml6.com/files/maven/'
+    }
+    maven {
+        name = "Jared's maven"
+        url = 'https://maven.blamejared.com/'
+    }
+    maven {
+        name = 'ModMaven'
+        url = 'https://modmaven.dev'
+    }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = 'Modrinth'
+                url = 'https://api.modrinth.com/maven'
+            }
+        }
+        filter {
+            includeGroup 'maven.modrinth'
+        }
+    }
+}
+dependencies {
+    // SMWTI and BEI: only their API jars are compiled against.
+    compileOnly files('libs/smwti-neoforge-26.2-2026.11.3.jar')
+    compileOnly files('libs/bei-neoforge-26.2-2026.11.4-api.jar')
+    // REI, JEI and Jade: compiled against only, never required. REI needs Cloth Config and Architectury at run time.
+    compileOnly 'maven.modrinth:rei:BoY0Dky0'
+    compileOnly 'maven.modrinth:cloth-config:zErG1kOw'
+    compileOnly 'maven.modrinth:architectury-api:tihphFAj'
+    compileOnly 'maven.modrinth:jade:GBES6etT'
+    compileOnly 'mezz.jei:jei-26.2-common-api:30.48.0.244'
+    compileOnly 'mezz.jei:jei-26.2-neoforge-api:30.48.0.244'
+}
+

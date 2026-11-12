@@ -1,6 +1,6 @@
 # Porting layout
 
-Targets: Forge and NeoForge for 1.20.1, 1.21.1, and 26.1.2 (six builds). The current code is NeoForge 26.1.2. The mod version stays YYYY.M.increment on every build.
+Targets: Forge and NeoForge for 1.20.1, 1.21.1, 26.1.2, 26.2 and 26.3 (ten builds; 26.2 and 26.3 are in `PORT_NOTES_mc26.2_mc26.3.md`). The mod version stays YYYY.M.increment on every build.
 
 ## Decision
 

@@ -1,0 +1,57 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="GNU General Public License version 3 (GPLv3)"
+
+[[mods]]
+modId="skyblock_resources"
+version="2026.11.3"
+displayName="Skyblock Resources"
+displayURL="https://github.com/ItMeCasey"
+credits="ItMeCasey"
+authors="ItMeCasey"
+
+[[dependencies.skyblock_resources]]
+    modId="neoforge"
+    type="required"
+    versionRange="[26.3.0.101,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.skyblock_resources]]
+    modId="minecraft"
+    type="required"
+    versionRange="[26.3]"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.skyblock_resources]]
+    modId="toast_control"
+    type="optional"
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.skyblock_resources]]
+    modId="mouse_tweaks"
+    type="optional"
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.skyblock_resources]]
+    modId="inventory_sorter"
+    type="optional"
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.skyblock_resources]]
+    modId="smwti"
+    type="optional"
+    versionRange="[2026.11.1,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.skyblock_resources]]
+    modId="jei"
+    type="optional"
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
+

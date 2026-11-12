@@ -70,3 +70,19 @@ Things the checks found and fixed:
 Not tested, and why:
 
 - **KubeJS** was checked on NeoForge 1.21.1 only (a server script added one recipe of each of our types and all three loaded); the other KubeJS builds share the schema code. Nothing else is untested.
+
+## 26.2 and 26.3 (added 2026-11-12)
+
+Builds that exist for these versions (Modrinth maven and the sibling projects; CurseForge was not queried again):
+
+| Mod | 26.2 NeoForge | 26.2 Forge | 26.3 NeoForge | 26.3 Forge |
+|---|---|---|---|---|
+| BEI 2026.11.4 | yes | yes | yes | yes |
+| SMWTI 2026.11.3 | yes | yes | yes | yes |
+| JEI | 30.48.0.244 | none | 31.17.0.109 | none |
+| REI | 26.2.820 | none | 26.3.824 | none |
+| Jade | 26.2.10 | none | 26.3.5 | none |
+| EMI | none | none | none | none |
+| KubeJS | none | none | none | none |
+
+Checked in a client (`SKYRES_SHOTS=work`): mod loads, resource generator fills a chest, crop generator grows and delivers, overlays render. Seen on all four builds (`docs/frames/work_<mc>_<loader>_generators.png`). Not opened in a client on these versions: BEI, SMWTI, JEI, REI and Jade (they compile). See `PORT_NOTES_mc26.2_mc26.3.md`.

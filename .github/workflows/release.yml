@@ -1,6 +1,6 @@
 name: release
 
-# Push a tag such as v2026.11.1 to build all six jars, publish a GitHub release and upload them to CurseForge.
+# Push a tag such as v2026.11.1 to build all ten jars, publish a GitHub release and upload them to CurseForge.
 # The tag must match the version in every module's build.gradle.
 # Needs the repository secret CURSEFORGE_TOKEN (a CurseForge upload API token).
 on:
@@ -27,6 +27,18 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          - module: forge-26.3
+            dir: versions/mc26.3/forge
+            java: 25
+          - module: neoforge-26.3
+            dir: versions/mc26.3/neoforge
+            java: 25
+          - module: forge-26.2
+            dir: versions/mc26.2/forge
+            java: 25
+          - module: neoforge-26.2
+            dir: versions/mc26.2/neoforge
+            java: 25
           - module: forge-26.1.2
             dir: versions/mc26.1.2/forge
             java: 25
@@ -101,7 +113,7 @@ jobs:
         run: |
           previous=$(git describe --tags --abbrev=0 --match 'v*' "${GITHUB_SHA}^" 2>/dev/null || true)
           {
-            echo "Builds for Minecraft 26.1.2, 1.21.1 and 1.20.1 on Forge and NeoForge."
+            echo "Builds for Minecraft 26.3, 26.2, 26.1.2, 1.21.1 and 1.20.1 on Forge and NeoForge."
             echo
             echo "Guide: https://itmecasey.com/wiki/skyblock-resources/"
             echo

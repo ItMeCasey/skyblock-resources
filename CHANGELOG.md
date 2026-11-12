@@ -7,6 +7,11 @@ All notable changes to the **Skyblock Resources** mod will be documented in this
 ### Tested in a client
 - JEI, REI and EMI on every build that has them, KubeJS recipe schemas on NeoForge 1.21.1, and all five crop generator tiers in a live world (screwdriver output side, breaking, Jade). No jar changed. Create, Ex Deorum, Ex Nihilo Sequentia, AE2 and Quark recipe ids were checked against the real mods.
 
+## [2026.11.3] - Unreleased
+
+### Added
+- Builds for Minecraft 26.3 and 26.2 on Forge and NeoForge (four new jars). Barely Enough Items and Show Me What This Is are supported on all four; JEI, REI and Jade are supported on the NeoForge builds, where those mods have a build. KubeJS has no 26.2 or 26.3 build, so its recipe schemas are not in these jars.
+
 ## [2026.11.2] - 2026-11-06
 
 ### Added

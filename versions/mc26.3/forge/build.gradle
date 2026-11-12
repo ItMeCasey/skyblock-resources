@@ -1,0 +1,109 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'eclipse'
+    id 'net.minecraftforge.gradle' version '[7.0.17,8)'
+}
+
+version = '2026.11.3'
+group = 'com.itmecasey.skyblockresources'
+
+// Jar name: skyblock_resources-forge-<minecraft version>-<mod version>
+base {
+    archivesName = 'skyblock_resources-forge-26.3'
+}
+
+// Mojang ships Java 25 to end users in 26.1+, so the mod targets Java 25.
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+
+// Data and assets come from the shared common/ folder; see docs/PORTING_LAYOUT.md.
+// Forge 26.3 reads one "forge:condition" object (type "forge:mod_loaded") instead of an array; the script converts them.
+ext.dataTarget = [mc: '26.3', format: 'v26', loader: 'forge', conditionsKey: 'forge:condition', modLoadedType: 'forge:mod_loaded', conditionsMode: 'single']
+apply from: '../../../tools/common-data.gradle'
+
+minecraft {
+    runs {
+        configureEach {
+            workingDir = layout.projectDirectory.dir('run')
+            systemProperty 'eventbus.api.strictRuntimeChecks', 'true'
+        }
+
+        register('client')
+
+        register('server') {
+            args '--nogui'
+        }
+
+        register('gameTest') {
+            // The headless self-test (see HeadlessSelfTest): a server that checks drops and upgrades, prints SELFTEST
+            // PASSED or SELFTEST FAILED and stops. This is Forge's game test server, which starts a real server
+            // without the EULA check. Its port argument is ignored; the dedicated variant below uses it.
+            mainClass = 'net.minecraftforge.bootstrap.ForgeBootstrap'
+            args '--gameDir', '.', '--launchTarget', 'forge_userdev_server_gametest', '--port', '8907'
+            jvmArgs '-Djava.net.preferIPv6Addresses=system'
+            systemProperty 'skyblock.selftest', 'true'
+        }
+
+        register('gameTestDedicated') {
+            // The same self-test on a dedicated server, as the NeoForge project runs it. Needs run/eula.txt to say
+            // eula=true (the first start writes it with eula=false; accepting the Minecraft EULA is up to you).
+            mainClass = 'net.minecraftforge.bootstrap.ForgeBootstrap'
+            args '--gameDir', '.', '--launchTarget', 'forge_userdev_server', '--nogui'
+            jvmArgs '-Djava.net.preferIPv6Addresses=system'
+            systemProperty 'skyblock.selftest', 'true'
+            // Own port so builds for other versions can run their tests at the same time.
+            args '--port', '8907'
+        }
+    }
+}
+
+// The game test server exits with a non-zero status after halting; the result is the SELFTEST line in the log.
+tasks.matching { it.name == 'runGameTest' }.configureEach { it.ignoreExitValue = true }
+
+if (project.hasProperty('viewerCheck')) {
+    sourceSets.main.java.srcDir 'src/devtest/java'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    def imcUser = System.getenv('IMC_MAVEN_USER') ?: project.findProperty('imcMavenUser')
+    def imcPass = System.getenv('IMC_MAVEN_PASSWORD') ?: project.findProperty('imcMavenPassword')
+    if (imcUser && imcPass) {
+        maven {
+            name = 'ItMeCasey mirror'
+            url = 'https://itmecasey.com/maven'
+            credentials { username = imcUser; password = imcPass }
+            content { includeGroup 'curse.maven' }
+        }
+    }
+    minecraft.mavenizer(it)
+    maven fg.forgeMaven
+    maven fg.minecraftLibsMaven
+    mavenCentral()
+    maven {
+        url 'https://cursemaven.com'
+    }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = 'Modrinth'
+                url = 'https://api.modrinth.com/maven'
+            }
+        }
+        filter {
+            includeGroup 'maven.modrinth'
+        }
+    }
+}
+
+dependencies {
+    implementation minecraft.dependency('net.minecraftforge:forge:26.3-66.1.5')
+    annotationProcessor 'net.minecraftforge:eventbus-validator:7.0.5'
+
+    // SMWTI and BEI: only their API jars are compiled against.
+    compileOnly files('libs/smwti-forge-26.3-2026.11.3.jar')
+    compileOnly files('libs/bei-forge-26.3-2026.11.4-api.jar')
+}

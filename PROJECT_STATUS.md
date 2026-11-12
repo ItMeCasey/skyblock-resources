@@ -1,7 +1,7 @@
 # Project Status
 <!-- status-format: 1 -->
-Updated: 2026-11-10
-Summary: Skyblock Resources 2026.11.2 (six builds) is released; BEI, Jade, SMWTI, JEI, REI and EMI are seen working in a client on every build that has them, as are all five crop generator tiers and the KubeJS recipe schemas; only the banner upload (Casey) is open.
+Updated: 2026-11-12
+Summary: Skyblock Resources 2026.11.2 (six builds) is released; four new builds for Minecraft 26.2 and 26.3 (Forge and NeoForge, version 2026.11.3) compile, pass the self-test and work in a client, committed locally and not yet pushed, tagged or released.
 Spend: none
 
 ## Done
@@ -63,6 +63,15 @@ Spend: none
 - [x] Release v2026.11.1 as a GitHub prerelease with six jars; tag v2026.11.1 pushed (w:2)
 - [x] CurseForge: six 2026.11.1 files uploaded and all six approved (w:2)
 - [x] Logo and banners are live on CurseForge (confirmed by Casey 2026-11-10) (w:1)
+
+## 26.2 and 26.3
+- [x] Forge and NeoForge builds for 26.3 and 26.2 (versions/mc26.3, versions/mc26.2): all four compile and `build` passes; notes in docs/PORT_NOTES_mc26.2_mc26.3.md (w:4)
+- [x] Self-test (`runGameTest`) passes on all four, ports 8906-8909 registered in CLAUDE.md; the NeoForge test skips checks for mods that have no 26.2 or 26.3 build (w:2)
+- [x] Client check on all four with launch-isolated: mod loads, resource generator fills a chest, crop generator grows and delivers, overlays render; it found and fixed a 26.3 render crash in the opaque overlay pipelines (docs/frames/work_*) (w:3)
+- [x] CI matrix, release workflow, CurseForge file plan, README, issue templates and changelog list the 26.2 and 26.3 builds (the wiki pages in the website folder were edited too, outside this repo); version 2026.11.3 on the new builds only (w:2)
+- [ ] Bump the six older builds to 2026.11.3 so all ten jars carry one version at release (w:1)
+- [ ] Push, CI green on all ten, tag v2026.11.3, upload ten jars to CurseForge (project manager) (w:2)
+- [ ] BEI, SMWTI, JEI, REI and Jade opened in a client on 26.2 and 26.3 (they compile only); swap the local SMWTI jars in libs/ for the private Maven coordinates (w:3)
 
 ## Wiki and branding
 - [x] Wiki live at itmecasey.com/wiki/skyblock-resources with 12 pages and the logo (w:3)

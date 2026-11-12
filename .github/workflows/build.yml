@@ -1,6 +1,6 @@
 name: build
 
-# Builds all six Skyblock Resources jars and runs each headless self test on every push and pull request.
+# Builds all ten Skyblock Resources jars and runs each headless self test on every push and pull request.
 on:
   push:
   pull_request:
@@ -14,6 +14,18 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          - module: forge-26.3
+            dir: versions/mc26.3/forge
+            java: 25
+          - module: neoforge-26.3
+            dir: versions/mc26.3/neoforge
+            java: 25
+          - module: forge-26.2
+            dir: versions/mc26.2/forge
+            java: 25
+          - module: neoforge-26.2
+            dir: versions/mc26.2/neoforge
+            java: 25
           - module: forge-26.1.2
             dir: versions/mc26.1.2/forge
             java: 25

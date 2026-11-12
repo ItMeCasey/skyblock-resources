@@ -1,0 +1,128 @@
+package com.itmecasey.skyblockresources.block;
+
+import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.Containers;
+import net.minecraft.util.RandomSource;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.core.Direction;
+import net.minecraft.core.BlockPos;
+
+import com.itmecasey.skyblockresources.configuration.ConfigurationConfiguration;
+import com.itmecasey.skyblockresources.procedures.CropGeneratorOnTickUpdateProcedure;
+import com.itmecasey.skyblockresources.procedures.CropGeneratorOnBlockRightclickedProcedure;
+import com.itmecasey.skyblockresources.procedures.CropGeneratorBlockAddedProcedure;
+import com.itmecasey.skyblockresources.block.entity.CropGeneratorBlockEntity;
+
+import java.util.function.DoubleSupplier;
+import java.util.function.IntSupplier;
+
+public class CropGeneratorBlock extends Block implements EntityBlock {
+	public record Tier(IntSupplier slots, DoubleSupplier maxTicks, DoubleSupplier maxTransfer) {
+	}
+
+	private final Tier tier;
+
+	private static final VoxelShape SHAPE = Shapes.or(box(14, 2, 1, 15, 7, 15), box(1, 0, 1, 15, 2, 15), box(1, 2, 1, 14, 7, 15));
+
+	public CropGeneratorBlock(BlockBehaviour.Properties properties, Tier tier) {
+		super(properties.sound(SoundType.WOOD).strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+		this.tier = tier;
+	}
+
+	public Tier tier() {
+		return tier;
+	}
+
+	@Override
+	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+		return SHAPE;
+	}
+
+	@Override
+	public boolean propagatesSkylightDown(BlockState state) {
+		return true;
+	}
+
+	@Override
+	public int getLightDampening(BlockState state) {
+		return 0;
+	}
+
+	@Override
+	public VoxelShape getVisualShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+		return Shapes.empty();
+	}
+
+	@Override
+	public void onPlace(BlockState blockstate, Level world, BlockPos pos, BlockState oldState, boolean moving) {
+		super.onPlace(blockstate, world, pos, oldState, moving);
+		world.scheduleTick(pos, this, 1);
+		CropGeneratorBlockAddedProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+	}
+
+	@Override
+	public void tick(BlockState blockstate, ServerLevel world, BlockPos pos, RandomSource random) {
+		super.tick(blockstate, world, pos, random);
+		CropGeneratorOnTickUpdateProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), tier.maxTicks().getAsDouble(), tier.maxTransfer().getAsDouble());
+		world.scheduleTick(pos, this, 1);
+	}
+
+	@Override
+	public InteractionResult useWithoutItem(BlockState blockstate, Level world, BlockPos pos, Player entity, BlockHitResult hit) {
+		super.useWithoutItem(blockstate, world, pos, entity, hit);
+		CropGeneratorOnBlockRightclickedProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), hit.getDirection(), entity);
+		return InteractionResult.SUCCESS;
+	}
+
+	@Override
+	public MenuProvider getMenuProvider(BlockState state, Level worldIn, BlockPos pos) {
+		BlockEntity tileEntity = worldIn.getBlockEntity(pos);
+		return tileEntity instanceof MenuProvider menuProvider ? menuProvider : null;
+	}
+
+	@Override
+	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+		return new CropGeneratorBlockEntity(pos, state);
+	}
+
+	@Override
+	public boolean triggerEvent(BlockState state, Level world, BlockPos pos, int eventID, int eventParam) {
+		super.triggerEvent(state, world, pos, eventID, eventParam);
+		BlockEntity blockEntity = world.getBlockEntity(pos);
+		return blockEntity != null && blockEntity.triggerEvent(eventID, eventParam);
+	}
+
+	@Override
+	protected void affectNeighborsAfterRemoval(BlockState blockstate, ServerLevel world, BlockPos blockpos, boolean flag) {
+		Containers.updateNeighboursAfterDestroy(blockstate, world, blockpos);
+	}
+
+	@Override
+	public boolean hasAnalogOutputSignal(BlockState state) {
+		return true;
+	}
+
+	@Override
+	public int getAnalogOutputSignal(BlockState blockState, Level world, BlockPos pos, Direction direction) {
+		BlockEntity tileentity = world.getBlockEntity(pos);
+		if (tileentity instanceof CropGeneratorBlockEntity be)
+			return AbstractContainerMenu.getRedstoneSignalFromContainer(be);
+		else
+			return 0;
+	}
+}
