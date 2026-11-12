@@ -1,7 +1,7 @@
 name: release
 
 # Push a tag such as v2026.11.1 to build all ten jars, publish a GitHub release and upload them to CurseForge.
-# The tag must match the version in every module's build.gradle.
+# The tag must match the version of the modules being released; builds with another version are skipped.
 # Needs the repository secret CURSEFORGE_TOKEN (a CurseForge upload API token).
 on:
   push:
@@ -101,13 +101,15 @@ jobs:
       - name: Check the version
         id: version
         run: |
-          versions=$(grep -h "^version = '" versions/*/*/build.gradle | sed "s/^version = '\(.*\)'/\1/" | sort -u)
-          if [ "$(echo "$versions" | wc -l)" != "1" ]; then echo "Modules disagree on the version:"; echo "$versions"; exit 1; fi
-          version="$versions"
-          echo "version=$version" >> "$GITHUB_OUTPUT"
-          if [ "${GITHUB_REF_TYPE}" = "tag" ] && [ "${GITHUB_REF_NAME}" != "v$version" ]; then
-            echo "Tag ${GITHUB_REF_NAME} does not match version $version"; exit 1
+          # A release uploads only the builds whose own version equals the tag; unchanged builds are skipped.
+          versions=$(grep -h "^version = '" versions/*/*/build.gradle | sed "s/^version = '\(.*\)'//" | sort -u)
+          if [ "${GITHUB_REF_TYPE}" = "tag" ]; then
+            version="${GITHUB_REF_NAME#v}"
+            if ! echo "$versions" | grep -qx "$version"; then echo "No module has version $version (found: $versions)"; exit 1; fi
+          else
+            version=$(echo "$versions" | sort -V | tail -n 1)
           fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
 
       - name: Write the release notes
         run: |

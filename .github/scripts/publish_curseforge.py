@@ -72,6 +72,9 @@ def pick_jar(folder, module, version):
         jars = [p for p in jars if p.name.endswith("-all.jar")] or jars
     else:
         jars = [p for p in jars if not p.name.endswith("-all.jar")] or jars
+    if not jars:
+        print(f"skip {module}: no jar for version {version} (unchanged build, nothing to upload)")
+        return None
     if len(jars) != 1:
         sys.exit(f"Expected exactly one jar to upload for {module} in {folder}, found {[p.name for p in jars]}")
     return jars[0]
@@ -117,6 +120,8 @@ def main():
         args.collect.mkdir(parents=True, exist_ok=True)
         for module in BUILDS:
             jar = pick_jar(args.artifacts / f"jar-{module}", module, args.version)
+            if jar is None:
+                continue
             target = args.collect / clean_name(module, args.version)
             target.write_bytes(jar.read_bytes())
             print(f"{module}: {jar.name} -> {target.name}")
@@ -132,6 +137,8 @@ def main():
         if not folder.is_dir():
             sys.exit(f"Missing build folder {folder}")
         jar = pick_jar(folder, module, args.version)
+        if jar is None:
+            continue
         # CurseForge also wants an environment (Client and Server): Skyblock Resources runs on both.
         ids = [resolve(versions, minecraft), resolve(versions, loader), resolve(versions, "Client"), resolve(versions, "Server")]
         try:
