@@ -102,7 +102,7 @@ jobs:
         id: version
         run: |
           # A release uploads only the builds whose own version equals the tag; unchanged builds are skipped.
-          versions=$(grep -h "^version = '" versions/*/*/build.gradle | sed "s/^version = '\(.*\)'//" | sort -u)
+          versions=$(grep -h "^version = '" versions/*/*/build.gradle | sed "s/^version = '\(.*\)'/\1/" | sort -u)
           if [ "${GITHUB_REF_TYPE}" = "tag" ]; then
             version="${GITHUB_REF_NAME#v}"
             if ! echo "$versions" | grep -qx "$version"; then echo "No module has version $version (found: $versions)"; exit 1; fi
