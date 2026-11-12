@@ -7,6 +7,11 @@ All notable changes to the **Skyblock Resources** mod will be documented in this
 ### Tested in a client
 - JEI, REI and EMI on every build that has them, KubeJS recipe schemas on NeoForge 1.21.1, and all five crop generator tiers in a live world (screwdriver output side, breaking, Jade). No jar changed. Create, Ex Deorum, Ex Nihilo Sequentia, AE2 and Quark recipe ids were checked against the real mods.
 
+## [2026.11.4] - 2026-11-12 (Forge and NeoForge 26.3 only)
+
+### Fixed
+- With Biomes O' Plenty 26.3 installed, a world could not load: four brimstone generator recipes and nine tree recipes for the orange, red and yellow maple saplings named items that Biomes O' Plenty 26.3 no longer has, and Minecraft stopped on "Errors in the currently selected data pack(s)". The brimstone recipes are removed on 26.3, and the three maple recipes now use the single `maple_sapling` BoP 26.3 has (one recipe per soil instead of three duplicates).
+
 ## [2026.11.3] - Unreleased
 
 ### Added

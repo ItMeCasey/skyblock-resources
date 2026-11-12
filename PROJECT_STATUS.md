@@ -53,6 +53,7 @@ Spend: none
 - [x] Check the logo against the live CurseForge logo: the live logo is the same cube icon as branding/icon (w:1)
 
 ## Release
+- [~] 26.3 hotfix 2026.11.4 (Forge and NeoForge 26.3 only): Biomes O' Plenty 26.3 recipes that named missing items are removed or remapped in `overrides/26.3`; both jars build and pass the self-test; load check in the Barely a Mod Pack pending, not yet tagged (w:1)
 - [x] Version 2026.11.2 set on all six builds, changelog and CurseForge description updated (w:1)
 - [x] Release 2026.11.2: pushed, CI green, tagged v2026.11.2, six jars on CurseForge as beta (w:2)
 - [x] CI build of all six jars with the headless self test (build.yml) (w:2)
