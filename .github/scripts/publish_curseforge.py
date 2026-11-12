@@ -119,6 +119,8 @@ def main():
             parser.error("--collect needs --artifacts and --version")
         args.collect.mkdir(parents=True, exist_ok=True)
         for module in BUILDS:
+            if not (args.artifacts / f"jar-{module}").is_dir():
+                continue
             jar = pick_jar(args.artifacts / f"jar-{module}", module, args.version)
             if jar is None:
                 continue
@@ -135,7 +137,8 @@ def main():
     for module, (minecraft, loader, java) in BUILDS.items():
         folder = args.artifacts / f"jar-{module}"
         if not folder.is_dir():
-            sys.exit(f"Missing build folder {folder}")
+            print(f"skip {module}: not built for this release")
+            continue
         jar = pick_jar(folder, module, args.version)
         if jar is None:
             continue
