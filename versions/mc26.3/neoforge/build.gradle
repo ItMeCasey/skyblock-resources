@@ -94,6 +94,8 @@ repositories {
 }
 
 dependencies {
+    // -PmodjsJar=<path> adds a local ModJS jar to the dev runs, to try the scripting bridge for real.
+    if (project.hasProperty('modjsJar')) runtimeOnly files(project.property('modjsJar'))
     // SMWTI and BEI: only their API jars are compiled against.
     compileOnly files('libs/smwti-neoforge-26.3-2026.11.3.jar')
     compileOnly files('libs/bei-neoforge-26.3-2026.11.4-api.jar')

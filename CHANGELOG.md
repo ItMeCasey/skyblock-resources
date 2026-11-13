@@ -12,6 +12,7 @@ All notable changes to the **Skyblock Resources** mod will be documented in this
 - The explanation in the wrong-tier upgrade card message; it now reads "Wrong generator tier".
 
 ### Tested in a client
+- ModJS scripting with a real ModJS jar on NeoForge 1.21.1 and 26.3, and the item tooltips (name only) on NeoForge and Forge 1.21.1.
 - JEI, REI and EMI on every build that has them, KubeJS recipe schemas on NeoForge 1.21.1, and all five crop generator tiers in a live world (screwdriver output side, breaking, Jade). Create, Ex Deorum, Ex Nihilo Sequentia, AE2 and Quark recipe ids were checked against the real mods.
 
 ## [2026.11.4] - 2026-11-12 (Forge and NeoForge 26.3 only)

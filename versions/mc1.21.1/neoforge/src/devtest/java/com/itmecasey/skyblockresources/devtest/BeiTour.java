@@ -42,7 +42,7 @@ import net.neoforged.neoforge.client.event.ClientTickEvent;
 public final class BeiTour {
 	private static final String MODE = String.valueOf(System.getenv("SKYRES_SHOTS")).toLowerCase();
 	/** "bei" opens the viewer's recipe popups; "overlay" looks at our generators for an in-world info overlay. */
-	private static final boolean ENABLED = MODE.equals("bei") || MODE.equals("overlay") || MODE.equals("viewer") || MODE.equals("tiers");
+	private static final boolean ENABLED = MODE.equals("bei") || MODE.equals("overlay") || MODE.equals("viewer") || MODE.equals("tiers") || MODE.equals("tooltip");
 	/** Names the frames: skyres_<label>_<view>.png (the viewer or overlay mod being checked). */
 	private static final String LABEL = System.getenv("SKYRES_LABEL") == null ? MODE : System.getenv("SKYRES_LABEL");
 	private static final String WORLD = "skyres_shots";
@@ -164,6 +164,10 @@ public final class BeiTour {
 			viewerPlan();
 			return;
 		}
+		if (MODE.equals("tooltip")) {
+			tooltipPlan();
+			return;
+		}
 		if (MODE.equals("tiers")) {
 			tiersPlan();
 			return;
@@ -216,6 +220,57 @@ public final class BeiTour {
 			SkyblockResourcesMod.LOGGER.info("SKYRES-SHOTS DONE");
 			quit();
 		});
+	}
+
+	// --- Item tooltips: SKYRES_SHOTS=tooltip ------------------------------------------------------------
+
+	private static void tooltipPlan() {
+		then(0, () -> server("difficulty peaceful", "time set noon", "gamemode survival @a", "give @p skyblock_resources:screwdriver", "give @p skyblock_resources:stone_upgrade",
+				"give @p skyblock_resources:wooden_generator", "give @p skyblock_resources:wooden_tree_generator", "give @p skyblock_resources:wooden_crop_generator"));
+		then(30, () -> Minecraft.getInstance().setScreen(new InventoryScreen(player())));
+		hoverItem("skyblock_resources:screwdriver", "tooltip_screwdriver");
+		hoverItem("skyblock_resources:stone_upgrade", "tooltip_upgrade_card");
+		hoverItem("skyblock_resources:wooden_generator", "tooltip_wooden_generator");
+		hoverItem("skyblock_resources:wooden_tree_generator", "tooltip_wooden_tree_generator");
+		hoverItem("skyblock_resources:wooden_crop_generator", "tooltip_wooden_crop_generator");
+		then(40, () -> {
+			SkyblockResourcesMod.LOGGER.info("SKYRES-SHOTS DONE");
+			quit();
+		});
+	}
+
+	/** Moves the game's own cursor over the inventory slot that holds the item, so its tooltip is drawn. */
+	private static void hoverItem(String itemId, String shot) {
+		then(20, () -> hoverSlot(itemId));
+		then(10, () -> hoverSlot(itemId));
+		shoot(shot, 20);
+	}
+
+	private static void hoverSlot(String itemId) {
+		try {
+			Minecraft game = Minecraft.getInstance();
+			net.minecraft.client.gui.screens.inventory.AbstractContainerScreen<?> screen = (net.minecraft.client.gui.screens.inventory.AbstractContainerScreen<?>) game.screen;
+			java.lang.reflect.Field left = net.minecraft.client.gui.screens.inventory.AbstractContainerScreen.class.getDeclaredField("leftPos");
+			java.lang.reflect.Field top = net.minecraft.client.gui.screens.inventory.AbstractContainerScreen.class.getDeclaredField("topPos");
+			left.setAccessible(true);
+			top.setAccessible(true);
+			for (net.minecraft.world.inventory.Slot slot : screen.getMenu().slots) {
+				if (net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(slot.getItem().getItem()).toString().equals(itemId)) {
+					double gx = left.getInt(screen) + slot.x + 8;
+					double gy = top.getInt(screen) + slot.y + 8;
+					double sx = gx * (double) game.getWindow().getScreenWidth() / game.getWindow().getGuiScaledWidth();
+					double sy = gy * (double) game.getWindow().getScreenHeight() / game.getWindow().getGuiScaledHeight();
+					java.lang.reflect.Method move = net.minecraft.client.MouseHandler.class.getDeclaredMethod("onMove", long.class, double.class, double.class);
+					move.setAccessible(true);
+					move.invoke(game.mouseHandler, game.getWindow().getWindow(), sx + 2, sy);
+					move.invoke(game.mouseHandler, game.getWindow().getWindow(), sx, sy);
+					return;
+				}
+			}
+			SkyblockResourcesMod.LOGGER.warn("SKYRES-SHOTS no slot holds {}", itemId);
+		} catch (ReflectiveOperationException | RuntimeException e) {
+			SkyblockResourcesMod.LOGGER.warn("SKYRES-SHOTS could not hover {}", itemId, e);
+		}
 	}
 
 	// --- Other recipe viewers (JEI, REI, EMI): SKYRES_SHOTS=viewer, SKYRES_LABEL=jei|rei|emi ---------------------------

@@ -1,7 +1,7 @@
 # Project Status
 <!-- status-format: 1 -->
 Updated: 2026-11-13
-Summary: Skyblock Resources 2026.11.4 is released; 2026.11.5 (all ten builds, not pushed) adds optional ModJS scripting and removes the screwdriver tooltip hint; open: CI for the other builds, a real ModJS run on Forge, and the banner upload (Casey).
+Summary: Skyblock Resources 2026.11.4 is released; 2026.11.5 (all ten builds, not pushed) adds optional ModJS scripting and removes the screwdriver tooltip hint; open: CI for the other builds and the banner upload (Casey).
 Spend: none
 
 ## Done
@@ -57,7 +57,8 @@ Spend: none
 - [x] Headless self test covers the events (a throwing listener is skipped), the state read, the recipe JSON and listener cleanup; passes on NeoForge 1.21.1 (w:2)
 - [~] The other nine builds compile and pass the self test: compile checked locally on NeoForge 26.1.2 and 1.20.1 and Forge 1.20.1, 1.21.1 and 26.3; Forge 26.1.2, both 26.2 builds and NeoForge 26.3 are left to CI after the push (w:2)
 - [x] A real ModJS 2026.11.31 dev run on NeoForge 1.21.1: the global is installed, a script's events fire, a throwing script listener does not stop the game, and the self test passes (`-PmodjsJar=<path>`) (w:2)
-- [ ] The same real ModJS run on a Forge build (w:1)
+- [x] A real ModJS 2026.11.31 dev run on NeoForge 26.3 as well: global installed, events fired, self test passed (w:1)
+- [x] Client frames of the item tooltips after the hint removal on NeoForge 1.21.1 and Forge 1.21.1 (screwdriver, upgrade card, three wooden generators: name only), docs/frames/tooltip_* (w:1)
 - [x] docs/scripting.md, wiki page "ModJS scripting" with the nav entry and compatibility row, CurseForge and listing text updated (w:1)
 - [x] Hints removed: the screwdriver tooltip line and the wrong-tier explanation; the CurseForge description no longer has install, "Tested" or how-to text (w:1)
 
