@@ -55,6 +55,7 @@ public class SkyblockResourcesMod {
 	private static MethodHandle playerHandle;
 
 	public SkyblockResourcesMod(IEventBus modEventBus) {
+		com.itmecasey.skyblockresources.script.ModJsBridge.install();
 		NeoForge.EVENT_BUS.register(this);
 		modEventBus.addListener(this::registerNetworking);
 		SkyblockResourcesModBlocks.REGISTRY.register(modEventBus);

@@ -2,10 +2,17 @@
 
 All notable changes to the **Skyblock Resources** mod will be documented in this file.
 
-## [Unreleased]
+## [2026.11.5] - Unreleased (all ten builds)
+
+### Added
+- Optional ModJS scripting: with ModJS installed, scripts get a `SkyblockResources` global. `on('produced', ...)` and `on('upgraded', ...)` listen to generators, `info(level, x, y, z)` reads a generator's tier, state and contents, and `recipes.*` builds the JSON of this mod's recipe types for ModJS's recipe event. See docs/scripting.md.
+
+### Removed
+- The screwdriver's tooltip line ("Shift + Right Click to set the output side of a Resource Generator").
+- The explanation in the wrong-tier upgrade card message; it now reads "Wrong generator tier".
 
 ### Tested in a client
-- JEI, REI and EMI on every build that has them, KubeJS recipe schemas on NeoForge 1.21.1, and all five crop generator tiers in a live world (screwdriver output side, breaking, Jade). No jar changed. Create, Ex Deorum, Ex Nihilo Sequentia, AE2 and Quark recipe ids were checked against the real mods.
+- JEI, REI and EMI on every build that has them, KubeJS recipe schemas on NeoForge 1.21.1, and all five crop generator tiers in a live world (screwdriver output side, breaking, Jade). Create, Ex Deorum, Ex Nihilo Sequentia, AE2 and Quark recipe ids were checked against the real mods.
 
 ## [2026.11.4] - 2026-11-12 (Forge and NeoForge 26.3 only)
 

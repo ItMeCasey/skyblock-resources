@@ -255,6 +255,12 @@ public final class MachineHelpers {
 	}
 
 	public static int insertItem(LevelAccessor level, BlockPos pos, Item item, int amount) {
+		int inserted = insertItemRaw(level, pos, item, amount);
+		com.itmecasey.skyblockresources.script.ScriptHooks.produced(level, pos, item, inserted);
+		return inserted;
+	}
+
+	private static int insertItemRaw(LevelAccessor level, BlockPos pos, Item item, int amount) {
 		if (item == null || amount <= 0)
 			return 0;
 		IItemHandler inventory = Transfer.items(level, pos, null);
@@ -264,6 +270,12 @@ public final class MachineHelpers {
 	}
 
 	public static int insertItemIntoSide(LevelAccessor level, BlockPos pos, int slot, Item template, int amount) {
+		int inserted = insertItemIntoSideRaw(level, pos, slot, template, amount);
+		com.itmecasey.skyblockresources.script.ScriptHooks.produced(level, pos, template, inserted);
+		return inserted;
+	}
+
+	private static int insertItemIntoSideRaw(LevelAccessor level, BlockPos pos, int slot, Item template, int amount) {
 		if (template == null || amount <= 0)
 			return 0;
 		IItemHandler inv = Transfer.items(level, pos, null);

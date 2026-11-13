@@ -49,6 +49,7 @@ public class SkyblockResourcesMod {
 	private static MethodHandle playerHandle;
 
 	public SkyblockResourcesMod(FMLJavaModLoadingContext context) {
+		com.itmecasey.skyblockresources.script.ModJsBridge.install();
 		BusGroup modBus = context.getModBusGroup();
 		context.registerConfig(ModConfig.Type.COMMON, ConfigurationConfiguration.SPEC, "skyblock_resources.toml");
 		SkyblockResourcesModBlocks.REGISTRY.register(modBus);

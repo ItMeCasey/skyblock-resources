@@ -45,7 +45,7 @@ public class UpgradeCardItem extends Item {
 			GeneratorTiers.Result result = GeneratorTiers.upgrade(level, pos, tier);
 			Component message = switch (result) {
 				case UPGRADED -> Component.translatable("skyblock_resources.upgrade.done", Component.translatable("skyblock_resources.tier." + tier));
-				case WRONG_TIER -> Component.translatable("skyblock_resources.upgrade.wrong_tier", Component.translatable("skyblock_resources.tier." + (tier - 1)), Component.translatable("skyblock_resources.tier." + tier));
+				case WRONG_TIER -> Component.translatable("skyblock_resources.upgrade.wrong_tier");
 				case NO_ROOM -> Component.translatable("skyblock_resources.upgrade.no_room");
 				case NOT_GENERATOR -> null;
 			};

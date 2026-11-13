@@ -1,7 +1,7 @@
 # Project Status
 <!-- status-format: 1 -->
 Updated: 2026-11-13
-Summary: Skyblock Resources 2026.11.3 (26.2 and 26.3, four builds) is released and approved, and the 26.3 hotfix 2026.11.4 is tagged and uploaded; a client check of BEI, SMWTI, JEI, REI and Jade on 26.2 and 26.3 is still open.
+Summary: Skyblock Resources 2026.11.4 is released; 2026.11.5 (all ten builds, not pushed) adds optional ModJS scripting and removes the screwdriver tooltip hint; open: CI for the other builds, a real ModJS run on Forge, and the banner upload (Casey).
 Spend: none
 
 ## Done
@@ -51,6 +51,15 @@ Spend: none
 - [x] Check every port in a client: BEI, Jade, SMWTI, JEI, REI and EMI done on every build that has them; KubeJS checked on NeoForge 1.21.1 (typed recipe schemas add soil_type, crop_drops and tree_drops recipes in a live world, all three loaded); n/a: no KubeJS build for Forge 1.21.1 or Forge 26.1.2 (w:4)
 - [x] Run the client and check generators, upgrade cards, tree and crop drops, screwdriver, and overlays (crop tiers, screwdriver side and Jade on NeoForge 1.21.1; overlays and cards on all builds earlier) (w:3)
 - [x] Check the logo against the live CurseForge logo: the live logo is the same cube icon as branding/icon (w:1)
+
+## Scripting and hints
+- [x] ModJS bridge in all ten builds: `SkyblockResources` global with `produced` and `upgraded` events, `info` and `isGenerator` reads, recipe JSON builders; no ModJS means nothing loads (w:4)
+- [x] Headless self test covers the events (a throwing listener is skipped), the state read, the recipe JSON and listener cleanup; passes on NeoForge 1.21.1 (w:2)
+- [~] The other nine builds compile and pass the self test: compile checked locally on NeoForge 26.1.2 and 1.20.1 and Forge 1.20.1, 1.21.1 and 26.3; Forge 26.1.2, both 26.2 builds and NeoForge 26.3 are left to CI after the push (w:2)
+- [x] A real ModJS 2026.11.31 dev run on NeoForge 1.21.1: the global is installed, a script's events fire, a throwing script listener does not stop the game, and the self test passes (`-PmodjsJar=<path>`) (w:2)
+- [ ] The same real ModJS run on a Forge build (w:1)
+- [x] docs/scripting.md, wiki page "ModJS scripting" with the nav entry and compatibility row, CurseForge and listing text updated (w:1)
+- [x] Hints removed: the screwdriver tooltip line and the wrong-tier explanation; the CurseForge description no longer has install, "Tested" or how-to text (w:1)
 
 ## Release
 - [~] 26.3 hotfix 2026.11.4 (Forge and NeoForge 26.3 only): Biomes O' Plenty 26.3 recipes that named missing items are removed or remapped in `overrides/26.3`; both jars build and pass the self-test; tagged v2026.11.4 and uploaded 2026-11-12; load check in the Barely a Mod Pack still pending (w:1)

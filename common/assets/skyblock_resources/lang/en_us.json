@@ -48,7 +48,7 @@
   "skyblock_resources.tier.3": "Diamond",
   "skyblock_resources.tier.4": "Netherite",
   "skyblock_resources.upgrade.done": "Upgraded to %s",
-  "skyblock_resources.upgrade.wrong_tier": "This card upgrades %s generators to %s",
+  "skyblock_resources.upgrade.wrong_tier": "Wrong generator tier",
   "skyblock_resources.upgrade.no_room": "The new generator has fewer slots than this one has items in",
   "item.skyblock_resources.screwdriver": "Screwdriver",
   "item.skyblock_resources.wooden_tree_generator": "Wooden Tree Generator",

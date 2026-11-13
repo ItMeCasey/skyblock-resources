@@ -77,6 +77,8 @@ public final class HeadlessSelfTest {
 		passed &= checkDropRecipes(level);
 		passed &= checkPushConservesItems(level);
 
+		passed &= checkScripting(level);
+
 		LOGGER.info("SELFTEST {}", passed ? "PASSED" : "FAILED");
 		server.halt(false);
 	}
@@ -142,6 +144,51 @@ public final class HeadlessSelfTest {
 			if (container.getItem(slot).is(item))
 				count += container.getItem(slot).getCount();
 		return count;
+	}
+
+	/** The ModJS-facing API without ModJS: events reach listeners (a failing one is skipped), info reads a generator, recipe JSON is valid. */
+	private static boolean checkScripting(ServerLevel level) {
+		int[] seen = { 0, 0 };
+		String[] produced = { "" };
+		java.util.function.Consumer<com.itmecasey.skyblockresources.script.GeneratorEvent> bad = e -> {
+			throw new IllegalStateException("script bug on purpose");
+		};
+		java.util.function.Consumer<com.itmecasey.skyblockresources.script.GeneratorEvent> up = e -> {
+			if (e.tier == 1 && e.kind.equals("resource") && e.tierName.equals("stone"))
+				seen[0]++;
+		};
+		java.util.function.Consumer<com.itmecasey.skyblockresources.script.GeneratorEvent> made = e -> {
+			seen[1] += e.count;
+			produced[0] = e.item + " " + e.dimension;
+		};
+		com.itmecasey.skyblockresources.script.ScriptHooks.on("upgraded", bad);
+		com.itmecasey.skyblockresources.script.ScriptHooks.on("upgraded", up);
+		com.itmecasey.skyblockresources.script.ScriptHooks.on("produced", made);
+		BlockPos pos = new BlockPos(0, 100, 0);
+		level.setBlock(pos, SkyblockResourcesModBlocks.WOODEN_GENERATOR.get().defaultBlockState(), 3);
+		var api = new com.itmecasey.skyblockresources.script.SkyblockResourcesApi();
+		int[] viaApi = { 0 };
+		api.on("produced", e -> viaApi[0]++);
+		var before = api.info(level, 0, 100, 0);
+		GeneratorTiers.upgrade(level, pos, 1);
+		var after = api.info(level, 0, 100, 0);
+		com.itmecasey.skyblockresources.script.ScriptHooks.produced(level, pos, Items.DIAMOND, 3);
+		boolean none = api.info(level, 5, 5, 5) == null && !api.isGenerator(level, 5, 5, 5);
+		com.google.gson.JsonObject json = com.google.gson.JsonParser.parseString(api.recipes.cropDrops("minecraft:wheat_seeds", "minecraft:dirt", "skyblock_resources:wooden_crop_generator", "minecraft:wheat", 1,
+				java.util.List.of(java.util.Map.of("id", "minecraft:wheat", "min", 1, "max", 2, "chance", 0.5)), 1000)).getAsJsonObject();
+		boolean recipe = "skyblock_resources:crop_drops".equals(json.get("type").getAsString()) && json.getAsJsonArray("drops").size() == 1 && json.get("duration").getAsDouble() == 1000
+				&& json.getAsJsonArray("drops").get(0).getAsJsonObject().get("chance").getAsDouble() == 0.5;
+		api.clear();
+		com.itmecasey.skyblockresources.script.ScriptHooks.remove("upgraded", bad);
+		com.itmecasey.skyblockresources.script.ScriptHooks.remove("upgraded", up);
+		com.itmecasey.skyblockresources.script.ScriptHooks.remove("produced", made);
+		com.itmecasey.skyblockresources.script.ScriptHooks.produced(level, pos, Items.DIAMOND, 1);
+		boolean bridge = viaApi[0] == 1;
+		boolean ok = before != null && before.tier == 0 && before.kind.equals("resource") && before.tierName.equals("wooden") && after != null && after.tier == 1 && seen[0] == 1 && seen[1] == 3
+				&& produced[0].equals("minecraft:diamond minecraft:overworld") && none && recipe && bridge;
+		LOGGER.info("SELFTEST scripting: upgraded events {}, produced {} ({}), no generator elsewhere {}, recipe json {}, listeners cleared {}: {}", seen[0], seen[1], produced[0], none, recipe, bridge, ok ? "ok" : "FAIL");
+		level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
+		return ok;
 	}
 
 	/** Every tree and crop recipe must list at least one real drop, so a bad generated or hand-edited file fails here. */

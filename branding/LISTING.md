@@ -66,22 +66,14 @@ Skyblock Resources adds resource generators, tree generators and crop generators
 - **Resource generators:** stone, iron, diamond and netherite. Each tier makes more, faster.
 - **Tree generators:** plant a sapling and the tree grows into a resource tree, with the drops set by the tier.
 - **Crop generators:** wheat and produce from other food mods. Crops keep their own growth timers.
-- **Upgrade cards:** sneak and click a generator, tree or crop with the matching card to move it up one tier. It keeps its stored data.
-- **Recipes in KubeJS:** tree and crop drops are plain data, so a pack can add or change plants with a script.
-
-![For players](https://raw.githubusercontent.com/ItMeCasey/skyblock-resources/main/branding/banners/h_players.png)
-
-- Works in singleplayer and on multiplayer servers.
-- Place a generator, feed it the matching block or sapling, and collect what it makes.
-- Upgrade cards work on any generator of the tier below. Sneak and click to upgrade in place.
+- **Upgrade cards:** move a generator, tree or crop up one tier in place. It keeps its stored data.
+- **Scripting:** tree and crop drops are plain data, so KubeJS and ModJS packs can add or change plants, and ModJS scripts can react when a generator produces items or is upgraded and read a generator's tier and state.
 
 Minecraft 1.20.1, 1.21.1, 26.1.2, 26.2 and 26.3, on NeoForge and Forge.
 
 ![FAQ](https://raw.githubusercontent.com/ItMeCasey/skyblock-resources/main/branding/banners/h_faq.png)
 
-**Does it need to be on the server?** Yes, on both. The client shows the machines and the server runs them.
-
-**Can I change the drops?** Yes. Tree and crop drops are recipes, so a pack can add or change plants with KubeJS.
+**Can I change the drops?** Yes. Tree and crop drops are recipes, so a pack can add or change plants with KubeJS or ModJS.
 
 **License:** GPL-3.0. Source and issues on [GitHub](https://github.com/ItMeCasey/skyblock-resources).
 ```
@@ -93,5 +85,5 @@ Minecraft 1.20.1, 1.21.1, 26.1.2, 26.2 and 26.3, on NeoForge and Forge.
 3. Create the Modrinth project: name, slug, summary, icon, categories, environment, license, links, description. Upload `features.png` as the featured gallery image.
 4. Create the CurseForge project the same way, with `icon_512.png` as the logo. CurseForge reviews new projects before they go live, so it needs a first file uploaded.
 5. Set `banners/social.png` as the GitHub social preview.
-6. Before publishing, check the claims in the description in a client: the tiers, upgrade cards and install lines. The status file lists the live-client checks still open.
+6. Before publishing, check the claims in the description in a client: the tiers and upgrade cards. The status file lists the live-client checks still open.
 7. Optional: add `icon/skyblock_logo.png` to the jar as the mod list logo (`logoFile` in `mods.toml`, file in the resources folder).

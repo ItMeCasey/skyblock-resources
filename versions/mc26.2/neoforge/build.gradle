@@ -3,7 +3,7 @@ plugins {
     id 'net.neoforged.moddev' version '2.0.148'
 }
 
-version = '2026.11.3'
+version = '2026.11.5'
 base.archivesName = 'skyblock_resources-neoforge-26.2'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(25)

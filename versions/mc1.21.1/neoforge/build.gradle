@@ -3,7 +3,7 @@ plugins {
     id 'net.neoforged.moddev' version '2.0.148'
 }
 
-version = '2026.11.2'
+version = '2026.11.5'
 base.archivesName = 'skyblock_resources-neoforge-1.21.1'
 
 // Mojang ships Java 21 to end users in 1.20.5+, so the mod targets Java 21.
@@ -154,4 +154,6 @@ dependencies {
     }
     if (project.findProperty('viewer') == 'emi') runtimeOnly 'maven.modrinth:emi:5sIPA1To'
     if (project.hasProperty('beiJar')) runtimeOnly files(project.property('beiJar'))
+    // -PmodjsJar=<path> adds a local ModJS jar to the dev runs, to try the scripting bridge for real.
+    if (project.hasProperty('modjsJar')) runtimeOnly files(project.property('modjsJar'))
 }

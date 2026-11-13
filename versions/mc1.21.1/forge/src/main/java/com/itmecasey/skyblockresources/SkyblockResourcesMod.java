@@ -59,6 +59,7 @@ public class SkyblockResourcesMod {
 	private static MethodHandle playerHandle;
 
 	public SkyblockResourcesMod(FMLJavaModLoadingContext context) {
+		com.itmecasey.skyblockresources.script.ModJsBridge.install();
 		IEventBus modEventBus = context.getModEventBus();
 		MinecraftForge.EVENT_BUS.register(this);
 		SkyblockResourcesModBlocks.REGISTRY.register(modEventBus);

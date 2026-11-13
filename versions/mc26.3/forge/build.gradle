@@ -5,7 +5,7 @@ plugins {
     id 'net.minecraftforge.gradle' version '[7.0.17,8)'
 }
 
-version = '2026.11.4'
+version = '2026.11.5'
 group = 'com.itmecasey.skyblockresources'
 
 // Jar name: skyblock_resources-forge-<minecraft version>-<mod version>

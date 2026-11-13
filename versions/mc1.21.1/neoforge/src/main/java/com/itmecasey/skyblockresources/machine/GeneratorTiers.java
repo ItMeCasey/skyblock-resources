@@ -54,6 +54,15 @@ public final class GeneratorTiers {
 	private GeneratorTiers() {
 	}
 
+	/** 0 resource, 1 tree, 2 crop, or -1 when the block is not a generator. */
+	public static int kindOf(Block block) {
+		for (int kind = 0; kind < FAMILIES.size(); kind++)
+			for (DeferredBlock<Block> candidate : FAMILIES.get(kind))
+				if (candidate.get() == block)
+					return kind;
+		return -1;
+	}
+
 	/** Tier 0 (wooden) to 4 (netherite), or -1 when the block is not a generator. */
 	public static int tierOf(Block block) {
 		for (List<DeferredBlock<Block>> family : FAMILIES)
@@ -110,6 +119,7 @@ public final class GeneratorTiers {
 		// onPlace also starts the block's tick loop, so do that here.
 		level.scheduleTick(pos, next, 1);
 		level.updateNeighborsAt(pos, next);
+		com.itmecasey.skyblockresources.script.ScriptHooks.upgraded(level, pos);
 		return Result.UPGRADED;
 	}
 
