@@ -1,7 +1,7 @@
 # Project Status
 <!-- status-format: 1 -->
-Updated: 2026-11-12
-Summary: Skyblock Resources 2026.11.2 (six builds) is released; four new builds for Minecraft 26.2 and 26.3 (Forge and NeoForge, version 2026.11.3) compile, pass the self-test and work in a client, committed locally and not yet pushed, tagged or released.
+Updated: 2026-11-13
+Summary: Skyblock Resources 2026.11.3 (26.2 and 26.3, four builds) is released and approved, and the 26.3 hotfix 2026.11.4 is tagged and uploaded; a client check of BEI, SMWTI, JEI, REI and Jade on 26.2 and 26.3 is still open.
 Spend: none
 
 ## Done
@@ -53,7 +53,7 @@ Spend: none
 - [x] Check the logo against the live CurseForge logo: the live logo is the same cube icon as branding/icon (w:1)
 
 ## Release
-- [~] 26.3 hotfix 2026.11.4 (Forge and NeoForge 26.3 only): Biomes O' Plenty 26.3 recipes that named missing items are removed or remapped in `overrides/26.3`; both jars build and pass the self-test; load check in the Barely a Mod Pack pending, not yet tagged (w:1)
+- [~] 26.3 hotfix 2026.11.4 (Forge and NeoForge 26.3 only): Biomes O' Plenty 26.3 recipes that named missing items are removed or remapped in `overrides/26.3`; both jars build and pass the self-test; tagged v2026.11.4 and uploaded 2026-11-12; load check in the Barely a Mod Pack still pending (w:1)
 - [x] Version 2026.11.2 set on all six builds, changelog and CurseForge description updated (w:1)
 - [x] Release 2026.11.2: pushed, CI green, tagged v2026.11.2, six jars on CurseForge as beta (w:2)
 - [x] CI build of all six jars with the headless self test (build.yml) (w:2)
@@ -70,8 +70,8 @@ Spend: none
 - [x] Self-test (`runGameTest`) passes on all four, ports 8906-8909 registered in CLAUDE.md; the NeoForge test skips checks for mods that have no 26.2 or 26.3 build (w:2)
 - [x] Client check on all four with launch-isolated: mod loads, resource generator fills a chest, crop generator grows and delivers, overlays render; it found and fixed a 26.3 render crash in the opaque overlay pipelines (docs/frames/work_*) (w:3)
 - [x] CI matrix, release workflow, CurseForge file plan, README, issue templates and changelog list the 26.2 and 26.3 builds (the wiki pages in the website folder were edited too, outside this repo); version 2026.11.3 on the new builds only (w:2)
-- [ ] Bump the six older builds to 2026.11.3 so all ten jars carry one version at release (w:1)
-- [ ] Push, CI green on all ten, tag v2026.11.3, upload ten jars to CurseForge (project manager) (w:2)
+- [x] Not needed: releases now build only the versions whose own version equals the tag, so the six older builds stay at 2026.11.2 (w:1)
+- [x] Push, CI green, tag v2026.11.3, upload the four 26.2 and 26.3 jars to CurseForge (project manager; approved 2026-11-12) (w:2)
 - [ ] BEI, SMWTI, JEI, REI and Jade opened in a client on 26.2 and 26.3 (they compile only); swap the local SMWTI jars in libs/ for the private Maven coordinates (w:3)
 
 ## Wiki and branding
