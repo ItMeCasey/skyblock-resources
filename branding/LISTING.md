@@ -71,17 +71,15 @@ Skyblock Resources adds resource generators, tree generators and crop generators
 
 ![For players](https://raw.githubusercontent.com/ItMeCasey/skyblock-resources/main/branding/banners/h_players.png)
 
-- Install it on the client and the server. It works in singleplayer and on multiplayer servers.
+- Works in singleplayer and on multiplayer servers.
 - Place a generator, feed it the matching block or sapling, and collect what it makes.
 - Upgrade cards work on any generator of the tier below. Sneak and click to upgrade in place.
 
-![Install](https://raw.githubusercontent.com/ItMeCasey/skyblock-resources/main/branding/banners/h_install.png)
-
-Minecraft 1.20.1, 1.21.1 and 26.1.2, on NeoForge and Forge. Download the file for your loader and version from the Files tab.
+Minecraft 1.20.1, 1.21.1, 26.1.2, 26.2 and 26.3, on NeoForge and Forge.
 
 ![FAQ](https://raw.githubusercontent.com/ItMeCasey/skyblock-resources/main/branding/banners/h_faq.png)
 
-**Does it need to be on the server?** Install it on both. The client needs it to show the machines and the server needs it to run them.
+**Does it need to be on the server?** Yes, on both. The client shows the machines and the server runs them.
 
 **Can I change the drops?** Yes. Tree and crop drops are recipes, so a pack can add or change plants with KubeJS.
 
